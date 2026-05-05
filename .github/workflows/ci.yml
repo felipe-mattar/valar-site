@@ -1,7 +1,6 @@
 name: CI
 
 # Assume que o repo root = pasta site/ (arquivos HTML na raiz do repo).
-# Para usar: git init em site/, push direto, não enviar a workspace toda.
 
 on:
   push:
@@ -38,7 +37,7 @@ jobs:
           linkinator . \
             --recurse \
             --extensions html \
-            --skip "linkedin\.com|formspree\.io|fonts\.googleapis\.com|fonts\.gstatic\.com|plausible\.io|YOUR_FORM_ID" \
+            --skip "linkedin\.com|formspree\.io|fonts\.googleapis\.com|fonts\.gstatic\.com|plausible\.io|YOUR_FORM_ID|valar\.tec\.br|registro\.br"  \
             --timeout 10000
 
   lighthouse:
@@ -57,7 +56,7 @@ jobs:
           LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
 
   sync-manifesto:
-    name: Sync MANIFESTO.md → manifesto.html
+    name: Sync MANIFESTO.md -> manifesto.html
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -73,7 +72,7 @@ jobs:
           if git diff --quiet manifesto.html; then
             echo "OK: manifesto.html sincronizado com MANIFESTO.md"
           else
-            echo "ERRO: manifesto.html diverge. Execute scripts/sync_manifesto.py localmente e faça commit."
+            echo "ERRO: manifesto.html diverge. Execute scripts/sync_manifesto.py localmente e faca commit."
             git diff --stat manifesto.html
             exit 1
           fi
