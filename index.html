@@ -2,601 +2,120 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <meta name="description" content="Infraestrutura modular de inteligência operacional para empresas médias. Setup em 21 dias. Primeira métrica em 30.">
   <meta property="og:title" content="VALAR — Inteligência Operacional">
   <meta property="og:description" content="Módulos de IA que automatizam processos críticos em 21 dias.">
   <meta property="og:url" content="https://valar.tec.br">
   <meta property="og:type" content="website">
-  <meta property="og:image" content="https://valar.tec.br/og-image.png">
+  <meta property="og:image" content="https://valar.tec.br/og-image-v1.jpg">
   <meta property="og:image:width" content="1200">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image:alt" content="VALAR — Inteligência Operacional">
   <meta property="og:image:height" content="630">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:image" content="https://valar.tec.br/og-image.png">
+  <meta name="twitter:image" content="https://valar.tec.br/og-image-v1.jpg">
+  <link rel="icon" href="favicon.ico" sizes="32x32">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="canonical" href="https://valar.tec.br/">
+  <meta name="robots" content="index,follow">
+  <meta name="author" content="VALAR Inteligência">
+  <meta name="theme-color" content="#0A0A0B">
+  <meta name="geo.region" content="BR-RS">
+  <meta name="geo.placename" content="Porto Alegre">
   <title>VALAR — Inteligência Operacional</title>
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="fonts/inter-400-latin.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="fonts/inter-500-latin.woff2">
+  <link rel="stylesheet" href="styles.css">
+  <noscript><style>section { opacity: 1 !important; transform: none !important; }</style></noscript>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "VALAR Inteligência",
+    "legalName": "VALAR INTELIGÊNCIA LTDA",
+    "url": "https://valar.tec.br",
+    "logo": "https://valar.tec.br/og-image-v1.jpg",
+    "email": "contato@valar.tec.br",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Porto Alegre",
+      "addressRegion": "RS",
+      "addressCountry": "BR"
+    },
+    "taxID": "66.311.795/0001-67",
+    "description": "Infraestrutura modular configurável de inteligência operacional para empresas médias. Setup em 21 dias. Primeira métrica em 30.",
+    "areaServed": "BR",
+    "knowsAbout": ["automação operacional", "inteligência artificial", "infraestrutura de IA", "agentes de IA"]
+  }
+  </script>
 
-  <style>
-    /* ─── TOKENS ──────────────────────────────────────── */
-    :root {
-      --obsidiana:      #0A0A0B;
-      --noite-profunda: #112844;
-      --cobre:          #B87333;
-      --marfim:         #F5F5F3;
-      --cinza-medio:    #B4B2A9;
-      --cinza-escuro:   #888780;
-      --borda:          #2C2C2A;
-      --superficie:     #111214;
-      --verde-ok:       #5DCAA5;
-      --font-sans:      'Inter', system-ui, sans-serif;
-      --font-mono:      'JetBrains Mono', ui-monospace, monospace;
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "VALAR Inteligência",
+    "url": "https://valar.tec.br",
+    "description": "Infraestrutura modular de inteligência operacional para empresas médias.",
+    "publisher": {
+      "@type": "Organization",
+      "name": "VALAR Inteligência"
     }
+  }
+  </script>
 
-    /* ─── RESET ───────────────────────────────────────── */
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; font-size: 16px; }
-    body {
-      background-color: var(--obsidiana);
-      color: var(--marfim);
-      font-family: var(--font-sans);
-      font-weight: 400;
-      line-height: 1.65;
-      -webkit-font-smoothing: antialiased;
-    }
-    a { color: inherit; text-decoration: none; }
-    ul { list-style: none; }
-    img, svg { display: block; }
-
-    /* ─── ACESSIBILIDADE ─────────────────────────────── */
-    :focus-visible {
-      outline: 2px solid var(--cobre);
-      outline-offset: 3px;
-    }
-    .sr-only {
-      position: absolute; width: 1px; height: 1px;
-      padding: 0; margin: -1px; overflow: hidden;
-      clip: rect(0,0,0,0); white-space: nowrap; border: 0;
-    }
-
-    /* ─── FADE-IN DE SEÇÕES ──────────────────────────── */
-    section {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 200ms ease-out, transform 200ms ease-out;
-    }
-    section.is-visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    @media (prefers-reduced-motion: reduce) {
-      section { opacity: 1; transform: none; transition: none; }
-    }
-
-    /* ─── LAYOUT ─────────────────────────────────────── */
-    .container {
-      width: 100%;
-      max-width: 1120px;
-      margin: 0 auto;
-      padding: 0 24px;
-    }
-
-    /* ─── NAV ────────────────────────────────────────── */
-    .nav {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background-color: var(--obsidiana);
-      border-bottom: 1px solid var(--borda);
-    }
-    .nav__inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      height: 64px;
-      gap: 32px;
-    }
-    .nav__brand {
-      display: flex;
-      align-items: center;
-      flex-shrink: 0;
-    }
-    .nav__brand svg {
-      height: 36px;
-      width: auto;
-    }
-    .nav__links {
-      display: flex;
-      align-items: center;
-      gap: 32px;
-    }
-    .nav__links a {
-      font-family: var(--font-mono);
-      font-size: 10px;
-      font-weight: 500;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      color: var(--cinza-escuro);
-      transition: color 150ms ease;
-    }
-    .nav__links a:hover { color: var(--marfim); }
-    .nav__cta {
-      font-family: var(--font-mono);
-      font-size: 10px;
-      font-weight: 500;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      color: var(--cobre);
-      border: 1px solid var(--cobre);
-      padding: 7px 14px;
-      transition: background-color 150ms ease, color 150ms ease;
-      white-space: nowrap;
-    }
-    .nav__cta:hover {
-      background-color: var(--cobre);
-      color: var(--obsidiana);
-    }
-    .nav__hamburger {
-      display: none;
-      flex-direction: column;
-      justify-content: center;
-      gap: 5px;
-      width: 32px;
-      height: 32px;
-      background: none;
-      border: none;
-      cursor: pointer;
-      padding: 4px;
-    }
-    .nav__hamburger span {
-      display: block;
-      width: 100%;
-      height: 1px;
-      background-color: var(--marfim);
-      transition: transform 200ms ease, opacity 200ms ease;
-    }
-    .nav__hamburger[aria-expanded="true"] span:nth-child(1) {
-      transform: translateY(6px) rotate(45deg);
-    }
-    .nav__hamburger[aria-expanded="true"] span:nth-child(2) {
-      opacity: 0;
-    }
-    .nav__hamburger[aria-expanded="true"] span:nth-child(3) {
-      transform: translateY(-6px) rotate(-45deg);
-    }
-    .nav__mobile {
-      display: none;
-      flex-direction: column;
-      border-top: 1px solid var(--borda);
-      padding: 24px;
-      gap: 24px;
-    }
-    .nav__mobile.is-open { display: flex; }
-    .nav__mobile a {
-      font-family: var(--font-mono);
-      font-size: 12px;
-      font-weight: 500;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      color: var(--cinza-escuro);
-    }
-    .nav__mobile .nav__cta {
-      align-self: flex-start;
-    }
-
-    @media (max-width: 720px) {
-      .nav__links, .nav__desktop-cta { display: none; }
-      .nav__hamburger { display: flex; }
-    }
-
-    /* ─── HERO ───────────────────────────────────────── */
-    #hero {
-      padding: 80px 0 96px;
-      opacity: 1;
-      transform: none;
-    }
-    .hero__inner {
-      display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 64px;
-      align-items: center;
-    }
-    .hero__content { max-width: 620px; }
-    .hero__eyebrow {
-      font-family: var(--font-mono);
-      font-size: 10px;
-      font-weight: 500;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      color: var(--cobre);
-      margin-bottom: 24px;
-    }
-    .hero__title {
-      font-size: clamp(32px, 5vw, 48px);
-      font-weight: 500;
-      line-height: 1.1;
-      color: var(--marfim);
-      margin-bottom: 24px;
-    }
-    .hero__sub {
-      font-size: 16px;
-      color: var(--cinza-medio);
-      line-height: 1.7;
-      margin-bottom: 40px;
-      max-width: 540px;
-    }
-    .hero__ctas {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 16px;
-      margin-bottom: 56px;
-    }
-    .btn-primary {
-      display: inline-flex;
-      align-items: center;
-      background-color: var(--cobre);
-      color: var(--obsidiana);
-      font-family: var(--font-mono);
-      font-size: 11px;
-      font-weight: 500;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      padding: 12px 24px;
-      border: 1px solid var(--cobre);
-      transition: background-color 150ms ease, color 150ms ease;
-    }
-    .btn-primary:hover {
-      background-color: transparent;
-      color: var(--cobre);
-    }
-    .btn-secondary {
-      display: inline-flex;
-      align-items: center;
-      background-color: transparent;
-      color: var(--marfim);
-      font-family: var(--font-mono);
-      font-size: 11px;
-      font-weight: 500;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      padding: 12px 24px;
-      border: 1px solid var(--borda);
-      transition: border-color 150ms ease, color 150ms ease;
-    }
-    .btn-secondary:hover {
-      border-color: var(--cinza-medio);
-      color: var(--marfim);
-    }
-    .hero__metrics {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0;
-      border-top: 1px solid var(--borda);
-      padding-top: 32px;
-    }
-    .metric {
-      flex: 1;
-      min-width: 120px;
-      padding: 0 24px 0 0;
-    }
-    .metric + .metric {
-      padding-left: 24px;
-      border-left: 1px solid var(--borda);
-    }
-    .metric__value {
-      font-family: var(--font-mono);
-      font-size: 28px;
-      font-weight: 500;
-      color: var(--marfim);
-      line-height: 1;
-      margin-bottom: 8px;
-    }
-    .metric__label {
-      font-family: var(--font-mono);
-      font-size: 10px;
-      font-weight: 400;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: var(--cinza-escuro);
-    }
-    .hero__metrics-note {
-      width: 100%;
-      margin-top: 16px;
-      font-family: var(--font-mono);
-      font-size: 9px;
-      color: var(--cinza-escuro);
-      letter-spacing: 0.04em;
-    }
-    .hero__symbol {
-      flex-shrink: 0;
-    }
-    .hero__symbol svg {
-      width: 240px;
-      height: 240px;
-      opacity: 0.85;
-    }
-
-    @media (max-width: 900px) {
-      .hero__inner { grid-template-columns: 1fr; }
-      .hero__symbol { display: none; }
-    }
-    @media (max-width: 480px) {
-      #hero { padding: 56px 0 64px; }
-      .metric { min-width: 80px; }
-      .metric__value { font-size: 22px; }
-    }
-
-    /* ─── SEÇÃO GENÉRICA ─────────────────────────────── */
-    .section {
-      padding: 96px 0;
-      border-top: 1px solid var(--borda);
-    }
-    .section__header { margin-bottom: 56px; }
-    .section__title {
-      font-size: clamp(24px, 3vw, 32px);
-      font-weight: 500;
-      color: var(--marfim);
-      line-height: 1.15;
-      margin-bottom: 12px;
-    }
-    .section__sub {
-      font-size: 15px;
-      color: var(--cinza-medio);
-      max-width: 560px;
-    }
-
-    /* ─── COMO OPERA ─────────────────────────────────── */
-    #como-opera .cards {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1px;
-      background-color: var(--borda);
-      border: 1px solid var(--borda);
-    }
-    .layer-card {
-      background-color: var(--superficie);
-      padding: 40px 32px;
-    }
-    .layer-card__num {
-      font-family: var(--font-mono);
-      font-size: 10px;
-      font-weight: 500;
-      color: var(--cobre);
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      margin-bottom: 16px;
-    }
-    .layer-card__title {
-      font-size: 18px;
-      font-weight: 500;
-      color: var(--marfim);
-      margin-bottom: 16px;
-    }
-    .layer-card__desc {
-      font-size: 14px;
-      color: var(--cinza-medio);
-      line-height: 1.7;
-    }
-
-    @media (max-width: 720px) {
-      #como-opera .cards { grid-template-columns: 1fr; }
-    }
-
-    /* ─── MÓDULOS ────────────────────────────────────── */
-    #modulos .grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1px;
-      background-color: var(--borda);
-      border: 1px solid var(--borda);
-    }
-    .module-card {
-      background-color: var(--superficie);
-      padding: 40px 32px;
-      position: relative;
-    }
-    .module-card--dim { opacity: 0.5; }
-    .module-card__badge {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      font-family: var(--font-mono);
-      font-size: 9px;
-      font-weight: 500;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      padding: 4px 8px;
-      border: 1px solid;
-    }
-    .badge--ativo {
-      color: var(--verde-ok);
-      border-color: var(--verde-ok);
-    }
-    .badge--dev {
-      color: var(--cinza-escuro);
-      border-color: var(--cinza-escuro);
-    }
-    .module-card__id {
-      font-family: var(--font-mono);
-      font-size: 10px;
-      font-weight: 400;
-      color: var(--cinza-escuro);
-      letter-spacing: 0.08em;
-      margin-bottom: 12px;
-    }
-    .module-card__title {
-      font-size: 20px;
-      font-weight: 500;
-      color: var(--marfim);
-      margin-bottom: 8px;
-    }
-    .module-card__process {
-      font-size: 13px;
-      color: var(--cinza-medio);
-      margin-bottom: 24px;
-    }
-    .module-card__metric-label {
-      font-family: var(--font-mono);
-      font-size: 9px;
-      font-weight: 500;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      color: var(--cinza-escuro);
-      margin-bottom: 4px;
-    }
-    .module-card__metric-value {
-      font-family: var(--font-mono);
-      font-size: 13px;
-      font-weight: 500;
-      color: var(--cobre);
-      margin-bottom: 24px;
-    }
-    .module-card__meta {
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-      font-family: var(--font-mono);
-      font-size: 11px;
-      color: var(--cinza-escuro);
-      border-top: 1px solid var(--borda);
-      padding-top: 20px;
-    }
-    .module-card__meta-row {
-      display: flex;
-      gap: 8px;
-    }
-    .meta-key {
-      color: var(--cinza-escuro);
-      min-width: 64px;
-    }
-    .meta-val { color: var(--cinza-medio); }
-    .module-card__integrations {
-      margin-top: 6px;
-      font-family: var(--font-mono);
-      font-size: 10px;
-      color: var(--cinza-escuro);
-    }
-
-    @media (max-width: 720px) {
-      #modulos .grid { grid-template-columns: 1fr; }
-    }
-
-    /* ─── DIAGNÓSTICO ────────────────────────────────── */
-    #diagnostico {
-      background-color: var(--noite-profunda);
-      border-top: 1px solid var(--borda);
-    }
-    #diagnostico .container {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      padding-top: 96px;
-      padding-bottom: 96px;
-    }
-    .diag__label {
-      font-family: var(--font-mono);
-      font-size: 10px;
-      font-weight: 500;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      color: var(--cobre);
-      margin-bottom: 24px;
-    }
-    .diag__title {
-      font-size: clamp(24px, 3.5vw, 40px);
-      font-weight: 500;
-      color: var(--marfim);
-      line-height: 1.15;
-      margin-bottom: 24px;
-      max-width: 560px;
-    }
-    .diag__body {
-      font-size: 15px;
-      color: var(--cinza-medio);
-      line-height: 1.75;
-      max-width: 560px;
-      margin-bottom: 40px;
-    }
-    .diag__note {
-      margin-top: 20px;
-      font-family: var(--font-mono);
-      font-size: 11px;
-      color: var(--cinza-escuro);
-      letter-spacing: 0.04em;
-    }
-
-    /* ─── FOOTER ─────────────────────────────────────── */
-    footer {
-      background-color: var(--obsidiana);
-      border-top: 1px solid var(--borda);
-    }
-    .footer__grid {
-      display: grid;
-      grid-template-columns: 1.5fr 1fr 1fr 1fr;
-      gap: 48px;
-      padding: 64px 0 48px;
-    }
-    .footer__brand svg {
-      height: 28px;
-      width: auto;
-      margin-bottom: 16px;
-    }
-    .footer__tagline {
-      font-size: 12px;
-      color: var(--cinza-escuro);
-      line-height: 1.6;
-      max-width: 200px;
-    }
-    .footer__col-title {
-      font-family: var(--font-mono);
-      font-size: 10px;
-      font-weight: 500;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      color: var(--cinza-escuro);
-      margin-bottom: 20px;
-    }
-    .footer__col ul {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-    .footer__col a {
-      font-size: 13px;
-      color: var(--cinza-medio);
-      transition: color 150ms ease;
-    }
-    .footer__col a:hover { color: var(--marfim); }
-    .footer__legal {
-      border-top: 1px solid var(--borda);
-      padding: 20px 0 32px;
-      font-family: var(--font-mono);
-      font-size: 10px;
-      color: var(--cinza-escuro);
-      letter-spacing: 0.04em;
-    }
-
-    @media (max-width: 900px) {
-      .footer__grid { grid-template-columns: 1fr 1fr; gap: 40px; }
-    }
-    @media (max-width: 480px) {
-      .footer__grid { grid-template-columns: 1fr; gap: 32px; }
-    }
-  </style>
+  <script type="application/ld+json">
+  [
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": "VALAR Desk",
+      "serviceType": "Automação de chamados internos com agente IA",
+      "description": "Triagem e resolução de chamados internos com agente IA. Setup em 21 dias. Taxa de resolução autônoma de 60–75%.",
+      "provider": {
+        "@type": "Organization",
+        "name": "VALAR Inteligência",
+        "url": "https://valar.tec.br"
+      },
+      "areaServed": "BR",
+      "offers": {
+        "@type": "Offer",
+        "price": "14800",
+        "priceCurrency": "BRL",
+        "description": "Setup R$ 14.800 + R$ 4.800/mês"
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": "VALAR Onboard",
+      "serviceType": "Integração de colaboradores com base de conhecimento ativa",
+      "description": "Integração de colaboradores com base de conhecimento ativa. Setup em 14 dias. Redução do tempo de rampa.",
+      "provider": {
+        "@type": "Organization",
+        "name": "VALAR Inteligência",
+        "url": "https://valar.tec.br"
+      },
+      "areaServed": "BR"
+    }
+  ]
+  </script>
 </head>
 
 <body>
 
-  <!-- ─── NAV ───────────────────────────────────────── -->
+  <a href="#main" class="skip-link">Pular para o conteúdo principal</a>
+
+  <!-- NAV -->
   <header class="nav" role="banner">
     <div class="container">
       <div class="nav__inner">
 
-        <a href="#" class="nav__brand" aria-label="VALAR — página inicial">
-          <!-- Lockup horizontal · geometria LockupH R=52 svgW=467 svgH=120 -->
+        <a href="/" class="nav__brand" aria-label="VALAR — página inicial">
+          <!-- Lockup horizontal · LockupH R=52 svgW=467 svgH=120 -->
           <svg viewBox="0 0 467 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
             <g transform="translate(52,60)">
               <polygon points="0,-52 45.03,-26 45.03,26 0,52 -45.03,26 -45.03,-26"
@@ -621,11 +140,11 @@
 
         <nav class="nav__links" aria-label="Navegação principal">
           <a href="#modulos">Módulos</a>
-          <a href="#" aria-label="Manifesto — disponível em breve">Manifesto</a>
-          <a href="#diagnostico">Contato</a>
+          <a href="manifesto.html">Manifesto</a>
+          <a href="diagnostico.html">Contato</a>
         </nav>
 
-        <a href="mailto:contato@valar.tec.br?subject=Diagn%C3%B3stico%20operacional"
+        <a href="diagnostico.html"
            class="nav__cta nav__desktop-cta"
            aria-label="Solicitar diagnóstico operacional">
           Diagnóstico →
@@ -634,24 +153,23 @@
         <button class="nav__hamburger"
                 aria-expanded="false"
                 aria-controls="mobile-menu"
-                aria-label="Abrir menu">
+                aria-label="Abrir menu de navegação">
           <span></span><span></span><span></span>
         </button>
       </div>
 
       <nav id="mobile-menu" class="nav__mobile" aria-label="Navegação mobile" hidden>
         <a href="#modulos">Módulos</a>
-        <a href="#">Manifesto</a>
-        <a href="#diagnostico">Contato</a>
-        <a href="mailto:contato@valar.tec.br?subject=Diagn%C3%B3stico%20operacional"
-           class="nav__cta">Diagnóstico →</a>
+        <a href="manifesto.html">Manifesto</a>
+        <a href="diagnostico.html">Contato</a>
+        <a href="diagnostico.html" class="nav__cta">Diagnóstico →</a>
       </nav>
     </div>
   </header>
 
-  <main>
+  <main id="main">
 
-    <!-- ─── HERO ──────────────────────────────────────── -->
+    <!-- HERO -->
     <section id="hero">
       <div class="container">
         <div class="hero__inner">
@@ -666,8 +184,7 @@
               em 21 dias, com métrica no primeiro mês.
             </p>
             <div class="hero__ctas">
-              <a href="mailto:contato@valar.tec.br?subject=Diagn%C3%B3stico%20operacional"
-                 class="btn-primary">Solicitar diagnóstico</a>
+              <a href="diagnostico.html" class="btn-primary">Solicitar diagnóstico</a>
               <a href="#modulos" class="btn-secondary">Ver módulos</a>
             </div>
             <div class="hero__metrics">
@@ -690,7 +207,6 @@
           </div>
 
           <div class="hero__symbol" aria-hidden="true">
-            <!-- Símbolo hero oficial 300×300 -->
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="240" height="240" focusable="false">
               <polygon points="150,30 46.08,90 46.08,210 150,270 253.92,210 253.92,90" fill="none" stroke="#F5F5F3" stroke-width="1.8"/>
               <polygon points="150,67.56 78.6,108.78 78.6,191.22 150,232.44 221.4,191.22 221.4,108.78" fill="none" stroke="#F5F5F3" stroke-width="1.32"/>
@@ -710,7 +226,7 @@
       </div>
     </section>
 
-    <!-- ─── COMO OPERA ────────────────────────────────── -->
+    <!-- COMO OPERA -->
     <section id="como-opera" class="section">
       <div class="container">
         <header class="section__header">
@@ -719,7 +235,7 @@
         </header>
         <div class="cards">
           <div class="layer-card">
-            <p class="layer-card__num">01</p>
+            <p class="layer-card__num" aria-hidden="true">01</p>
             <h3 class="layer-card__title">VALAR Core</h3>
             <p class="layer-card__desc">
               Motor de orquestração de agentes IA, integração e contexto. Roda invisível — não é
@@ -727,7 +243,7 @@
             </p>
           </div>
           <div class="layer-card">
-            <p class="layer-card__num">02</p>
+            <p class="layer-card__num" aria-hidden="true">02</p>
             <h3 class="layer-card__title">Módulos</h3>
             <p class="layer-card__desc">
               Produtos verticais configurados por processo: Desk, Onboard, Report, Watch.
@@ -735,7 +251,7 @@
             </p>
           </div>
           <div class="layer-card">
-            <p class="layer-card__num">03</p>
+            <p class="layer-card__num" aria-hidden="true">03</p>
             <h3 class="layer-card__title">Instância</h3>
             <p class="layer-card__desc">
               Configuração exclusiva por cliente. Quanto mais o cliente configura, mais específica
@@ -746,7 +262,7 @@
       </div>
     </section>
 
-    <!-- ─── MÓDULOS ───────────────────────────────────── -->
+    <!-- MÓDULOS -->
     <section id="modulos" class="section">
       <div class="container">
         <header class="section__header">
@@ -755,9 +271,8 @@
         </header>
         <div class="grid">
 
-          <!-- VALAR Desk -->
           <article class="module-card">
-            <span class="module-card__badge badge--ativo" aria-label="Status: ativo">ativo</span>
+            <span class="module-card__badge badge--ativo">ativo</span>
             <p class="module-card__id">desk.v1</p>
             <h3 class="module-card__title">VALAR Desk</h3>
             <p class="module-card__process">Triagem e resolução de chamados internos com agente IA.</p>
@@ -778,9 +293,8 @@
             </div>
           </article>
 
-          <!-- VALAR Onboard -->
           <article class="module-card">
-            <span class="module-card__badge badge--ativo" aria-label="Status: ativo">ativo</span>
+            <span class="module-card__badge badge--ativo">ativo</span>
             <p class="module-card__id">onboard.v1</p>
             <h3 class="module-card__title">VALAR Onboard</h3>
             <p class="module-card__process">Integração de colaboradores com base de conhecimento ativa.</p>
@@ -801,9 +315,8 @@
             </div>
           </article>
 
-          <!-- VALAR Report -->
           <article class="module-card module-card--dim" aria-label="VALAR Report — em desenvolvimento">
-            <span class="module-card__badge badge--dev" aria-label="Status: em desenvolvimento">em desenvolvimento</span>
+            <span class="module-card__badge badge--dev">em desenvolvimento</span>
             <p class="module-card__id">report.v1</p>
             <h3 class="module-card__title">VALAR Report</h3>
             <p class="module-card__process">Coleta, síntese e distribuição de relatórios operacionais.</p>
@@ -814,12 +327,18 @@
                 <span class="meta-key">Status</span>
                 <span class="meta-val">em desenvolvimento</span>
               </div>
+              <div class="module-card__meta-row" style="margin-top: 12px;">
+                <a href="mailto:contato@valar.tec.br?subject=Avise-me%20VALAR%20Report"
+                   class="module-notify-link"
+                   aria-label="Receber aviso quando VALAR Report lançar">
+                  Avise-me quando lançar →
+                </a>
+              </div>
             </div>
           </article>
 
-          <!-- VALAR Watch -->
           <article class="module-card module-card--dim" aria-label="VALAR Watch — em desenvolvimento">
-            <span class="module-card__badge badge--dev" aria-label="Status: em desenvolvimento">em desenvolvimento</span>
+            <span class="module-card__badge badge--dev">em desenvolvimento</span>
             <p class="module-card__id">watch.v1</p>
             <h3 class="module-card__title">VALAR Watch</h3>
             <p class="module-card__process">Monitoramento de indicadores com alerta interpretado.</p>
@@ -830,6 +349,13 @@
                 <span class="meta-key">Status</span>
                 <span class="meta-val">em desenvolvimento</span>
               </div>
+              <div class="module-card__meta-row" style="margin-top: 12px;">
+                <a href="mailto:contato@valar.tec.br?subject=Avise-me%20VALAR%20Watch"
+                   class="module-notify-link"
+                   aria-label="Receber aviso quando VALAR Watch lançar">
+                  Avise-me quando lançar →
+                </a>
+              </div>
             </div>
           </article>
 
@@ -837,7 +363,7 @@
       </div>
     </section>
 
-    <!-- ─── DIAGNÓSTICO ───────────────────────────────── -->
+    <!-- DIAGNÓSTICO -->
     <section id="diagnostico">
       <div class="container">
         <p class="diag__label">diagnóstico operacional</p>
@@ -847,21 +373,19 @@
           recomendação em 48 horas úteis. Se os números da sua operação não justificarem
           o módulo, VALAR recomendará não avançar.
         </p>
-        <a href="mailto:contato@valar.tec.br?subject=Diagn%C3%B3stico%20operacional"
-           class="btn-primary">Solicitar diagnóstico →</a>
+        <a href="diagnostico.html" class="btn-primary">Solicitar diagnóstico →</a>
         <p class="diag__note">contato@valar.tec.br · Porto Alegre · RS · Brasil</p>
       </div>
     </section>
 
   </main>
 
-  <!-- ─── FOOTER ────────────────────────────────────── -->
+  <!-- FOOTER -->
   <footer>
     <div class="container">
       <div class="footer__grid">
 
         <div class="footer__brand">
-          <!-- Símbolo pequeno 48×48 -->
           <svg width="48" height="48" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
             <g transform="translate(24,24)">
               <polygon points="0,-20 17.32,-10 17.32,10 0,20 -17.32,10 -17.32,-10"
@@ -895,17 +419,17 @@
         <div class="footer__col">
           <p class="footer__col-title">Empresa</p>
           <ul>
-            <li><a href="#">Manifesto</a></li>
-            <li><a href="#">Casos</a></li>
-            <li><a href="#diagnostico">Contato</a></li>
+            <li><a href="manifesto.html">Manifesto</a></li>
+            <li><a href="casos.html">Casos</a></li>
+            <li><a href="diagnostico.html">Contato</a></li>
           </ul>
         </div>
 
         <div class="footer__col">
           <p class="footer__col-title">Legal</p>
           <ul>
-            <li><a href="#">Privacidade</a></li>
-            <li><a href="#">Termos</a></li>
+            <li><a href="privacidade.html">Privacidade</a></li>
+            <li><a href="termos.html">Termos</a></li>
             <li><a href="#" aria-label="LinkedIn — perfil a publicar">LinkedIn</a></li>
           </ul>
         </div>
@@ -917,61 +441,8 @@
     </div>
   </footer>
 
-  <!-- ─── JS ────────────────────────────────────────── -->
-  <script>
-    // Fade-in de seções via IntersectionObserver
-    (function () {
-      if (!('IntersectionObserver' in window)) {
-        document.querySelectorAll('section').forEach(function (s) {
-          s.classList.add('is-visible');
-        });
-        return;
-      }
-      var observer = new IntersectionObserver(function (entries) {
-        entries.forEach(function (entry) {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('is-visible');
-            observer.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.08 });
-
-      document.querySelectorAll('section').forEach(function (s) {
-        if (s.id !== 'hero') {
-          observer.observe(s);
-        } else {
-          s.classList.add('is-visible');
-        }
-      });
-    }());
-
-    // Menu mobile hambúrguer
-    (function () {
-      var btn = document.querySelector('.nav__hamburger');
-      var menu = document.getElementById('mobile-menu');
-      if (!btn || !menu) return;
-
-      btn.addEventListener('click', function () {
-        var expanded = btn.getAttribute('aria-expanded') === 'true';
-        btn.setAttribute('aria-expanded', String(!expanded));
-        menu.hidden = expanded;
-        if (!expanded) {
-          menu.classList.add('is-open');
-        } else {
-          menu.classList.remove('is-open');
-        }
-      });
-
-      // Fechar ao clicar em link do menu
-      menu.querySelectorAll('a').forEach(function (link) {
-        link.addEventListener('click', function () {
-          btn.setAttribute('aria-expanded', 'false');
-          menu.hidden = true;
-          menu.classList.remove('is-open');
-        });
-      });
-    }());
-  </script>
+  <script src="main.js"></script>
+  <script defer data-domain="valar.tec.br" src="https://plausible.io/js/script.js"></script>
 
 </body>
 </html>

@@ -1,0 +1,10 @@
+# Scripts de uso único / utilitários locais
+scripts/download_fonts.py
+Wait-ValarHttps.ps1
+
+# Artefatos de CI/ferramentas locais
+.lighthouseci/
+node_modules/
+
+# Imagens PNG pesadas (usar apenas versões JPG comprimidas)
+og-image*.png
