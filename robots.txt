@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+Disallow: /obrigado.html
+Disallow: /404.html
+
+Sitemap: https://valar.tec.br/sitemap.xml
