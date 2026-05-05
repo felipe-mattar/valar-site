@@ -1,0 +1,79 @@
+name: CI
+
+# Assume que o repo root = pasta site/ (arquivos HTML na raiz do repo).
+# Para usar: git init em site/, push direto, não enviar a workspace toda.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  lint-html:
+    name: Lint HTML
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Install htmlhint
+        run: npm install -g htmlhint
+      - name: Lint HTML files
+        run: htmlhint "*.html" --config .htmlhintrc
+
+  validate-links:
+    name: Validate Links
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Install linkinator
+        run: npm install -g linkinator
+      - name: Check links
+        run: |
+          linkinator . \
+            --recurse \
+            --extensions html \
+            --skip "linkedin\.com|formspree\.io|fonts\.googleapis\.com|fonts\.gstatic\.com|plausible\.io|YOUR_FORM_ID" \
+            --timeout 10000
+
+  lighthouse:
+    name: Lighthouse CI
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Install LHCI
+        run: npm install -g @lhci/cli
+      - name: Run Lighthouse CI
+        run: lhci autorun
+        env:
+          LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
+
+  sync-manifesto:
+    name: Sync MANIFESTO.md → manifesto.html
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install dependencies
+        run: pip install markdown
+      - name: Run sync script
+        run: python scripts/sync_manifesto.py
+      - name: Fail if manifesto.html diverge de MANIFESTO.md
+        run: |
+          if git diff --quiet manifesto.html; then
+            echo "OK: manifesto.html sincronizado com MANIFESTO.md"
+          else
+            echo "ERRO: manifesto.html diverge. Execute scripts/sync_manifesto.py localmente e faça commit."
+            git diff --stat manifesto.html
+            exit 1
+          fi

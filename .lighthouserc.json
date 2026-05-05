@@ -1,0 +1,26 @@
+{
+  "ci": {
+    "collect": {
+      "staticDistDir": ".",
+      "url": [
+        "http://localhost/index.html",
+        "http://localhost/manifesto.html",
+        "http://localhost/diagnostico.html"
+      ],
+      "numberOfRuns": 3
+    },
+    "assert": {
+      "preset": "lighthouse:no-pwa",
+      "assertions": {
+        "categories:performance":    ["error", { "minScore": 0.95 }],
+        "categories:accessibility":  ["error", { "minScore": 0.95 }],
+        "categories:best-practices": ["error", { "minScore": 0.95 }],
+        "categories:seo":            ["error", { "minScore": 0.90 }]
+      },
+      "budgetsFile": ".github/lighthouse-budget.json"
+    },
+    "upload": {
+      "target": "temporary-public-storage"
+    }
+  }
+}
