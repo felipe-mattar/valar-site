@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="description" content="A tese da VALAR: por que infraestrutura modular configurável é a resposta certa para operações de empresas médias.">
+  <meta property="og:title" content="Manifesto — VALAR">
+  <meta property="og:description" content="A tese da VALAR sobre infraestrutura operacional com IA para empresas médias.">
+  <meta property="og:url" content="https://valar.tec.br/manifesto.html">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://valar.tec.br/og-image-v1.jpg">
+    <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image:alt" content="VALAR — Inteligência Operacional">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://valar.tec.br/og-image-v1.jpg">
+  <link rel="icon" href="favicon.ico" sizes="32x32">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="canonical" href="https://valar.tec.br/manifesto.html">
+  <meta name="robots" content="index,follow">
+  <meta name="author" content="VALAR Inteligência">
+  <meta name="theme-color" content="#0A0A0B">
+  <meta name="geo.region" content="BR-RS">
+  <meta name="geo.placename" content="Porto Alegre">
+  <title>Manifesto — VALAR</title>
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="fonts/inter-400-latin.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="fonts/inter-500-latin.woff2">
+  <link rel="stylesheet" href="styles.css">
+  <noscript><style>section { opacity: 1 !important; transform: none !important; }</style></noscript>
+</head>
+
+<body>
+
+  <a href="#main" class="skip-link">Pular para o conteúdo principal</a>
+
+  <header class="nav" role="banner">
+    <div class="container">
+      <div class="nav__inner">
+
+        <a href="index.html" class="nav__brand" aria-label="VALAR — página inicial">
+          <svg viewBox="0 0 467 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+            <g transform="translate(52,60)">
+              <polygon points="0,-52 45.03,-26 45.03,26 0,52 -45.03,26 -45.03,-26"
+                fill="none" stroke="#F5F5F3" stroke-width="0.78"/>
+              <polygon points="0,-35.75 30.97,-17.88 30.97,17.88 0,35.75 -30.97,17.88 -30.97,-17.88"
+                fill="none" stroke="#F5F5F3" stroke-width="0.55"/>
+              <line x1="0" y1="-6.5" x2="0" y2="-52" stroke="#F5F5F3" stroke-width="0.26" opacity="0.24"/>
+              <line x1="5.63" y1="-3.25" x2="45.03" y2="-26" stroke="#F5F5F3" stroke-width="0.26" opacity="0.24"/>
+              <line x1="5.63" y1="3.25" x2="45.03" y2="26" stroke="#F5F5F3" stroke-width="0.26" opacity="0.24"/>
+              <line x1="0" y1="6.5" x2="0" y2="52" stroke="#F5F5F3" stroke-width="0.26" opacity="0.24"/>
+              <line x1="-5.63" y1="3.25" x2="-45.03" y2="26" stroke="#F5F5F3" stroke-width="0.26" opacity="0.24"/>
+              <line x1="-5.63" y1="-3.25" x2="-45.03" y2="-26" stroke="#F5F5F3" stroke-width="0.26" opacity="0.24"/>
+              <circle cx="0" cy="0" r="20.8" fill="none" stroke="#B87333" stroke-width="0.33" opacity="0.22"/>
+              <circle cx="0" cy="0" r="13" fill="none" stroke="#B87333" stroke-width="0.39" opacity="0.42"/>
+              <circle cx="0" cy="0" r="3.25" fill="#B87333"/>
+            </g>
+            <rect x="132" y="21.6" width="1" height="76.8" fill="#B87333"/>
+            <text x="147" y="74.4" font-family="'Inter Display','Inter',sans-serif"
+              font-size="68" font-weight="500" letter-spacing="5" fill="#F5F5F3">VALAR</text>
+          </svg>
+        </a>
+
+        <nav class="nav__links" aria-label="Navegação principal">
+          <a href="index.html#modulos">Módulos</a>
+          <a href="manifesto.html" aria-current="page">Manifesto</a>
+          <a href="diagnostico.html">Contato</a>
+        </nav>
+
+        <a href="diagnostico.html"
+           class="nav__cta nav__desktop-cta"
+           aria-label="Solicitar diagnóstico operacional">
+          Diagnóstico →
+        </a>
+
+        <button class="nav__hamburger"
+                aria-expanded="false"
+                aria-controls="mobile-menu"
+                aria-label="Abrir menu de navegação">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+
+      <nav id="mobile-menu" class="nav__mobile" aria-label="Navegação mobile" hidden>
+        <a href="index.html#modulos">Módulos</a>
+        <a href="manifesto.html">Manifesto</a>
+        <a href="diagnostico.html">Contato</a>
+        <a href="diagnostico.html" class="nav__cta">Diagnóstico →</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <section id="manifesto-hero" class="page-hero" style="border-bottom: 1px solid var(--borda);">
+      <div class="container">
+        <p class="page-hero__eyebrow">manifesto</p>
+        <h1 class="page-hero__title">A operação tem seis faces. Falta o eixo que as ordena.</h1>
+        <p class="page-hero__sub">
+          Por que infraestrutura modular configurável é a resposta certa para operações
+          que crescem em volume antes de estruturar o processo.
+        </p>
+      </div>
+    </section>
+
+    <section id="manifesto-content">
+      <div class="container">
+        <div class="prose">
+          <p class="prose-meta">escrito em abril de 2026 · versão 1.0</p>
+
+          <h2>A operação tem seis faces. Falta o eixo que as ordena.</h2>
+          <p>
+            Empresas médias crescem em volume antes de estruturar o processo.
+          </p>
+          <p>
+            O resultado é sempre o mesmo: três pessoas sêniores gastando o dia respondendo,
+            pela décima vez, a pergunta que já foi respondida. Planilha sobre planilha.
+            Sistema ao lado de sistema. Conhecimento crítico guardado na cabeça de quem
+            não tem tempo de escrever.
+          </p>
+          <p>
+            Funciona.
+          </p>
+          <p>
+            Até o dia em que alguém-chave sai, fica doente ou simplesmente para.
+          </p>
+
+          <h2>Não é um problema de pessoas. É um problema de infraestrutura.</h2>
+          <p>
+            A tentação é contratar mais gente. A contratação resolve o sintoma e amplia o
+            sistema — mais pessoas, mais interfaces humanas, mais memória distribuída,
+            mais dependência.
+          </p>
+          <p>
+            A tentação seguinte é comprar um SaaS. O SaaS entrega botão genérico para problema específico.
+          </p>
+          <p>
+            A terceira tentação é chamar uma consultoria. A consultoria vai, analisa, entrega um PDF,
+            volta para casa. No mês seguinte, a operação volta a ser a mesma.
+          </p>
+          <p>
+            Nenhum dos três é errado. Todos os três são insuficientes.
+          </p>
+          <p>
+            Falta o que nem pessoa, nem software genérico, nem diagnóstico externo conseguem
+            entregar: <strong>infraestrutura operacional que pensa pela empresa, configurada para
+            a empresa, que permanece quando as pessoas mudam</strong>.
+          </p>
+
+          <h2>O que a VALAR faz</h2>
+          <p>
+            A VALAR entrega módulos. Cada módulo resolve um processo operacional específico —
+            triagem de chamados, integração de novos colaboradores, síntese de relatórios,
+            monitoramento de indicadores.
+          </p>
+          <p>
+            Cada módulo roda sobre uma plataforma comum, que chamamos de <strong>Core</strong>.
+            O Core aprende a linguagem da empresa, lê a base de conhecimento da empresa,
+            conversa com os sistemas da empresa.
+          </p>
+          <p>
+            O que o cliente recebe não é software. É uma instância própria — configurada para
+            o vocabulário, os processos e os dados dele. Específica. Intransferível.
+            Mensurável no primeiro mês.
+          </p>
+
+          <h2>Três princípios não-negociáveis</h2>
+          <p>
+            <strong>01 · Medir antes de vender.</strong><br>
+            Todo cliente começa com um diagnóstico. Um documento sério, de quatro a seis páginas,
+            que o cliente guarda — mesmo que decida não contratar. Se os números dele não justificam
+            a infraestrutura, a VALAR recomenda não avançar. Por escrito.
+          </p>
+          <p>
+            <strong>02 · Entregar em semanas, não em anos.</strong><br>
+            Implantações de seis meses vêm de outra era. Cada módulo VALAR entra em produção
+            em três semanas. Se demora mais, não é mais modular.
+          </p>
+          <p>
+            <strong>03 · Permanecer.</strong><br>
+            Marcas que mudam de cara a cada dois anos dizem uma coisa sobre quem as fez:
+            não confiaram no próprio nome. VALAR não vai mudar. Nem o nome, nem o símbolo,
+            nem o jeito de escrever. O que muda é o que a empresa entrega.
+          </p>
+
+          <h2>O que a VALAR não é</h2>
+          <p>
+            Não é consultoria. Não é SaaS genérico. Não é agência de IA. Não é integradora
+            low-code. Não é laboratório de pesquisa.
+          </p>
+          <p>
+            É uma empresa de produto, com um produto que é infraestrutura — vendida módulo
+            a módulo, configurada cliente a cliente, medida mês a mês.
+          </p>
+
+          <h2>Para quem isto foi escrito</h2>
+          <p>
+            Para empresas médias que operam há pelo menos cinco anos, que crescem em volume
+            mas não em estrutura, e que desconfiam igualmente de mágica e de verborragia.
+          </p>
+          <p>
+            Para sócios e diretores que preferem uma métrica específica a uma promessa bonita.
+          </p>
+          <p>
+            Para operações que precisam de ordem, não de reinvenção.
+          </p>
+
+          <h2>O que esperar de quem trabalha com a VALAR</h2>
+          <p>
+            Respostas curtas. Prazos que cumprem. Números que batem. Diagnóstico antes de
+            proposta. Proposta antes de contrato. Contrato antes de execução.
+          </p>
+          <p>
+            Um único follow-up entre cada etapa.
+          </p>
+          <p>
+            Zero insistência.
+          </p>
+
+          <h2>Sobre o nome</h2>
+          <p>
+            VALAR é um nome curto, sem tradução e sem sufixo. Escolhido para durar mais
+            do que qualquer produto individual da empresa.
+          </p>
+          <p>
+            Nomes bons fazem três coisas: são fáceis de dizer, difíceis de confundir,
+            e não envelhecem. VALAR faz as três.
+          </p>
+
+          <h2>A tese, em uma frase</h2>
+          <blockquote>
+            <p>Inteligência aplicada e infraestrutura modular configurável para ordem operacional.</p>
+          </blockquote>
+          <p>É o que a VALAR é. É o que a VALAR continua sendo.</p>
+
+          <hr>
+
+          <p style="font-size: 13px; color: var(--cinza-escuro); font-style: italic;">
+            Escrito em abril de 2026 por Felipe Gonçalves Mattar Quintão,
+            sócio-proprietário da VALAR Inteligência.
+          </p>
+
+          <div class="prose-cta">
+            <a href="diagnostico.html" class="btn-primary">Solicitar diagnóstico →</a>
+            <a href="casos.html" class="btn-secondary" style="margin-left: 16px;">Ver casos</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer__grid">
+
+        <div class="footer__brand">
+          <svg width="48" height="48" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+            <g transform="translate(24,24)">
+              <polygon points="0,-20 17.32,-10 17.32,10 0,20 -17.32,10 -17.32,-10" fill="none" stroke="#F5F5F3" stroke-width="0.36"/>
+              <polygon points="0,-13.75 11.9,-6.875 11.9,6.875 0,13.75 -11.9,6.875 -11.9,-6.875" fill="none" stroke="#F5F5F3" stroke-width="0.255"/>
+              <line x1="0" y1="-2.5" x2="0" y2="-20" stroke="#F5F5F3" stroke-width="0.12" opacity="0.24"/>
+              <line x1="2.17" y1="-1.25" x2="17.32" y2="-10" stroke="#F5F5F3" stroke-width="0.12" opacity="0.24"/>
+              <line x1="2.17" y1="1.25" x2="17.32" y2="10" stroke="#F5F5F3" stroke-width="0.12" opacity="0.24"/>
+              <line x1="0" y1="2.5" x2="0" y2="20" stroke="#F5F5F3" stroke-width="0.12" opacity="0.24"/>
+              <line x1="-2.17" y1="1.25" x2="-17.32" y2="10" stroke="#F5F5F3" stroke-width="0.12" opacity="0.24"/>
+              <line x1="-2.17" y1="-1.25" x2="-17.32" y2="-10" stroke="#F5F5F3" stroke-width="0.12" opacity="0.24"/>
+              <circle cx="0" cy="0" r="8" fill="none" stroke="#B87333" stroke-width="0.15" opacity="0.22"/>
+              <circle cx="0" cy="0" r="5" fill="none" stroke="#B87333" stroke-width="0.18" opacity="0.42"/>
+              <circle cx="0" cy="0" r="1.5" fill="#B87333"/>
+            </g>
+          </svg>
+          <p class="footer__tagline">VALAR · Inteligência<br>Infraestrutura operacional com IA.</p>
+        </div>
+
+        <div class="footer__col">
+          <p class="footer__col-title">Módulos</p>
+          <ul>
+            <li><a href="index.html#modulos">Desk</a></li>
+            <li><a href="index.html#modulos">Onboard</a></li>
+            <li><a href="index.html#modulos">Report</a></li>
+            <li><a href="index.html#modulos">Watch</a></li>
+          </ul>
+        </div>
+
+        <div class="footer__col">
+          <p class="footer__col-title">Empresa</p>
+          <ul>
+            <li><a href="manifesto.html">Manifesto</a></li>
+            <li><a href="casos.html">Casos</a></li>
+            <li><a href="diagnostico.html">Contato</a></li>
+          </ul>
+        </div>
+
+        <div class="footer__col">
+          <p class="footer__col-title">Legal</p>
+          <ul>
+            <li><a href="privacidade.html">Privacidade</a></li>
+            <li><a href="termos.html">Termos</a></li>
+            <li><a href="#" aria-label="LinkedIn — perfil a publicar">LinkedIn</a></li>
+          </ul>
+        </div>
+
+      </div>
+      <p class="footer__legal">
+        VALAR Inteligência Ltda · CNPJ 66.311.795/0001-67 · Porto Alegre · RS · Brasil · © 2026
+      </p>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+  <script defer data-domain="valar.tec.br" src="https://plausible.io/js/script.js"></script>
+
+</body>
+</html>
