@@ -1,6 +1,6 @@
 /* VALAR — main.js · Scripts compartilhados */
 
-// Fade-in de seções via IntersectionObserver
+// Fade-in de seções com choreography progressiva
 (function () {
   if (!('IntersectionObserver' in window)) {
     document.querySelectorAll('section').forEach(function (s) {
@@ -15,7 +15,7 @@
         observer.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.08 });
+  }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
 
   document.querySelectorAll('section').forEach(function (s) {
     if (s.id !== 'hero') {
@@ -24,6 +24,28 @@
       s.classList.add('is-visible');
     }
   });
+}());
+
+// Nav: estado scrolled (gravidade aumenta após sair do hero)
+(function () {
+  var nav = document.querySelector('.nav');
+  if (!nav) return;
+  var ticking = false;
+  function update() {
+    if (window.scrollY > 32) {
+      nav.classList.add('is-scrolled');
+    } else {
+      nav.classList.remove('is-scrolled');
+    }
+    ticking = false;
+  }
+  window.addEventListener('scroll', function () {
+    if (!ticking) {
+      window.requestAnimationFrame(update);
+      ticking = true;
+    }
+  }, { passive: true });
+  update();
 }());
 
 // Menu mobile hambúrguer (com ESC, scroll-lock e backdrop)
