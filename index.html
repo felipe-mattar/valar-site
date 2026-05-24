@@ -1,11 +1,11 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <meta name="description" content="Infraestrutura modular de inteligência operacional para empresas médias. Setup em 21 dias. Primeira métrica em 30.">
+  <meta name="description" content="ARDA é a fundação operacional da empresa média brasileira: escrita uma vez, mantida viva, consultada por toda a operação — em três camadas, desde o Diagnóstico Naur gratuito.">
   <meta property="og:title" content="VALAR — Inteligência Operacional">
-  <meta property="og:description" content="Módulos de IA que automatizam processos críticos em 21 dias.">
+  <meta property="og:description" content="Produto ARDA: Diagnóstico Naur, Implementação e Fundamentação — fundação operacional com posse do cliente.">
   <meta property="og:url" content="https://valar.tec.br">
   <meta property="og:type" content="website">
   <meta property="og:image" content="https://valar.tec.br/og-image-v1.jpg">
@@ -26,11 +26,9 @@
   <meta name="geo.region" content="BR-RS">
   <meta name="geo.placename" content="Porto Alegre">
   <title>VALAR — Inteligência Operacional</title>
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="fonts/inter-display-500-latin.woff2">
   <link rel="preload" as="font" type="font/woff2" crossorigin href="fonts/inter-400-latin.woff2">
   <link rel="preload" as="font" type="font/woff2" crossorigin href="fonts/inter-500-latin.woff2">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Geist:wght@400;500;600&display=swap">
   <link rel="stylesheet" href="styles.css">
   <noscript><style>section { opacity: 1 !important; transform: none !important; }</style></noscript>
 
@@ -50,7 +48,7 @@
       "addressCountry": "BR"
     },
     "taxID": "66.311.795/0001-67",
-    "description": "Infraestrutura modular configurável de inteligência operacional para empresas médias. Setup em 21 dias. Primeira métrica em 30.",
+    "description": "ARDA é fundação operacional para PMEs brasileiras: produto único em três camadas (Diagnóstico Naur, Implementação ARDA, Fundamentação ARDA).",
     "areaServed": "BR",
     "knowsAbout": ["automação operacional", "inteligência artificial", "infraestrutura de IA", "agentes de IA"]
   }
@@ -62,7 +60,7 @@
     "@type": "WebSite",
     "name": "VALAR Inteligência",
     "url": "https://valar.tec.br",
-    "description": "Infraestrutura modular de inteligência operacional para empresas médias.",
+    "description": "ARDA — fundação operacional: Diagnóstico Naur, Implementação ARDA e Fundamentação ARDA.",
     "publisher": {
       "@type": "Organization",
       "name": "VALAR Inteligência"
@@ -75,9 +73,22 @@
     {
       "@context": "https://schema.org",
       "@type": "Service",
-      "name": "VALAR Desk",
-      "serviceType": "Automação de chamados internos com agente IA",
-      "description": "Triagem e resolução de chamados internos com agente IA. Setup em 21 dias. Taxa de resolução autônoma de 60–75%.",
+      "name": "Diagnóstico Naur",
+      "serviceType": "Camada 0 — pesquisa operacional interativa gratuita",
+      "description": "Lead qualifica contato com a VALAR mediante entrevista estruturada pelo agente Naur e amostra mínima da Arda da empresa.",
+      "provider": {
+        "@type": "Organization",
+        "name": "VALAR Inteligência",
+        "url": "https://valar.tec.br"
+      },
+      "areaServed": "BR"
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": "Implementação ARDA",
+      "serviceType": "Camada 1 — construção completa da Arda do cliente",
+      "description": "Projeto pago para moldar a ARDA na infraestrutura do cliente; entrega por gates de qualidade, sem prazo fixo como restrição principal.",
       "provider": {
         "@type": "Organization",
         "name": "VALAR Inteligência",
@@ -88,15 +99,15 @@
         "@type": "Offer",
         "price": "14800",
         "priceCurrency": "BRL",
-        "description": "Setup R$ 14.800 + R$ 4.800/mês"
+        "description": "Referência de setup — revisar em proposta comercial"
       }
     },
     {
       "@context": "https://schema.org",
       "@type": "Service",
-      "name": "VALAR Onboard",
-      "serviceType": "Integração de colaboradores com base de conhecimento ativa",
-      "description": "Integração de colaboradores com base de conhecimento ativa. Setup em 14 dias. Redução do tempo de rampa.",
+      "name": "Fundamentação ARDA",
+      "serviceType": "Camada 2 — manutenção contínua da Arda do cliente",
+      "description": "Recorrência para manter a base viva: atualização, relatórios programados e automações sobre a ARDA quando contratadas.",
       "provider": {
         "@type": "Organization",
         "name": "VALAR Inteligência",
@@ -142,14 +153,14 @@
         </a>
 
         <nav class="nav__links" aria-label="Navegação principal">
-          <a href="#modulos">Módulos</a>
+          <a href="#modulos">Produto</a>
           <a href="manifesto.html">Manifesto</a>
           <a href="diagnostico.html">Contato</a>
         </nav>
 
-        <a href="diagnostico.html"
+        <a href="snapshot.html"
            class="nav__cta nav__desktop-cta"
-           aria-label="Solicitar diagnóstico operacional">
+           aria-label="Solicitar Diagnóstico Naur">
           Diagnóstico →
         </a>
 
@@ -162,10 +173,10 @@
       </div>
 
       <nav id="mobile-menu" class="nav__mobile" aria-label="Navegação mobile" hidden>
-        <a href="#modulos">Módulos</a>
+        <a href="#modulos">Produto</a>
         <a href="manifesto.html">Manifesto</a>
         <a href="diagnostico.html">Contato</a>
-        <a href="diagnostico.html" class="nav__cta">Diagnóstico →</a>
+        <a href="snapshot.html" class="nav__cta">Diagnóstico →</a>
       </nav>
     </div>
   </header>
@@ -178,35 +189,36 @@
         <div class="hero__inner">
 
           <div class="hero__content hero-stagger">
-            <p class="hero__eyebrow">automação operacional com IA</p>
+            <p class="hero__eyebrow">fundação operacional · ARDA</p>
             <h1 class="hero__title">A operação tem seis faces. Falta o <em>eixo</em> que as ordena.</h1>
             <p class="hero__sub">
               Empresas médias crescem em volume antes de estruturar o processo. O resultado:
-              equipes sêniores respondendo pela décima vez a pergunta que já foi respondida antes.
-              VALAR entrega o eixo — infraestrutura modular configurável que ordena operação
-              em 21 dias, com métrica no primeiro mês.
+              a mesma decisão reaberta em canais diferentes, sem base comum.
+              A VALAR molda <strong>ARDA</strong> — forma legível da operação do cliente, escrita uma vez,
+              mantida viva, consultada por toda a equipe. Três camadas: Diagnóstico Naur (gratuito),
+              Implementação ARDA (projeto), Fundamentação ARDA (recorrente).
             </p>
             <div class="hero__ctas">
-              <a href="diagnostico.html" class="btn-primary">Solicitar diagnóstico</a>
-              <a href="#modulos" class="btn-secondary">Ver módulos</a>
+              <a href="snapshot.html" class="btn-primary">Iniciar Diagnóstico Naur</a>
+              <a href="#modulos" class="btn-secondary">Ver camadas</a>
             </div>
-            <div class="hero__metrics" role="group" aria-label="Benchmarks operacionais">
+            <div class="hero__metrics" role="group" aria-label="Estrutura do produto ARDA">
               <div class="hero__metrics-head">
-                <span class="hero__metrics-tag">benchmark</span>
-                <span class="hero__metrics-ref">desk.v1 · configuração típica</span>
+                <span class="hero__metrics-tag">produto</span>
+                <span class="hero__metrics-ref">ARDA · três camadas comerciais</span>
               </div>
               <div class="hero__metrics-grid">
                 <div class="metric">
-                  <div class="metric__value" data-num="21d">21<span class="metric__unit">d</span></div>
-                  <div class="metric__label">setup até operação</div>
+                  <div class="metric__value">0<span class="metric__unit">R$</span></div>
+                  <div class="metric__label">entrada — Diagnóstico Naur</div>
                 </div>
                 <div class="metric">
-                  <div class="metric__value" data-num="30d">30<span class="metric__unit">d</span></div>
-                  <div class="metric__label">primeira métrica</div>
+                  <div class="metric__value" data-num="3">3</div>
+                  <div class="metric__label">camadas até a base completa</div>
                 </div>
                 <div class="metric">
-                  <div class="metric__value" data-num="60-75">60–75<span class="metric__unit">%</span></div>
-                  <div class="metric__label">resolução autônoma</div>
+                  <div class="metric__value">100<span class="metric__unit">%</span></div>
+                  <div class="metric__label">posse do conteúdo pelo cliente</div>
                 </div>
               </div>
             </div>
@@ -237,130 +249,108 @@
       <div class="container">
         <header class="section__header">
           <h2 class="section__title">Como a VALAR opera</h2>
-          <p class="section__sub">Três camadas. Uma instância por cliente. Métricas desde o primeiro mês.</p>
+          <p class="section__sub">Núcleo técnico interno, produto ARDA com três camadas, instância única por cliente.</p>
         </header>
         <div class="cards stagger">
           <div class="layer-card">
             <p class="layer-card__num" aria-hidden="true">01</p>
-            <h3 class="layer-card__title">VALAR Core</h3>
+            <h3 class="layer-card__title">Núcleo técnico</h3>
             <p class="layer-card__desc">
-              Motor de orquestração de agentes IA, integração e contexto. Roda invisível — não é
-              vendido isoladamente. É o que torna o setup em 21 dias economicamente viável.
+              Orquestração de agentes, integrações e contexto. Camada invisível ao contrato —
+              é o que torna Implementação e Fundamentação economicamente sustentáveis para a VALAR e para o cliente.
             </p>
           </div>
           <div class="layer-card">
             <p class="layer-card__num" aria-hidden="true">02</p>
-            <h3 class="layer-card__title">Módulos</h3>
+            <h3 class="layer-card__title">ARDA — produto único</h3>
             <p class="layer-card__desc">
-              Produtos verticais configurados por processo: Desk, Onboard, Report, Watch.
-              Cada módulo resolve um processo. Métricas específicas por módulo.
+              Diagnóstico Naur (entrada gratuita), Implementação ARDA (projeto) e Fundamentação ARDA (recorrente).
+              Cada camada aumenta a superfície útil da Arda da empresa sem fragmentar o produto em “módulos” paralelos.
             </p>
           </div>
           <div class="layer-card">
             <p class="layer-card__num" aria-hidden="true">03</p>
-            <h3 class="layer-card__title">Instância</h3>
+            <h3 class="layer-card__title">Instância da empresa</h3>
             <p class="layer-card__desc">
-              Configuração exclusiva por cliente. Quanto mais o cliente configura, mais específica
-              e insubstituível a instância se torna.
+              Arda da empresa cliente: conteúdo, permissões, integrações e políticas.
+              Quanto mais específica, maior o custo de substituição por ferramenta genérica.
             </p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- MÓDULOS -->
+    <!-- ARDA — camadas comerciais -->
     <section id="modulos" class="section">
       <div class="container">
         <header class="section__header">
-          <h2 class="section__title">Portfólio de módulos</h2>
-          <p class="section__sub">Cada módulo resolve um processo. Setup fixo. Métrica no primeiro mês.</p>
+          <h2 class="section__title">ARDA em três camadas</h2>
+          <p class="section__sub">Produto único. Entrada gratuita pela pesquisa. Projeto para moldar a base. Recorrente para mantê-la viva.</p>
         </header>
         <div class="grid stagger">
 
           <article class="module-card">
-            <span class="module-card__badge badge--ativo">ativo</span>
-            <p class="module-card__id">desk.v1</p>
-            <h3 class="module-card__title">VALAR Desk</h3>
-            <p class="module-card__process">Triagem e resolução de chamados internos com agente IA.</p>
-            <p class="module-card__metric-label">Métrica primária</p>
-            <p class="module-card__metric-value">Taxa de resolução autônoma</p>
+            <span class="module-card__badge badge--ativo">camada 0</span>
+            <p class="module-card__id">pesquisa</p>
+            <h3 class="module-card__title">Diagnóstico Naur</h3>
+            <p class="module-card__process">Entrevista estruturada pelo agente Naur no site. Gera amostra mínima da sua Arda e qualifica o próximo passo.</p>
+            <p class="module-card__metric-label">Modalidade</p>
+            <p class="module-card__metric-value">Gratuito · lead qualification</p>
             <div class="module-card__meta">
               <div class="module-card__meta-row">
-                <span class="meta-key">Setup</span>
-                <span class="meta-val">21 dias</span>
+                <span class="meta-key">Onde começa</span>
+                <span class="meta-val">Formulário CNPJ + entrevista Naur</span>
               </div>
               <div class="module-card__meta-row">
-                <span class="meta-key">Preço</span>
-                <span class="meta-val">R$ 14.800 setup + R$ 4.800/mês</span>
+                <span class="meta-key">Posse dos dados</span>
+                <span class="meta-val">Cliente · política em privacidade</span>
               </div>
               <div class="module-card__integrations">
-                Slack · Teams · WhatsApp · E-mail · Notion · Drive
+                Site institucional · canais combinados por projeto
               </div>
             </div>
           </article>
 
           <article class="module-card">
-            <span class="module-card__badge badge--ativo">ativo</span>
-            <p class="module-card__id">onboard.v1</p>
-            <h3 class="module-card__title">VALAR Onboard</h3>
-            <p class="module-card__process">Integração de colaboradores com base de conhecimento ativa.</p>
-            <p class="module-card__metric-label">Métrica primária</p>
-            <p class="module-card__metric-value">Redução do tempo de rampa</p>
+            <span class="module-card__badge badge--ativo">camada 1</span>
+            <p class="module-card__id">projeto</p>
+            <h3 class="module-card__title">Implementação ARDA</h3>
+            <p class="module-card__process">Moldar a Arda completa nas ferramentas e integrações da empresa — com gates de qualidade, não com promessa fixa de prazo mágico.</p>
+            <p class="module-card__metric-label">Critério de pronto</p>
+            <p class="module-card__metric-value">Base consultável com fonte citada nos fluxos piloto</p>
             <div class="module-card__meta">
               <div class="module-card__meta-row">
-                <span class="meta-key">Setup</span>
-                <span class="meta-val">14 dias</span>
+                <span class="meta-key">Comercialização</span>
+                <span class="meta-val">Projeto sob proposta</span>
               </div>
               <div class="module-card__meta-row">
-                <span class="meta-key">Preço</span>
-                <span class="meta-val">sob consulta</span>
+                <span class="meta-key">Referência histórica de setup</span>
+                <span class="meta-val">R$ 14.800 (política comercial vigente prevalece)</span>
               </div>
               <div class="module-card__integrations">
-                Slack · Teams · E-mail · Gupy · Sólides
+                Stacks acordadas no escopo · ver documentação técnica
               </div>
             </div>
           </article>
 
-          <article class="module-card module-card--dim" aria-label="VALAR Report — em desenvolvimento">
-            <span class="module-card__badge badge--dev">em desenvolvimento</span>
-            <p class="module-card__id">report.v1</p>
-            <h3 class="module-card__title">VALAR Report</h3>
-            <p class="module-card__process">Coleta, síntese e distribuição de relatórios operacionais.</p>
-            <p class="module-card__metric-label">Previsão</p>
-            <p class="module-card__metric-value">Q3/2026</p>
+          <article class="module-card">
+            <span class="module-card__badge badge--ativo">camada 2</span>
+            <p class="module-card__id">recorrente</p>
+            <h3 class="module-card__title">Fundamentação ARDA</h3>
+            <p class="module-card__process">Manutenção da Arda em produção: freshness, relatórios programados quando contratados, alertas quando configurados — sempre com posse cliente.</p>
+            <p class="module-card__metric-label">Cadência</p>
+            <p class="module-card__metric-value">Mensal + incidentes revisados sob SLA combinado</p>
             <div class="module-card__meta">
               <div class="module-card__meta-row">
-                <span class="meta-key">Status</span>
-                <span class="meta-val">em desenvolvimento</span>
+                <span class="meta-key">Comercialização</span>
+                <span class="meta-val">MRR · escopo sob contrato</span>
               </div>
-              <div class="module-card__meta-row" style="margin-top: 12px;">
-                <a href="mailto:contato@valar.tec.br?subject=Avise-me%20VALAR%20Report"
-                   class="module-notify-link"
-                   aria-label="Receber aviso quando VALAR Report lançar">
-                  Avise-me quando lançar →
-                </a>
-              </div>
-            </div>
-          </article>
-
-          <article class="module-card module-card--dim" aria-label="VALAR Watch — em desenvolvimento">
-            <span class="module-card__badge badge--dev">em desenvolvimento</span>
-            <p class="module-card__id">watch.v1</p>
-            <h3 class="module-card__title">VALAR Watch</h3>
-            <p class="module-card__process">Monitoramento de indicadores com alerta interpretado.</p>
-            <p class="module-card__metric-label">Previsão</p>
-            <p class="module-card__metric-value">Q4/2026</p>
-            <div class="module-card__meta">
               <div class="module-card__meta-row">
-                <span class="meta-key">Status</span>
-                <span class="meta-val">em desenvolvimento</span>
+                <span class="meta-key">Referência de ticket</span>
+                <span class="meta-val">a partir de R$ 4.800/mês (política comercial vigente prevalece)</span>
               </div>
-              <div class="module-card__meta-row" style="margin-top: 12px;">
-                <a href="mailto:contato@valar.tec.br?subject=Avise-me%20VALAR%20Watch"
-                   class="module-notify-link"
-                   aria-label="Receber aviso quando VALAR Watch lançar">
-                  Avise-me quando lançar →
-                </a>
+              <div class="module-card__integrations">
+                Operações contínuas documentadas no contrato
               </div>
             </div>
           </article>
@@ -377,22 +367,22 @@
           <div class="diag__panel-corner" aria-hidden="true"></div>
           <p class="diag__label">
             <span class="diag__label-tick" aria-hidden="true"></span>
-            diagnóstico operacional
+            Diagnóstico Naur
           </p>
-          <h2 class="diag__title">Diagnóstico operacional.<br><em>Sem custo.</em></h2>
+          <h2 class="diag__title">Pesquisa operacional guiada.<br><em>Sem custo na camada 0.</em></h2>
           <p class="diag__body">
-            Formulário estruturado. Preenchimento em 12 minutos. Relatório com projeção e
-            recomendação em 48 horas úteis. Se os números da sua operação não justificarem
-            o módulo, VALAR recomendará não avançar.
+            Fluxo no site institucional. Naur conduz a entrevista, captura estrutura mínima e devolve uma amostra legível —
+            suficiente para decidir se Implementação ARDA faz sentido. Se os números da operação não justificarem o projeto,
+            a VALAR indica não avançar.
           </p>
           <div class="diag__specs" aria-hidden="true">
             <span class="diag__spec">
-              <span class="diag__spec-num">12<span class="diag__spec-unit">min</span></span>
-              <span class="diag__spec-label">preenchimento</span>
+              <span class="diag__spec-num">90<span class="diag__spec-unit">seg</span></span>
+              <span class="diag__spec-label">formulário</span>
             </span>
             <span class="diag__spec">
-              <span class="diag__spec-num">48<span class="diag__spec-unit">h</span></span>
-              <span class="diag__spec-label">resposta útil</span>
+              <span class="diag__spec-num">5<span class="diag__spec-unit">min</span></span>
+              <span class="diag__spec-label">relatório</span>
             </span>
             <span class="diag__spec">
               <span class="diag__spec-num">0<span class="diag__spec-unit">R$</span></span>
@@ -400,8 +390,8 @@
             </span>
           </div>
           <div class="diag__actions">
-            <a href="diagnostico.html" class="btn-primary btn-primary--lg">
-              Solicitar diagnóstico
+            <a href="snapshot.html" class="btn-primary btn-primary--lg">
+              Iniciar Diagnóstico Naur
               <span class="btn-arrow" aria-hidden="true">→</span>
             </a>
             <p class="diag__note">contato@valar.tec.br · Porto Alegre · RS · Brasil</p>
@@ -439,12 +429,11 @@
         </div>
 
         <div class="footer__col">
-          <p class="footer__col-title">Módulos</p>
+          <p class="footer__col-title">Produto ARDA</p>
           <ul>
-            <li><a href="#modulos">Desk</a></li>
-            <li><a href="#modulos">Onboard</a></li>
-            <li><a href="#modulos">Report</a></li>
-            <li><a href="#modulos">Watch</a></li>
+            <li><a href="#modulos">Diagnóstico Naur</a></li>
+            <li><a href="#modulos">Implementação ARDA</a></li>
+            <li><a href="#modulos">Fundamentação ARDA</a></li>
           </ul>
         </div>
 

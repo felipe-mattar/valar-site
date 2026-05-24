@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
@@ -112,15 +112,18 @@
 
           <h2>2. Dados coletados</h2>
           <p>
-            Ao preencher o formulário de diagnóstico operacional, coletamos:
-            nome completo, nome da empresa, cargo, e-mail corporativo, telefone,
-            porte da operação, setor de atuação, processo operacional crítico informado
-            e volume mensal estimado.
+            Ao preencher o formulário de diagnóstico operacional (<strong>snapshot.html</strong>),
+            coletamos: nome completo, e-mail corporativo e CNPJ da empresa. A partir do CNPJ,
+            o sistema consulta automaticamente fontes de dados públicas sobre a empresa
+            (detalhado na seção 4).
           </p>
           <p>
-            Não coletamos dados automaticamente além do tráfego de servidor do GitHub Pages
-            (endereço IP, navegador, timestamp de acesso). Não utilizamos cookies de rastreamento
-            nem ferramentas de analytics com cookies neste momento.
+            Ao entrar em contato pelo formulário manual (<strong>diagnostico.html</strong>),
+            coletamos: nome, empresa, e-mail e mensagem livre.
+          </p>
+          <p>
+            Não utilizamos cookies de rastreamento nem ferramentas de analytics com cookies.
+            Não coletamos dados de navegação além dos registros padrão de servidor.
           </p>
 
           <h2>3. Finalidade e base legal</h2>
@@ -135,17 +138,30 @@
             fins comerciais. Não utilizamos os dados para marketing não solicitado.
           </p>
 
-          <h2>4. Compartilhamento com terceiros</h2>
+          <h2>4. Subprocessadores e enriquecimento de dados</h2>
           <p>
-            O formulário de diagnóstico utiliza o serviço <strong>Formspree</strong>
-            (formspree.io) para transmissão segura das respostas via HTTPS.
-            O Formspree age como operador de dados e processa as informações conforme
-            sua própria política de privacidade, disponível em formspree.io/legal/privacy-policy.
+            Os dados do diagnóstico são armazenados no serviço <strong>Supabase</strong>
+            (Supabase Inc., EUA), que atua como operador de dados com medidas de segurança
+            adequadas, incluindo criptografia em trânsito e em repouso. Política disponível
+            em supabase.com/privacy.
           </p>
           <p>
-            O site é hospedado no <strong>GitHub Pages</strong> (GitHub Inc., EUA),
-            que registra acessos em seus servidores conforme a política de privacidade
-            da GitHub: docs.github.com/pt/site-policy/privacy-policies/github-general-privacy-statement.
+            O envio de relatórios por e-mail é realizado via <strong>Resend</strong>
+            (Resend Inc., EUA), serviço de e-mail transacional. Política em resend.com/privacy.
+          </p>
+          <p>
+            O formulário de contato manual utiliza <strong>Formspree</strong> (formspree.io)
+            exclusivamente para o canal direto em diagnostico.html.
+            Política em formspree.io/legal/privacy-policy.
+          </p>
+          <p>
+            <strong>Enriquecimento com dados públicos:</strong>
+            Para fins de diagnóstico, a VALAR consulta automaticamente fontes de dados públicas
+            sobre a empresa identificada pelo CNPJ informado — Receita Federal, IBGE, registros
+            de órgãos regulatórios brasileiros e bases governamentais de transparência.
+            Essas consultas utilizam exclusivamente dados de acesso público, não exigem coleta
+            de dados pessoais de terceiros, e são realizadas com base no interesse legítimo
+            do titular ao solicitar o diagnóstico.
           </p>
 
           <h2>5. Retenção de dados</h2>
@@ -214,12 +230,11 @@
         </div>
 
         <div class="footer__col">
-          <p class="footer__col-title">Módulos</p>
+          <p class="footer__col-title">Produto ARDA</p>
           <ul>
-            <li><a href="index.html#modulos">Desk</a></li>
-            <li><a href="index.html#modulos">Onboard</a></li>
-            <li><a href="index.html#modulos">Report</a></li>
-            <li><a href="index.html#modulos">Watch</a></li>
+            <li><a href="index.html#modulos">Diagnóstico Naur</a></li>
+            <li><a href="index.html#modulos">Implementação ARDA</a></li>
+            <li><a href="index.html#modulos">Fundamentação ARDA</a></li>
           </ul>
         </div>
 

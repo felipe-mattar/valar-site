@@ -1,11 +1,11 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <meta name="description" content="Solicite o diagnóstico operacional VALAR. Formulário estruturado. Preenchimento em 12 minutos. Relatório em 48 horas úteis.">
-  <meta property="og:title" content="Diagnóstico operacional — VALAR">
-  <meta property="og:description" content="Formulário estruturado. Preenchimento em 12 minutos. Relatório em 48 horas úteis. Sem custo.">
+  <meta name="description" content="Prefere falar com a equipe antes de começar? Envie uma mensagem. Para o Diagnóstico Naur automático, acesse o formulário CNPJ.">
+  <meta property="og:title" content="Contato direto — VALAR">
+  <meta property="og:description" content="Prefira falar com a equipe antes de começar? Envie uma mensagem.">
   <meta property="og:url" content="https://valar.tec.br/diagnostico.html">
   <meta property="og:type" content="website">
   <meta property="og:image" content="https://valar.tec.br/og-image-v1.jpg">
@@ -26,7 +26,7 @@
   <meta name="geo.region" content="BR-RS">
   <meta name="geo.placename" content="Porto Alegre">
   <title>Diagnóstico operacional — VALAR</title>
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="fonts/inter-400-latin.woff2">
+  <title>Contato direto — VALAR</title>
   <link rel="preload" as="font" type="font/woff2" crossorigin href="fonts/inter-500-latin.woff2">
   <link rel="stylesheet" href="styles.css">
   <noscript><style>section { opacity: 1 !important; transform: none !important; }</style></noscript>
@@ -97,11 +97,11 @@
 
     <section id="diagnostico-hero" class="page-hero" style="border-bottom: 1px solid var(--borda);">
       <div class="container">
-        <p class="page-hero__eyebrow">diagnóstico operacional</p>
-        <h1 class="page-hero__title">Diagnóstico operacional. <em>Sem custo.</em></h1>
+        <p class="page-hero__eyebrow">contato direto</p>
+        <h1 class="page-hero__title">Prefere falar com a equipe <em>antes de começar?</em></h1>
         <p class="page-hero__sub">
-          Formulário estruturado. Preenchimento em 12 minutos. Relatório com projeção
-          e recomendação em 48 horas úteis.
+          Se quiser discutir o diagnóstico ou o projeto antes de começar, envie seus dados abaixo.
+          Para iniciar o <strong>Diagnóstico Naur</strong> automaticamente, acesse o formulário CNPJ.
         </p>
       </div>
     </section>
@@ -112,28 +112,27 @@
 
           <div class="diag-form-intro">
             <p class="diag-form-intro__body">
-              Formulário estruturado. Preenchimento em 12 minutos. Relatório com projeção
-              e recomendação em 48 horas úteis.
+              Se quiser discutir o projeto antes de iniciar, envie uma mensagem.
+              A equipe responde pessoalmente.
             </p>
-            <p class="diag-form-intro__body">
-              Se os números da sua operação não justificarem o módulo,
-              VALAR recomendará não avançar — por escrito.
-            </p>
+            <a href="snapshot.html" class="btn-primary" style="display:inline-flex;align-items:center;gap:8px;margin-top:8px;">
+              Iniciar Diagnóstico Naur automaticamente
+              <span aria-hidden="true">→</span>
+            </a>
           </div>
 
-          <!-- Substituir YOUR_FORM_ID pelo ID do Formspree após criar a conta -->
-          <!-- Substituir YOUR_FORM_ID pelo endpoint real após criar conta no formspree.io -->
+          <!-- Contato manual — Formspree (canal direto, não diagnóstico automático) -->
           <form action="https://formspree.io/f/YOUR_FORM_ID"
                 method="POST"
                 class="diag-form"
                 id="diagnostico-form-el">
 
             <input type="hidden" name="_next" value="https://valar.tec.br/obrigado.html">
-            <input type="hidden" name="_subject" value="Diagnóstico operacional solicitado">
+            <input type="hidden" name="_subject" value="Contato direto via diagnostico.html">
 
             <div class="form-row form-row--2">
               <div class="form-group">
-                <label class="form-label" for="nome">Nome completo <span aria-hidden="true">*</span></label>
+                <label class="form-label" for="nome">Nome <span aria-hidden="true">*</span></label>
                 <input class="form-input" type="text" id="nome" name="nome"
                        required autocomplete="name" aria-required="true">
               </div>
@@ -144,89 +143,17 @@
               </div>
             </div>
 
-            <div class="form-row form-row--2">
-              <div class="form-group">
-                <label class="form-label" for="cargo">Cargo <span aria-hidden="true">*</span></label>
-                <input class="form-input" type="text" id="cargo" name="cargo"
-                       required autocomplete="organization-title" aria-required="true">
-              </div>
-              <div class="form-group">
-                <label class="form-label" for="email">E-mail corporativo <span aria-hidden="true">*</span></label>
-                <input class="form-input" type="email" id="email" name="email"
-                       required autocomplete="email" inputmode="email" aria-required="true">
-              </div>
-            </div>
-
-            <div class="form-row form-row--2">
-              <div class="form-group">
-                <label class="form-label" for="telefone">Telefone</label>
-                <input class="form-input" type="tel" id="telefone" name="telefone"
-                       autocomplete="tel" inputmode="tel">
-              </div>
-              <div class="form-group">
-                <label class="form-label" for="porte">Tamanho da operação <span aria-hidden="true">*</span></label>
-                <select class="form-input form-select" id="porte" name="porte"
-                        required aria-required="true">
-                  <option value="" disabled selected>Selecione</option>
-                  <option value="20-50">20 a 50 colaboradores</option>
-                  <option value="51-100">51 a 100 colaboradores</option>
-                  <option value="101-200">101 a 200 colaboradores</option>
-                  <option value="200+">mais de 200 colaboradores</option>
-                </select>
-              </div>
-            </div>
-
-            <div class="form-row form-row--2">
-              <div class="form-group">
-                <label class="form-label" for="setor">Setor <span aria-hidden="true">*</span></label>
-                <select class="form-input form-select" id="setor" name="setor"
-                        required aria-required="true">
-                  <option value="" disabled selected>Selecione</option>
-                  <option value="tech">Tecnologia</option>
-                  <option value="industria">Indústria</option>
-                  <option value="varejo">Varejo</option>
-                  <option value="servicos">Serviços</option>
-                  <option value="saude">Saúde</option>
-                  <option value="financeiro">Financeiro</option>
-                  <option value="outros">Outros</option>
-                </select>
-              </div>
-              <div class="form-group">
-                <label class="form-label" for="processo">Processo crítico atual <span aria-hidden="true">*</span></label>
-                <select class="form-input form-select" id="processo" name="processo"
-                        required aria-required="true">
-                  <option value="" disabled selected>Selecione</option>
-                  <option value="chamados">Triagem de chamados internos</option>
-                  <option value="onboarding">Integração de colaboradores</option>
-                  <option value="relatorios">Síntese de relatórios</option>
-                  <option value="monitoramento">Monitoramento de indicadores</option>
-                  <option value="outro">Outro processo</option>
-                </select>
-              </div>
+            <div class="form-group">
+              <label class="form-label" for="email">E-mail <span aria-hidden="true">*</span></label>
+              <input class="form-input" type="email" id="email" name="email"
+                     required autocomplete="email" inputmode="email" aria-required="true">
             </div>
 
             <div class="form-group">
-              <label class="form-label" for="volume">
-                Volume mensal aproximado desse processo
-                <span class="form-label-hint">(ex.: 300 chamados/mês, 5 integrações/mês)</span>
-              </label>
-              <input class="form-input" type="text" id="volume" name="volume" inputmode="text">
-            </div>
-
-            <div class="form-group">
-              <label class="form-label" for="stack">Stack principal</label>
-              <input class="form-input" type="text" id="stack" name="stack"
-                     placeholder="ex.: Slack, Notion, Teams, Jira">
-            </div>
-
-            <div class="form-group">
-              <label class="form-label" for="tensao">
-                Descreva em uma frase a maior tensão operacional atual
-                <span aria-hidden="true"> *</span>
-              </label>
-              <textarea class="form-input form-textarea" id="tensao" name="tensao"
-                        rows="3" required aria-required="true"
-                        placeholder="Ex.: nosso time de suporte responde as mesmas perguntas repetidamente sem conseguir escalar"></textarea>
+              <label class="form-label" for="mensagem">Mensagem <span aria-hidden="true">*</span></label>
+              <textarea class="form-input form-textarea" id="mensagem" name="mensagem"
+                        rows="4" required aria-required="true"
+                        placeholder="Descreva brevemente o que você gostaria de discutir antes de começar."></textarea>
             </div>
 
             <div class="form-group">
@@ -234,22 +161,19 @@
                 <input type="checkbox" name="lgpd_consent" value="sim" required aria-required="true">
                 <span>
                   Li e concordo com a
-                  <a href="privacidade.html" target="_blank" rel="noopener">Política de Privacidade</a>
-                  e autorizo o tratamento dos dados acima para elaboração do diagnóstico operacional,
-                  nos termos da LGPD (Lei n.º 13.709/2018).
+                  <a href="privacidade.html" target="_blank" rel="noopener">Política de Privacidade</a>.
                 </span>
               </label>
             </div>
 
-            <!-- Honeypot anti-spam: bots preenchem, humanos não veem -->
             <input type="text" name="_gotcha" style="display:none !important" tabindex="-1" autocomplete="off">
 
             <div class="form-actions">
               <button type="submit" class="btn-primary btn-submit" id="btn-submit">
-                Solicitar diagnóstico →
+                Enviar mensagem →
               </button>
               <p class="form-note">
-                Resposta em até 48 horas úteis · contato@valar.tec.br
+                A equipe responde pessoalmente · contato@valar.tec.br
               </p>
             </div>
 
@@ -284,12 +208,11 @@
         </div>
 
         <div class="footer__col">
-          <p class="footer__col-title">Módulos</p>
+          <p class="footer__col-title">Produto ARDA</p>
           <ul>
-            <li><a href="index.html#modulos">Desk</a></li>
-            <li><a href="index.html#modulos">Onboard</a></li>
-            <li><a href="index.html#modulos">Report</a></li>
-            <li><a href="index.html#modulos">Watch</a></li>
+            <li><a href="index.html#modulos">Diagnóstico Naur</a></li>
+            <li><a href="index.html#modulos">Implementação ARDA</a></li>
+            <li><a href="index.html#modulos">Fundamentação ARDA</a></li>
           </ul>
         </div>
 
