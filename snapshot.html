@@ -1,11 +1,11 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <meta name="description" content="Diagnóstico operacional gratuito. CNPJ + enriquecimento automático de 16 fontes públicas. Naur conduz a entrevista. Relatório em até 5 minutos.">
+  <meta name="description" content="Diagnóstico operacional gratuito. CNPJ + enriquecimento automático de 14 fontes públicas. Naur conduz a entrevista. Relatório em até 10 minutos.">
   <meta property="og:title" content="Diagnóstico Naur — VALAR">
-  <meta property="og:description" content="CNPJ + enriquecimento de 16 fontes públicas. Naur conduz a entrevista. Relatório em até 5 minutos. Gratuito.">
+  <meta property="og:description" content="CNPJ + enriquecimento de 14 fontes públicas. Naur conduz a entrevista. Relatório por e-mail. Gratuito.">
   <meta property="og:url" content="https://valar.tec.br/snapshot.html">
   <meta property="og:type" content="website">
   <meta property="og:image" content="https://valar.tec.br/og-image-v1.jpg">
@@ -121,76 +121,6 @@
       cursor: not-allowed;
     }
 
-    /* ── Status / log area ─────────────────────────────────────────────── */
-    .snap-status {
-      display: none;
-    }
-    .snap-status.visible {
-      display: block;
-    }
-
-    .snap-log {
-      font-family: 'JetBrains Mono', 'Courier New', monospace;
-      font-size: 13px;
-      color: var(--texto-secundario, #888);
-      line-height: 1.8;
-      margin-bottom: 24px;
-    }
-    .snap-log__line {
-      display: block;
-    }
-    .snap-log__line--ok   { color: #4ade80; }
-    .snap-log__line--err  { color: #f87171; }
-    .snap-log__line--info { color: var(--texto-secundario, #888); }
-    .snap-log__line--empresa {
-      color: var(--texto, #F5F5F3);
-      font-weight: 500;
-    }
-
-    /* ── Relatório reveal ──────────────────────────────────────────────── */
-    .snap-relatorio {
-      display: none;
-      opacity: 0;
-      transition: opacity 0.4s ease;
-    }
-    .snap-relatorio.visible {
-      display: block;
-    }
-    .snap-relatorio.fade-in {
-      opacity: 1;
-    }
-
-    .snap-secao {
-      margin-bottom: 32px;
-    }
-    .snap-secao__eyebrow {
-      font-size: 11px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: var(--cobre, #B87333);
-      margin-bottom: 10px;
-    }
-    .snap-secao__body {
-      font-size: 16px;
-      line-height: 1.7;
-      color: var(--texto, #F5F5F3);
-    }
-
-    .snap-divider {
-      border: none;
-      border-top: 1px solid var(--borda, #222);
-      margin: 32px 0;
-    }
-
-    /* Fora do ICP */
-    .snap-icp-aviso {
-      padding: 20px;
-      border: 1px solid var(--borda, #222);
-      font-size: 14px;
-      color: var(--texto-secundario, #888);
-      line-height: 1.6;
-    }
-
     /* Spinner mínimo */
     .snap-spinner {
       display: inline-block;
@@ -205,12 +135,109 @@
     }
     @keyframes spin { to { transform: rotate(360deg); } }
 
+    /* ── Grafo OSINT animado (D-04) ────────────────────────────────────── */
+    .snap-grafo {
+      display: none;
+    }
+    .snap-grafo.visible {
+      display: block;
+    }
+    .snap-grafo svg {
+      display: block;
+      width: 100%;
+      max-width: 320px;
+      margin: 0 auto 16px;
+    }
+    .snap-grafo__texto {
+      text-align: center;
+      font-size: 14px;
+      color: var(--texto-secundario, #888);
+      line-height: 1.6;
+      margin-bottom: 6px;
+    }
+    .snap-grafo__empresa {
+      text-align: center;
+      font-size: 13px;
+      color: var(--texto, #F5F5F3);
+      font-weight: 500;
+      margin-bottom: 4px;
+      min-height: 18px;
+    }
+    .snap-grafo__progress {
+      text-align: center;
+      font-family: 'JetBrains Mono', 'Courier New', monospace;
+      font-size: 11px;
+      color: var(--cobre, #B87333);
+      margin-bottom: 28px;
+    }
+    .grafo-node-circle {
+      fill: none;
+      stroke: #2a2a2a;
+      stroke-width: 1.5;
+      transition: fill 0.5s ease, stroke 0.5s ease;
+    }
+    .grafo-node-circle.respondeu {
+      fill: rgba(184,115,51,0.25);
+      stroke: #B87333;
+    }
+    .grafo-node-circle.indisponivel {
+      stroke: #181818;
+    }
+    .grafo-line {
+      stroke: #1a1a1a;
+      stroke-width: 0.6;
+      transition: stroke 0.5s ease, opacity 0.5s ease;
+    }
+    .grafo-line.ativa {
+      stroke: #B87333;
+      opacity: 0.35;
+    }
+    .grafo-label {
+      font-size: 7.5px;
+      fill: #3a3a3a;
+      text-anchor: middle;
+      dominant-baseline: central;
+      transition: fill 0.5s ease;
+      font-family: 'JetBrains Mono', 'Courier New', monospace;
+      pointer-events: none;
+    }
+    .grafo-label.respondeu {
+      fill: #777;
+    }
+    @keyframes grafo-pulse {
+      0%, 100% { opacity: 0.12; }
+      50% { opacity: 0.45; }
+    }
+    .grafo-line.pendente {
+      animation: grafo-pulse 2.2s ease-in-out infinite;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .grafo-line.pendente { animation: none; opacity: 0.12; }
+      .grafo-node-circle,
+      .grafo-line,
+      .grafo-label { transition: none; }
+    }
+
     /* ── Chat Naur ─────────────────────────────────────────────────────── */
     .snap-chat {
       display: none;
     }
     .snap-chat.visible {
       display: block;
+    }
+
+    .snap-divider {
+      border: none;
+      border-top: 1px solid var(--borda, #222);
+      margin: 32px 0;
+    }
+
+    .snap-secao__eyebrow {
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--cobre, #B87333);
+      margin-bottom: 10px;
     }
 
     .chat-intro {
@@ -308,6 +335,15 @@
     }
     .chat-concluido.visible { display: block; }
 
+    /* Fora do ICP */
+    .snap-icp-aviso {
+      padding: 20px;
+      border: 1px solid var(--borda, #222);
+      font-size: 14px;
+      color: var(--texto-secundario, #888);
+      line-height: 1.6;
+    }
+
     /* ── Hero da página ────────────────────────────────────────────────── */
     .snap-hero {
       border-bottom: 1px solid var(--borda, #222);
@@ -333,6 +369,19 @@
       line-height: 1.6;
       max-width: 480px;
       margin-bottom: 40px;
+    }
+
+    /* Screen reader only */
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0,0,0,0);
+      white-space: nowrap;
+      border: 0;
     }
   </style>
 </head>
@@ -396,8 +445,8 @@
               <em>Sem reunião.</em>
             </h1>
             <p class="snap-hero__sub">
-              Informe o CNPJ da empresa. Em até 5 minutos, o relatório chega no seu e-mail.
-              com dados fiscais, contexto de mercado e o que chama atenção na operação.
+              Informe o CNPJ da empresa. A pesquisa começa imediatamente enquanto
+              Naur conduz uma entrevista de 12–15 minutos. O relatório chega por e-mail.
             </p>
           </div>
 
@@ -498,79 +547,87 @@
 
           </form>
 
-          <!-- ── Área de status (monospace log) ────────────────────── -->
-          <div class="snap-status" id="snap-status" aria-live="polite">
+          <!-- ── Grafo OSINT animado (D-04) ──────────────────────────── -->
+          <div class="snap-grafo" id="snap-grafo">
             <hr class="snap-divider">
-            <div class="snap-log" id="snap-log" aria-label="Log de processamento"></div>
+            <span class="sr-only" id="snap-grafo-announce" aria-live="polite"></span>
+            <svg id="snap-svg" viewBox="0 0 320 320" xmlns="http://www.w3.org/2000/svg"
+                 role="img" aria-label="Mapa de fontes de dados sendo consultadas">
+              <!-- Linhas de conexão (preenchidas via JS) -->
+              <g id="grafo-linhas"></g>
+              <!-- Nodo central — símbolo VALAR -->
+              <g id="grafo-central" transform="translate(160,160)">
+                <polygon points="0,-30 26,-15 26,15 0,30 -26,15 -26,-15"
+                         fill="none" stroke="#B87333" stroke-width="0.8" opacity="0.6"/>
+                <polygon points="0,-20 17.3,-10 17.3,10 0,20 -17.3,10 -17.3,-10"
+                         fill="none" stroke="#B87333" stroke-width="0.4" opacity="0.25"/>
+                <circle cx="0" cy="0" r="3" fill="#B87333"/>
+              </g>
+              <!-- Nodos OSINT (preenchidos via JS) -->
+              <g id="grafo-nodos"></g>
+            </svg>
+            <p class="snap-grafo__empresa" id="snap-grafo-empresa"></p>
+            <p class="snap-grafo__texto" id="snap-grafo-texto">
+              Naur está mapeando sua empresa.<br>A entrevista começa em instantes.
+            </p>
+            <p class="snap-grafo__progress">
+              <span id="snap-grafo-count">0</span>&thinsp;/&thinsp;14 fontes consultadas
+            </p>
+          </div>
 
-            <!-- Relatório reveal -->
-            <div class="snap-relatorio" id="snap-relatorio" aria-live="polite">
-              <div class="snap-secao">
-                <p class="snap-secao__eyebrow">Quem é</p>
-                <p class="snap-secao__body" id="snap-quem-e"></p>
-              </div>
-              <div class="snap-secao">
-                <p class="snap-secao__eyebrow">Onde está</p>
-                <p class="snap-secao__body" id="snap-onde-esta"></p>
-              </div>
-              <div class="snap-secao">
-                <p class="snap-secao__eyebrow">O que chama atenção</p>
-                <p class="snap-secao__body" id="snap-chama-atencao"></p>
-              </div>
-              <hr class="snap-divider">
-              <p style="font-size:14px;color:var(--texto-secundario,#888);line-height:1.6;margin-bottom:20px;">
-                O relatorio completo esta no seu e-mail. Quer aprofundar e entender o que pode mudar na operacao?
+          <!-- ── Chat Naur (aparece quando OSINT avançado o suficiente) ── -->
+          <div class="snap-chat" id="snap-chat" aria-live="polite">
+            <hr class="snap-divider">
+            <p class="snap-secao__eyebrow">entrevista de fundamentação</p>
+            <p class="chat-intro">
+              Naur conduz a entrevista técnica para capturar o que os dados públicos
+              não mostram. A conversa leva cerca de 12–15 minutos.
+            </p>
+            <div class="chat-msgs" id="chat-msgs" role="log" aria-label="Conversa com Naur"></div>
+            <div class="chat-typing" id="chat-typing" aria-live="polite"></div>
+            <div class="chat-input-wrap" id="chat-input-wrap">
+              <input
+                type="text"
+                id="chat-input"
+                class="snap-form__input"
+                placeholder="Responda ao Naur..."
+                autocomplete="off"
+                aria-label="Sua resposta para o Naur"
+              >
+              <button id="chat-send" class="chat-send-btn" aria-label="Enviar">Enviar</button>
+            </div>
+            <div class="chat-concluido" id="chat-concluido">
+              <p><strong>Entrevista concluída.</strong></p>
+              <p style="margin-top:8px;font-size:13px;color:var(--texto-secundario,#888);line-height:1.6;">
+                O relatório diagnóstico está sendo gerado e chegará ao seu e-mail em instantes.
+                Verifique também a pasta de spam.
               </p>
-              <button id="btn-iniciar-entrevista" class="snap-btn" style="width:100%;">
-                Iniciar entrevista com o Naur →
-              </button>
-            </div>
-
-            <!-- Chat Naur (aparece após o relatório) -->
-            <div class="snap-chat" id="snap-chat" aria-live="polite">
-              <hr class="snap-divider">
-              <p class="snap-secao__eyebrow">entrevista naur</p>
-              <p class="chat-intro">
-                Uma conversa de 12 a 15 minutos para aprofundar o que os dados mostram.
-                Naur ja conhece a empresa — comece quando quiser.
-              </p>
-              <div class="chat-msgs" id="chat-msgs" role="log" aria-label="Conversa com Naur"></div>
-              <div class="chat-typing" id="chat-typing" aria-live="polite"></div>
-              <div class="chat-input-wrap" id="chat-input-wrap">
-                <input
-                  type="text"
-                  id="chat-input"
-                  class="snap-form__input"
-                  placeholder="Digite sua resposta e pressione Enter…"
-                  autocomplete="off"
-                  aria-label="Sua resposta para o Naur"
-                >
-                <button id="chat-send" class="chat-send-btn" aria-label="Enviar">Enviar</button>
-              </div>
-              <div class="chat-concluido" id="chat-concluido">
-                Entrevista concluida. O resumo e a analise estao sendo processados.
-                Voce recebera um e-mail em instantes.
-              </div>
-            </div>
-
-            <!-- Fora do ICP -->
-            <div id="snap-fora-icp" style="display:none;">
-              <div class="snap-icp-aviso">
-                A empresa não atende ao critério mínimo do diagnóstico VALAR neste momento
-                (situação cadastral ativa e pelo menos 5 anos de operação). Enviamos um
-                e-mail explicando. Se tiver dúvidas, escreva para
-                <a href="mailto:contato@valar.tec.br" style="color:var(--cobre,#B87333);">contato@valar.tec.br</a>.
-              </div>
-            </div>
-
-            <!-- Erro genérico -->
-            <div id="snap-erro" style="display:none;">
-              <p style="font-size:14px;color:#f87171;">
-                Ocorreu um erro no processamento. Se o problema persistir,
-                escreva para <a href="mailto:contato@valar.tec.br" style="color:var(--cobre,#B87333);">contato@valar.tec.br</a>
-                com o código: <span id="snap-err-id" style="font-family:monospace;"></span>.
+              <p style="margin-top:12px;font-size:13px;color:var(--texto-secundario,#888);">
+                Para aprofundar, entre em contato:
+                <a href="mailto:contato@valar.tec.br" style="color:var(--cobre,#B87333);">contato@valar.tec.br</a>
               </p>
             </div>
+          </div>
+
+          <!-- Fora do ICP -->
+          <div id="snap-fora-icp" style="display:none;">
+            <hr class="snap-divider">
+            <div class="snap-icp-aviso">
+              A empresa não atende ao critério mínimo do diagnóstico neste momento
+              (situação cadastral ativa e pelo menos 1 ano de operação). Enviamos um
+              e-mail explicando. Dúvidas:
+              <a href="mailto:contato@valar.tec.br" style="color:var(--cobre,#B87333);">contato@valar.tec.br</a>.
+            </div>
+          </div>
+
+          <!-- Erro genérico -->
+          <div id="snap-erro" style="display:none;">
+            <hr class="snap-divider">
+            <p style="font-size:14px;color:#f87171;">
+              Ocorreu um erro no processamento. Se o problema persistir,
+              escreva para <a href="mailto:contato@valar.tec.br" style="color:var(--cobre,#B87333);">contato@valar.tec.br</a>
+              com o código: <span id="snap-err-id" style="font-family:monospace;"></span>.
+            </p>
           </div>
 
         </div><!-- /.snap-wrap -->
@@ -617,18 +674,51 @@
         </div>
       </div>
       <p class="footer__legal">
-        VALAR Inteligência Ltda · CNPJ 66.311.795/0001-67 · Porto Alegre · RS · Brasil · © 2026
+        VALAR Inteligência · Brasil · © 2026
       </p>
     </div>
   </footer>
+
+  <!-- Configuração de ambiente — define API_BASE para produção -->
+  <script>
+    (function () {
+      var host = window.location.hostname;
+      if (host === 'valar.tec.br' || host === 'www.valar.tec.br') {
+        window.SNAPSHOT_API_BASE = 'https://api.valar.tec.br';
+      }
+      // Localhost e staging usam o fallback http://127.0.0.1:8000 definido no script principal.
+    })();
+  </script>
 
   <script src="main.js"></script>
 
   <script>
   // ── Configuração ─────────────────────────────────────────────────────────
   const API_BASE = window.SNAPSHOT_API_BASE || 'http://127.0.0.1:8000';
-  const POLL_INTERVAL_MS = 3000;
-  const MAX_POLLS = 30; // 90s máximo de polling
+  const GRAFO_POLL_MS = 2000;
+  const GRAFO_MAX_POLLS = 60; // 120s máx
+  const CHAT_START_MIN_FONTES = 5; // inicia chat após N fontes responderem
+
+  // ── Mapa de fontes OSINT → labels para exibição ───────────────────────
+  // Labels neutros — sem expor resultado de compliance (ADR-SCAN-0007)
+  const FONTES_META = {
+    brasil_api:    'Cadastro Federal',
+    ibge:          'Dados Municipais',
+    opensanctions: 'Reg. Internacionais',
+    ceis_cnep:     'Regularidade Pública',
+    ibama:         'Reg. Ambientais',
+    datajud:       'Judiciário',
+    pgfn:          'Fiscal',
+    cndt:          'Trabalhista',
+    brave_serp:    'Presença Digital',
+    site_fetch:    'Site Institucional',
+    crt_sh:        'Certificados SSL',
+    wayback:       'Histórico Web',
+    pncp:          'Contratos Públicos',
+    gleif:         'Estrutura Societária',
+  };
+  const FONTES_ORDEM = Object.keys(FONTES_META);
+  const CX = 160, CY = 160, R = 108; // centro e raio do grafo
 
   // ── CNPJ helpers ─────────────────────────────────────────────────────────
   function maskCNPJ(v) {
@@ -660,16 +750,6 @@
     this.value = maskCNPJ(this.value);
     clearError('snap-cnpj');
   });
-
-  // ── Log helpers ──────────────────────────────────────────────────────────
-  function addLog(msg, type = 'info') {
-    const log = document.getElementById('snap-log');
-    const line = document.createElement('span');
-    line.className = `snap-log__line snap-log__line--${type}`;
-    line.textContent = `> ${msg}`;
-    log.appendChild(line);
-    log.appendChild(document.createElement('br'));
-  }
 
   // ── Error helpers ────────────────────────────────────────────────────────
   function showError(fieldId, msg) {
@@ -732,7 +812,7 @@
 
     const btn = document.getElementById('snap-btn');
     btn.disabled = true;
-    btn.innerHTML = '<span class="snap-spinner" aria-hidden="true"></span>Enviando…';
+    btn.innerHTML = '<span class="snap-spinner" aria-hidden="true"></span>Iniciando…';
 
     const payload = {
       cnpj: document.getElementById('snap-cnpj').value,
@@ -755,7 +835,6 @@
         btn.disabled = false;
         btn.textContent = 'Iniciar Diagnóstico Naur →';
         if (res.status === 422) {
-          // Pydantic validation errors
           const details = Array.isArray(err.detail)
             ? err.detail.map(e => e.msg).join('; ')
             : msg;
@@ -769,15 +848,9 @@
       const data = await res.json();
       const diagnosticoId = data.diagnostico_id;
 
-      // Ocultar formulário, exibir status
+      // Ocultar formulário, exibir grafo
       document.getElementById('snap-form').style.display = 'none';
-      const statusEl = document.getElementById('snap-status');
-      statusEl.classList.add('visible');
-
-      addLog(`Protocolo ${diagnosticoId.slice(0, 8).toUpperCase()} iniciado.`);
-      addLog('Consultando Receita Federal…');
-
-      startPolling(diagnosticoId);
+      iniciarGrafo(diagnosticoId);
 
     } catch (err) {
       btn.disabled = false;
@@ -786,88 +859,179 @@
     }
   });
 
-  // ── Polling ──────────────────────────────────────────────────────────────
-  function startPolling(diagnosticoId) {
+  // ── Grafo OSINT ──────────────────────────────────────────────────────────
+  function iniciarGrafo(diagnosticoId) {
+    const grafoEl = document.getElementById('snap-grafo');
+    grafoEl.classList.add('visible');
+    construirSVG();
+    startGrafoPolling(diagnosticoId);
+  }
+
+  function construirSVG() {
+    const linesG = document.getElementById('grafo-linhas');
+    const nodosG = document.getElementById('grafo-nodos');
+    const n = FONTES_ORDEM.length;
+
+    FONTES_ORDEM.forEach((fonte, i) => {
+      const angRad = ((i / n) * 2 * Math.PI) - (Math.PI / 2);
+      const nx = CX + R * Math.cos(angRad);
+      const ny = CY + R * Math.sin(angRad);
+
+      // Linha do centro ao nodo
+      const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+      line.setAttribute('x1', CX);
+      line.setAttribute('y1', CY);
+      line.setAttribute('x2', nx);
+      line.setAttribute('y2', ny);
+      line.className.baseVal = 'grafo-line pendente';
+      line.id = `grafo-line-${fonte}`;
+      linesG.appendChild(line);
+
+      // Círculo do nodo
+      const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+      circle.setAttribute('cx', nx);
+      circle.setAttribute('cy', ny);
+      circle.setAttribute('r', 13);
+      circle.className.baseVal = 'grafo-node-circle';
+      circle.id = `grafo-node-${fonte}`;
+      nodosG.appendChild(circle);
+
+      // Label curta (primeira palavra)
+      const label = FONTES_META[fonte] || fonte;
+      const palavras = label.split(' ');
+      const labelEl = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+      labelEl.setAttribute('x', nx);
+      labelEl.setAttribute('y', ny);
+      labelEl.className.baseVal = 'grafo-label';
+      labelEl.id = `grafo-label-${fonte}`;
+
+      if (palavras.length === 1) {
+        labelEl.textContent = palavras[0];
+      } else {
+        // Duas linhas via tspan
+        const t1 = document.createElementNS('http://www.w3.org/2000/svg', 'tspan');
+        t1.setAttribute('x', nx);
+        t1.setAttribute('dy', '-4');
+        t1.textContent = palavras[0];
+        const t2 = document.createElementNS('http://www.w3.org/2000/svg', 'tspan');
+        t2.setAttribute('x', nx);
+        t2.setAttribute('dy', '9');
+        t2.textContent = palavras.slice(1).join(' ');
+        labelEl.appendChild(t1);
+        labelEl.appendChild(t2);
+      }
+      nodosG.appendChild(labelEl);
+    });
+  }
+
+  function atualizarNodo(fonte, estado) {
+    // estado: 'respondeu' | 'indisponivel' | 'pendente'
+    const circle = document.getElementById(`grafo-node-${fonte}`);
+    const line = document.getElementById(`grafo-line-${fonte}`);
+    const label = document.getElementById(`grafo-label-${fonte}`);
+    if (!circle || !line) return;
+
+    // Remove classes de estado anteriores
+    ['respondeu', 'indisponivel', 'pendente'].forEach(c => {
+      circle.classList.remove(c);
+      line.classList.remove(c);
+      if (label) label.classList.remove(c);
+    });
+
+    if (estado === 'respondeu') {
+      circle.classList.add('respondeu');
+      line.classList.add('ativa');
+      if (label) label.classList.add('respondeu');
+    } else if (estado === 'indisponivel') {
+      circle.classList.add('indisponivel');
+    } else {
+      line.classList.add('pendente');
+    }
+  }
+
+  function startGrafoPolling(diagnosticoId) {
     let polls = 0;
-    let lastStatus = '';
+    let chatStartado = false;
+    let contAnterior = 0;
 
     const interval = setInterval(async () => {
       polls++;
-      if (polls > MAX_POLLS) {
+
+      if (polls > GRAFO_MAX_POLLS) {
         clearInterval(interval);
-        addLog('Tempo limite de consulta atingido. Verifique seu e-mail.', 'info');
+        if (!chatStartado) {
+          chatStartado = true;
+          iniciarNaurChat(diagnosticoId);
+        }
         return;
       }
 
       try {
         const res = await fetch(
-          `${API_BASE}/api/diagnostico/snapshot/${diagnosticoId}/status`
+          `${API_BASE}/api/diagnostico/${diagnosticoId}/contexto-progressivo`
         );
         if (!res.ok) return;
         const data = await res.json();
 
-        // Mostrar nome da empresa assim que disponível
-        if (data.empresa_nome && lastStatus !== 'empresa_revelada') {
-          addLog(`${data.empresa_nome}`, 'empresa');
-          lastStatus = 'empresa_revelada';
+        // Atualizar empresa_nome se disponível
+        if (data.empresa_nome) {
+          document.getElementById('snap-grafo-empresa').textContent = data.empresa_nome;
         }
 
-        if (data.status === 'processing' && polls === 3) {
-          addLog('Consultando IBGE Cidades…');
-        }
-        if (data.status === 'processing' && polls === 6) {
-          addLog('Organizador estruturando diagnóstico…');
-        }
-        if (data.status === 'processing' && polls === 10) {
-          addLog('Gerador produzindo relatório…');
-        }
-
-        if (data.status === 'completed') {
-          clearInterval(interval);
-
-          if (data.fora_icp) {
-            addLog('Operação fora do escopo atual.', 'info');
-            document.getElementById('snap-fora-icp').style.display = 'block';
-            return;
+        // Atualizar nodos baseado nas fontes consultadas / indisponíveis
+        const consultadas = new Set(data.fontes_consultadas || []);
+        const indisponiveis = new Set(data.fontes_indisponiveis || []);
+        FONTES_ORDEM.forEach(f => {
+          if (consultadas.has(f)) {
+            atualizarNodo(f, 'respondeu');
+          } else if (indisponiveis.has(f)) {
+            atualizarNodo(f, 'indisponivel');
           }
+        });
 
-          addLog(
-            `Diagnóstico concluído — completude ${data.completude}%.`,
-            data.completude >= 50 ? 'ok' : 'info'
-          );
-          addLog('Relatório enviado por e-mail.', 'ok');
-          revealRelatorio(data.relatorio);
-          _setChatDiagnosticoId(diagnosticoId);
+        const contAtual = consultadas.size;
+        document.getElementById('snap-grafo-count').textContent = contAtual;
+
+        // Announce para leitores de tela quando novas fontes chegam
+        if (contAtual > contAnterior) {
+          const announce = document.getElementById('snap-grafo-announce');
+          announce.textContent = `${contAtual} de 14 fontes consultadas.`;
+          contAnterior = contAtual;
         }
 
+        // Verificar se fora do ICP
+        if (data.status === 'fora_icp') {
+          clearInterval(interval);
+          document.getElementById('snap-grafo').classList.remove('visible');
+          document.getElementById('snap-fora-icp').style.display = 'block';
+          return;
+        }
+
+        // Verificar erro
         if (data.status === 'error') {
           clearInterval(interval);
-          addLog('Erro no processamento.', 'err');
-          document.getElementById('snap-err-id').textContent = diagnosticoId.slice(0, 8).toUpperCase();
+          document.getElementById('snap-err-id').textContent =
+            diagnosticoId.slice(0, 8).toUpperCase();
           document.getElementById('snap-erro').style.display = 'block';
+          return;
+        }
+
+        // Iniciar chat quando OSINT avançado o suficiente
+        if (!chatStartado && (
+          data.status === 'aguardando_entrevista' ||
+          contAtual >= CHAT_START_MIN_FONTES
+        )) {
+          chatStartado = true;
+          clearInterval(interval);
+          // Atualizar texto do grafo
+          document.getElementById('snap-grafo-texto').textContent =
+            'Pesquisa em andamento. Naur inicia a entrevista agora.';
+          // Dar um momento visual antes de mostrar o chat
+          setTimeout(() => iniciarNaurChat(diagnosticoId), 800);
         }
 
       } catch (_) { /* ignora erros de rede no poll */ }
-    }, POLL_INTERVAL_MS);
-  }
-
-  // ── Reveal do relatório ──────────────────────────────────────────────────
-  function revealRelatorio(relatorio) {
-    if (!relatorio) return;
-
-    document.getElementById('snap-quem-e').textContent = relatorio.quem_e;
-    document.getElementById('snap-onde-esta').textContent = relatorio.onde_esta;
-    document.getElementById('snap-chama-atencao').textContent = relatorio.chama_atencao;
-
-    const el = document.getElementById('snap-relatorio');
-    el.classList.add('visible');
-    // Trigger fade-in after a frame
-    requestAnimationFrame(() => {
-      requestAnimationFrame(() => el.classList.add('fade-in'));
-    });
-
-    // Scroll suave para o relatorio
-    el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, GRAFO_POLL_MS);
   }
 
   // ── Chat Naur ─────────────────────────────────────────────────────────
@@ -875,19 +1039,14 @@
   let _chatHistorico = [];
   let _chatAtivo = false;
 
-  function _setChatDiagnosticoId(id) {
-    _chatDiagnosticoId = id;
+  function iniciarNaurChat(diagnosticoId) {
+    _chatDiagnosticoId = diagnosticoId;
     _chatAtivo = true;
-  }
-
-  document.getElementById('btn-iniciar-entrevista').addEventListener('click', function () {
-    if (!_chatDiagnosticoId) return;
-    this.style.display = 'none';
     const chatEl = document.getElementById('snap-chat');
     chatEl.classList.add('visible');
     chatEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
     enviarTurno('');
-  });
+  }
 
   document.getElementById('chat-send').addEventListener('click', function () {
     submitTurno();
@@ -940,7 +1099,7 @@
 
       const data = await res.json();
       adicionarMensagem('naur', data.turno_naur);
-      // Abertura: ancora o historico com user placeholder para alternância correta
+
       if (!turnoTexto && _chatHistorico.length === 0) {
         _chatHistorico.push({ role: 'user', content: '__INICIO__' });
       }
@@ -984,6 +1143,8 @@
     setInputDisabled(true);
     document.getElementById('chat-input-wrap').style.display = 'none';
     document.getElementById('chat-concluido').classList.add('visible');
+
+    // D-02: dispara concluir → relatório gerado em background → e-mail enviado
     if (_chatDiagnosticoId && _chatHistorico.length > 0) {
       const payload = {
         conversacao: { diagnostico_id: _chatDiagnosticoId, turnos: _chatHistorico },

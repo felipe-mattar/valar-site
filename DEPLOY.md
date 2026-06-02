@@ -6,8 +6,12 @@ Referência operacional para deploy, DNS, HTTPS e manutenção do site valar.tec
 
 ## Estrutura do repositório
 
+**Monorepo institucional:** o projecto vive em `11_CANAIS_DIGITAIS/web_institucional/` (relativo à raiz do repositório de documentação).
+
+**Repositório de deploy (`valar-site`):** o clone usado no GitHub Pages tem **esta mesma árvore na raiz** (sem o prefixo `11_...`). Os comandos abaixo assumem que estás **dentro** da pasta do site (raiz do `valar-site` ou `web_institucional/` no monorepo).
+
 ```
-site/
+web_institucional/     # na raiz do monorepo: 11_CANAIS_DIGITAIS/web_institucional/
 ├── index.html            — home
 ├── manifesto.html
 ├── casos.html
@@ -124,10 +128,12 @@ Qualquer versão anterior está acessível no histórico do Git:
 
 ```bash
 git log --oneline
-git checkout <hash> -- site/index.html
+git checkout <hash> -- index.html
 git commit -m "rollback index.html para <hash>"
 git push
 ```
+
+*(No monorepo institucional, executar estes comandos a partir de `11_CANAIS_DIGITAIS/web_institucional/` ou usar caminho completo no `git checkout`.)*
 
 ---
 
@@ -144,7 +150,7 @@ O script já está em todos os HTML. Para ativar:
 
 1. Acessar [search.google.com/search-console](https://search.google.com/search-console)
 2. Adicionar propriedade `https://valar.tec.br`
-3. Verificar via arquivo HTML (adicionar à pasta site/) ou DNS TXT record
+3. Verificar via arquivo HTML (adicionar à pasta `web_institucional/`) ou DNS TXT record
 4. Submeter sitemap: `https://valar.tec.br/sitemap.xml`
 
 ### Formspree

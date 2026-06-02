@@ -8,9 +8,10 @@ Mantém nav, head e footer intactos — só atualiza a seção #manifesto-conten
 Uso:
     python scripts/sync_manifesto.py [--manifesto-path PATH] [--html-path PATH]
 
-Padrão (a partir da raiz do repo site/):
-    manifesto-path: ../10_ESTRATEGIA/MANIFESTO.md  (ou MANIFESTO.md se existir localmente)
-    html-path:      manifesto.html
+Padrão:
+    manifesto-path: sobe diretórios até encontrar 10_ESTRATEGIA/MANIFESTO.md (monorepo);
+                    no repositório só-do-site (clone Pages), usa MANIFESTO.md na raiz do projeto.
+    html-path:      manifesto.html junto à raiz de web_institucional
 """
 
 import argparse
@@ -100,18 +101,29 @@ def update_manifesto_html(html_path: Path, md_path: Path) -> None:
     print(f"Atualizado: {html_path}")
 
 
+def resolve_default_manifesto_md(web_root: Path) -> Path:
+    """Monorepo: 10_ESTRATEGIA/MANIFESTO.md. Repositório só-do-site: MANIFESTO.md local."""
+    for base in web_root.parents:
+        canonical = base / "10_ESTRATEGIA" / "MANIFESTO.md"
+        if canonical.is_file():
+            return canonical
+    return web_root / "MANIFESTO.md"
+
+
 def main() -> None:
+    web_root = Path(__file__).resolve().parent.parent
+    default_md = resolve_default_manifesto_md(web_root)
     parser = argparse.ArgumentParser(description="Sincroniza MANIFESTO.md com manifesto.html")
     parser.add_argument(
         "--manifesto-path",
         type=Path,
-        default=Path(__file__).parent.parent / "MANIFESTO.md",
-        help="Caminho para MANIFESTO.md (default: site/MANIFESTO.md)",
+        default=default_md,
+        help="MANIFESTO fonte (default: canónico do monorepo ou MANIFESTO.md local)",
     )
     parser.add_argument(
         "--html-path",
         type=Path,
-        default=Path(__file__).parent.parent / "manifesto.html",
+        default=web_root / "manifesto.html",
         help="Caminho para manifesto.html",
     )
     args = parser.parse_args()

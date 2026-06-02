@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Blog VALAR Inteligência</title>
+    <link>https://valar.tec.br/blog/</link>
+    <description>Análises sobre gestão operacional, documentação de processos e infraestrutura de negócios para PMEs brasileiras.</description>
+    <language>pt-BR</language>
+    <lastBuildDate>Sat, 24 May 2026 12:00:00 -0300</lastBuildDate>
+    <atom:link href="https://valar.tec.br/blog/feed.xml" rel="self" type="application/rss+xml"/>
+
+    <item>
+      <title>Por que a operação não pode depender de pessoas-chave</title>
+      <link>https://valar.tec.br/blog/posts/operacao-sem-pessoas-chave.html</link>
+      <description>Toda empresa tem alguém insubstituível. Quando essa pessoa sai, adoece ou fica sobrecarregada, a operação trava. Entenda por que esse padrão é um risco estrutural — e como sair dele.</description>
+      <pubDate>Sat, 24 May 2026 08:00:00 -0300</pubDate>
+      <guid isPermaLink="true">https://valar.tec.br/blog/posts/operacao-sem-pessoas-chave.html</guid>
+    </item>
+
+    <item>
+      <title>O que é ARDA e por que sua empresa precisa de uma</title>
+      <link>https://valar.tec.br/blog/posts/o-que-e-arda.html</link>
+      <description>ARDA não é software. É a arquitetura de referência que descreve como sua empresa pensa, decide e opera — de forma que qualquer pessoa consiga entender e dar continuidade.</description>
+      <pubDate>Sat, 24 May 2026 09:00:00 -0300</pubDate>
+      <guid isPermaLink="true">https://valar.tec.br/blog/posts/o-que-e-arda.html</guid>
+    </item>
+
+    <item>
+      <title>O custo invisível de não ter processos documentados</title>
+      <link>https://valar.tec.br/blog/posts/custo-processos-nao-documentados.html</link>
+      <description>Empresas que não documentam seus processos acumulam uma dívida operacional que cresce silenciosamente até se tornar crise. Saiba como mensurar esse custo.</description>
+      <pubDate>Sat, 24 May 2026 10:00:00 -0300</pubDate>
+      <guid isPermaLink="true">https://valar.tec.br/blog/posts/custo-processos-nao-documentados.html</guid>
+    </item>
+
+  </channel>
+</rss>

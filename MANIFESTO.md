@@ -1,114 +1,78 @@
----
-title: "Manifesto VALAR"
-owner: "Felipe Gonçalves Mattar Quintão"
-status: ativo
-version: "1.0"
-last_updated: "2026-04-20"
-source_of_truth: "Este documento. Base: 10_ESTRATEGIA/POSICIONAMENTO_ESTRATEGICO.md + 08_MARKETING/VOICE_AND_TONE.md"
-related_docs:
-  - "10_ESTRATEGIA/POSICIONAMENTO_ESTRATEGICO.md"
-  - "08_MARKETING/VOICE_AND_TONE.md"
-  - "06_TECNOLOGIA/SITE_ARCHITECTURE.md"
-folder: "10_ESTRATEGIA"
----
-
 # Manifesto
 
-Texto-fonte para a página `/manifesto` do site institucional. Lido em voz alta deve soar como a VALAR: preciso, sereno, específico. Nada de épico, nada de apocalíptico.
+A operação tem seis faces. Falta o eixo que as ordena.
 
----
+Empresas médias crescem em volume operacional em taxas superiores a 15% ao ano, antes de estruturar o processo. 
 
-## A operação tem seis faces. Falta o eixo que as ordena.
+O resultado é previsível: três pessoas sêniores gastando mais de 12 horas por semana respondendo a consultas que já foram resolvidas anteriormente. Operações que utilizam mais de 4 sistemas desconectados — ERP, CRM, Drive e planilhas locais — fragmentam a memória corporativa em silos de dados. O conhecimento crítico permanece na cabeça de colaboradores seniores, com um tempo médio de rampa (onboarding) que ultrapassa 90 dias.
 
-Empresas médias crescem em volume antes de estruturar o processo.
-
-O resultado é sempre o mesmo: três pessoas sêniores gastando o dia respondendo, pela décima vez, a pergunta que já foi respondida. Planilha sobre planilha. Sistema ao lado de sistema. Conhecimento crítico guardado na cabeça de quem não tem tempo de escrever.
-
-Funciona.
-
-Até o dia em que alguém-chave sai, fica doente ou simplesmente para.
+Funciona até o dia em que o colaborador-chave, responsável por 80% do fluxo de exceções, deixa a operação.
 
 ---
 
 ## Não é um problema de pessoas. É um problema de infraestrutura.
 
-A tentação é contratar mais gente. A contratação resolve o sintoma e amplia o sistema — mais pessoas, mais interfaces humanas, mais memória distribuída, mais dependência.
+A tentação é contratar mais gente. A contratação amplia o sistema em 20% ao ano, mas aumenta a entropia documental. A tentação seguinte é comprar um SaaS genérico. SaaS entrega botões, não a lógica da sua operação. A terceira tentação é contratar uma consultoria. A consultoria entrega 1 PDF de 50 páginas, mas não instala o motor de execução.
 
-A tentação seguinte é comprar um SaaS. O SaaS entrega botão genérico para problema específico.
-
-A terceira tentação é chamar uma consultoria. A consultoria vai, analisa, entrega um PDF, volta para casa. No mês seguinte, a operação volta a ser a mesma.
-
-Nenhum dos três é errado. Todos os três são insuficientes.
-
-Falta o que nem pessoa, nem software genérico, nem diagnóstico externo conseguem entregar: **infraestrutura operacional que pensa pela empresa, configurada para a empresa, que permanece quando as pessoas mudam**.
+Falta **ARDA** — a empresa em forma legível: infraestrutura construída em 3 camadas de dados, mantida pela Fundamentação e consultada através de **Naur** após uma Implementação desenhada em 4 gates de qualidade técnica.
 
 ---
 
 ## O que a VALAR faz
 
-A VALAR entrega módulos. Cada módulo resolve um processo operacional específico — triagem de chamados, integração de novos colaboradores, síntese de relatórios, monitoramento de indicadores.
+A VALAR entrega infraestrutura operacional através de um único produto — **ARDA** — organizado em três camadas: **Diagnóstico Naur** (Camada 0), **Implementação ARDA** (Camada 1) e **Fundamentação ARDA** (Camada 2).
 
-Cada módulo roda sobre uma plataforma comum, que chamamos de **Core**. O Core aprende a linguagem da empresa, lê a base de conhecimento da empresa, conversa com os sistemas da empresa.
-
-O que o cliente recebe não é software. É uma instância própria — configurada para o vocabulário, os processos e os dados dele. Específica. Intransferível. Mensurável no primeiro mês.
+O motor compartilhado — composto pelo **VALAR Map** (Edge Collector, Correlation, Graph) — orquestra agentes e integrações. O que existe após a Implementação (média de 21 dias úteis) não é software genérico: é a **Arda da sua empresa** — um grafo de processos vivos, 100% sob sua posse, com taxa de match em consultas superior a 90%.
 
 ---
 
 ## Três princípios não-negociáveis
 
 **01 · Medir antes de vender.**
-Todo cliente começa com um diagnóstico. Um documento sério, de quatro a seis páginas, que o cliente guarda — mesmo que decida não contratar. Se os números dele não justificam a infraestrutura, a VALAR recomenda não avançar. Por escrito.
+O **Diagnóstico Naur** realiza uma pesquisa interativa que analisa 16 fontes públicas de dados. O relatório resultante — que entrega a primeira amostra da sua Arda — é o critério decisivo para a viabilidade da Camada 1. Se os dados não sustentam o ROI operacional, recomendamos não avançar.
 
-**02 · Entregar em semanas, não em anos.**
-Implantações de seis meses vêm de outra era. Cada módulo VALAR entra em produção em três semanas. Se demora mais, não é mais modular.
+**02 · Gate antes de slogan de prazo.**
+Implementação ARDA não opera por prazo fixo, mas por 4 gates de qualidade: (1) Estruturação de Fonte, (2) Correlação de Eventos, (3) Instalação de Edge Collector, (4) Homologação de Resposta Naur. Sem gate concluído, não há avanço para a camada seguinte.
 
 **03 · Permanecer.**
-Marcas que mudam de cara a cada dois anos dizem uma coisa sobre quem as fez: não confiaram no próprio nome. VALAR não vai mudar. Nem o nome, nem o símbolo, nem o jeito de escrever. O que muda é o que a empresa entrega.
+A VALAR não substitui a operação; a VALAR a estrutura. Nossa infraestrutura atua via módulos de automação (LLM-based) configurados sobre a sua Arda.
 
 ---
 
 ## O que a VALAR não é
 
-Não é consultoria. Não é SaaS genérico. Não é agência de IA. Não é integradora low-code. Não é laboratório de pesquisa.
+Não é consultoria pontual. Não é SaaS genérico. Não é agência de IA. Não é integradora low-code.
 
-É uma empresa de produto, com um produto que é infraestrutura — vendida módulo a módulo, configurada cliente a cliente, medida mês a mês.
+É uma empresa de produto de infraestrutura — **ARDA**, com instâncias únicas para cada cliente.
 
 ---
 
 ## Para quem isto foi escrito
 
-Para empresas médias que operam há pelo menos cinco anos, que crescem em volume mas não em estrutura, e que desconfiam igualmente de mágica e de verborragia.
+Para operações médias (20–200 colaboradores, R$ 8 mi – R$ 80 mi de faturamento) que desconfiam de promessas de "transformação digital" em 30 dias. 
 
-Para sócios e diretores que preferem uma métrica específica a uma promessa bonita.
-
-Para operações que precisam de ordem, não de reinvenção.
+Para gestores que operam com indicadores de performance (KPIs) de tempo de ciclo, taxa de retrabalho e dependência de pessoas-chave.
 
 ---
 
 ## O que esperar de quem trabalha com a VALAR
 
-Respostas curtas. Prazos que cumprem. Números que batem. Diagnóstico antes de proposta. Proposta antes de contrato. Contrato antes de execução.
-
-Um único follow-up entre cada etapa.
-
-Zero insistência.
+Respostas técnicas. Prazos baseados em gates. Dados de operação que substituem suposições. Diagnóstico gratuito entregue em menos de 5 minutos após a entrevista com Naur.
 
 ---
 
 ## Sobre o nome
 
-VALAR é um nome curto, sem tradução e sem sufixo. Escolhido para durar mais do que qualquer produto individual da empresa.
-
-Nomes bons fazem três coisas: são fáceis de dizer, difíceis de confundir, e não envelhecem. VALAR faz as três.
+VALAR — nome curto, sem tradução e sem sufixo. Escolhido em 2026 para representar a infraestrutura operacional definitiva.
 
 ---
 
 ## A tese, em uma frase
 
-> Inteligência aplicada e infraestrutura modular configurável para ordem operacional.
+> Infraestrutura modular configurável com motor de agentes (VALAR Map) para garantir 100% de posse sobre a memória operacional da empresa.
 
-É o que a VALAR é. É o que a VALAR continua sendo.
+É o que a VALAR é. É o que a VALAR continua sendo desde 2026.
 
 ---
 
-*Escrito em abril de 2026 por Felipe Gonçalves Mattar Quintão, sócio-proprietário da VALAR Inteligência.*
+*Versão 1.0 · VALAR Inteligência · Brasil.*

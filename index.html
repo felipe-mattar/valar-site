@@ -23,13 +23,13 @@
   <meta name="robots" content="index,follow">
   <meta name="author" content="VALAR Inteligência">
   <meta name="theme-color" content="#0A0A0B">
-  <meta name="geo.region" content="BR-RS">
-  <meta name="geo.placename" content="Porto Alegre">
+  <meta name="geo.region" content="BR">
   <title>VALAR — Inteligência Operacional</title>
   <link rel="preload" as="font" type="font/woff2" crossorigin href="fonts/inter-display-500-latin.woff2">
   <link rel="preload" as="font" type="font/woff2" crossorigin href="fonts/inter-400-latin.woff2">
   <link rel="preload" as="font" type="font/woff2" crossorigin href="fonts/inter-500-latin.woff2">
   <link rel="stylesheet" href="styles.css">
+  <link rel="alternate" type="application/rss+xml" title="VALAR Blog RSS" href="/blog/feed.xml">
   <noscript><style>section { opacity: 1 !important; transform: none !important; }</style></noscript>
 
   <script type="application/ld+json">
@@ -37,17 +37,14 @@
     "@context": "https://schema.org",
     "@type": "Organization",
     "name": "VALAR Inteligência",
-    "legalName": "VALAR INTELIGÊNCIA LTDA",
+    "legalName": "VALAR INTELIGÊNCIA",
     "url": "https://valar.tec.br",
     "logo": "https://valar.tec.br/og-image-v1.jpg",
     "email": "contato@valar.tec.br",
     "address": {
       "@type": "PostalAddress",
-      "addressLocality": "Porto Alegre",
-      "addressRegion": "RS",
       "addressCountry": "BR"
     },
-    "taxID": "66.311.795/0001-67",
     "description": "ARDA é fundação operacional para PMEs brasileiras: produto único em três camadas (Diagnóstico Naur, Implementação ARDA, Fundamentação ARDA).",
     "areaServed": "BR",
     "knowsAbout": ["automação operacional", "inteligência artificial", "infraestrutura de IA", "agentes de IA"]
@@ -155,6 +152,7 @@
         <nav class="nav__links" aria-label="Navegação principal">
           <a href="#modulos">Produto</a>
           <a href="manifesto.html">Manifesto</a>
+          <a href="blog/">Blog</a>
           <a href="diagnostico.html">Contato</a>
         </nav>
 
@@ -175,6 +173,7 @@
       <nav id="mobile-menu" class="nav__mobile" aria-label="Navegação mobile" hidden>
         <a href="#modulos">Produto</a>
         <a href="manifesto.html">Manifesto</a>
+        <a href="blog/">Blog</a>
         <a href="diagnostico.html">Contato</a>
         <a href="snapshot.html" class="nav__cta">Diagnóstico →</a>
       </nav>
@@ -183,24 +182,22 @@
 
   <main id="main">
 
-    <!-- HERO -->
+    <!-- HERO REFORMULADO -->
     <section id="hero">
       <div class="container">
         <div class="hero__inner">
 
           <div class="hero__content hero-stagger">
             <p class="hero__eyebrow">fundação operacional · ARDA</p>
-            <h1 class="hero__title">A operação tem seis faces. Falta o <em>eixo</em> que as ordena.</h1>
+            <h1 class="hero__title">Sua empresa não tem base. Tem cabeças, conversas e planilhas.</h1>
             <p class="hero__sub">
-              Empresas médias crescem em volume antes de estruturar o processo. O resultado:
-              a mesma decisão reaberta em canais diferentes, sem base comum.
-              A VALAR molda <strong>ARDA</strong> — forma legível da operação do cliente, escrita uma vez,
-              mantida viva, consultada por toda a equipe. Três camadas: Diagnóstico Naur (gratuito),
-              Implementação ARDA (projeto), Fundamentação ARDA (recorrente).
+              Sem uma fundação estruturada, o conhecimento operacional da sua empresa depende de quem atende o telefone. 
+              A VALAR instala <strong>ARDA</strong>: uma infraestrutura que organiza, mantém e torna consultável a inteligência da sua operação. 
+              A Arda é sua; a VALAR a molda e a fundamenta.
             </p>
             <div class="hero__ctas">
-              <a href="snapshot.html" class="btn-primary">Iniciar Diagnóstico Naur</a>
-              <a href="#modulos" class="btn-secondary">Ver camadas</a>
+              <a href="snapshot.html" class="btn-primary">Solicitar Diagnóstico Naur →</a>
+              <a href="#modulos" class="btn-secondary">Como moldamos</a>
             </div>
             <div class="hero__metrics" role="group" aria-label="Estrutura do produto ARDA">
               <div class="hero__metrics-head">
@@ -244,36 +241,30 @@
       </div>
     </section>
 
-    <!-- COMO OPERA -->
+    <!-- COMO OPERA REFORMULADO -->
     <section id="como-opera" class="section">
       <div class="container">
         <header class="section__header">
-          <h2 class="section__title">Como a VALAR opera</h2>
-          <p class="section__sub">Núcleo técnico interno, produto ARDA com três camadas, instância única por cliente.</p>
+          <h2 class="section__title">Metodologia de Fundamentação</h2>
+          <p class="section__sub">O motor VALAR Map molda sua Arda em três modos de operação contínuos.</p>
         </header>
         <div class="cards stagger">
           <div class="layer-card">
-            <p class="layer-card__num" aria-hidden="true">01</p>
-            <h3 class="layer-card__title">Núcleo técnico</h3>
+            <h3 class="layer-card__title">Diagnóstico (Naur)</h3>
             <p class="layer-card__desc">
-              Orquestração de agentes, integrações e contexto. Camada invisível ao contrato —
-              é o que torna Implementação e Fundamentação economicamente sustentáveis para a VALAR e para o cliente.
+              Pesquisa estruturada de 12 minutos. O agente Naur captura a estrutura mínima da operação e retorna o primeiro mapa técnico da sua Arda.
             </p>
           </div>
           <div class="layer-card">
-            <p class="layer-card__num" aria-hidden="true">02</p>
-            <h3 class="layer-card__title">ARDA — produto único</h3>
+            <h3 class="layer-card__title">Implementação</h3>
             <p class="layer-card__desc">
-              Diagnóstico Naur (entrada gratuita), Implementação ARDA (projeto) e Fundamentação ARDA (recorrente).
-              Cada camada aumenta a superfície útil da Arda da empresa sem fragmentar o produto em “módulos” paralelos.
+              Construção do grafo operacional. O VALAR Map correlaciona fontes, extrai regras de negócio e instala a Arda na sua infraestrutura.
             </p>
           </div>
           <div class="layer-card">
-            <p class="layer-card__num" aria-hidden="true">03</p>
-            <h3 class="layer-card__title">Instância da empresa</h3>
+            <h3 class="layer-card__title">Fundamentação</h3>
             <p class="layer-card__desc">
-              Arda da empresa cliente: conteúdo, permissões, integrações e políticas.
-              Quanto mais específica, maior o custo de substituição por ferramenta genérica.
+              Manutenção da base viva. O VALAR Map captura exceções em tempo real e mantém a Arda consultável, eliminando o retrabalho operacional.
             </p>
           </div>
         </div>
@@ -285,7 +276,7 @@
       <div class="container">
         <header class="section__header">
           <h2 class="section__title">ARDA em três camadas</h2>
-          <p class="section__sub">Produto único. Entrada gratuita pela pesquisa. Projeto para moldar a base. Recorrente para mantê-la viva.</p>
+          <p class="section__sub">Uma jornada completa para a maturidade operacional. Do diagnóstico guiado à sustentação da inteligência corporativa.</p>
         </header>
         <div class="grid stagger">
 
@@ -359,6 +350,36 @@
       </div>
     </section>
 
+    <!-- PERSPECTIVAS OPERACIONAIS -->
+    <section id="blog-preview" class="section section--right">
+      <div class="container">
+        <header class="section__header">
+          <h2 class="section__title">Perspectivas operacionais</h2>
+          <p class="section__sub">Análises práticas sobre gestão, processos e infraestrutura para PMEs brasileiras.</p>
+        </header>
+        <div class="cards stagger">
+          <div class="layer-card">
+            <h3 class="layer-card__title">Por que a operação não pode depender de pessoas-chave</h3>
+            <p class="layer-card__desc">Quando uma pessoa insubstituível sai, adoece ou fica sobrecarregada, a operação trava. Entenda por que esse padrão é um risco estrutural — e como sair dele.</p>
+            <a href="blog/posts/operacao-sem-pessoas-chave.html" class="btn-secondary" style="margin-top: 20px;">Ler artigo →</a>
+          </div>
+          <div class="layer-card">
+            <h3 class="layer-card__title">O que é ARDA e por que sua empresa precisa de uma</h3>
+            <p class="layer-card__desc">ARDA não é software. É a arquitetura de referência que descreve como sua empresa pensa, decide e opera — de forma que qualquer pessoa consiga dar continuidade.</p>
+            <a href="blog/posts/o-que-e-arda.html" class="btn-secondary" style="margin-top: 20px;">Ler artigo →</a>
+          </div>
+          <div class="layer-card">
+            <h3 class="layer-card__title">O custo invisível de não ter processos documentados</h3>
+            <p class="layer-card__desc">Empresas sem documentação acumulam uma dívida operacional que cresce silenciosamente. Saiba como mensurar esse custo antes que vire crise.</p>
+            <a href="blog/posts/custo-processos-nao-documentados.html" class="btn-secondary" style="margin-top: 20px;">Ler artigo →</a>
+          </div>
+        </div>
+        <div style="text-align: center; margin-top: 3rem;">
+          <a href="blog/" class="btn-secondary">Ver todos os artigos →</a>
+        </div>
+      </div>
+    </section>
+
     <!-- DIAGNÓSTICO -->
     <section id="diagnostico">
       <div class="diag__ambient" aria-hidden="true"></div>
@@ -371,9 +392,9 @@
           </p>
           <h2 class="diag__title">Pesquisa operacional guiada.<br><em>Sem custo na camada 0.</em></h2>
           <p class="diag__body">
-            Fluxo no site institucional. Naur conduz a entrevista, captura estrutura mínima e devolve uma amostra legível —
-            suficiente para decidir se Implementação ARDA faz sentido. Se os números da operação não justificarem o projeto,
-            a VALAR indica não avançar.
+            O agente Naur conduz uma entrevista estruturada para capturar a estrutura mínima da sua operação e 
+            devolver uma amostra técnica imediata. É o passo decisivo para validar a viabilidade de uma 
+            Implementação ARDA sem qualquer investimento inicial.
           </p>
           <div class="diag__specs" aria-hidden="true">
             <span class="diag__spec">
@@ -394,7 +415,7 @@
               Iniciar Diagnóstico Naur
               <span class="btn-arrow" aria-hidden="true">→</span>
             </a>
-            <p class="diag__note">contato@valar.tec.br · Porto Alegre · RS · Brasil</p>
+            <p class="diag__note">contato@valar.tec.br · Brasil</p>
           </div>
         </div>
       </div>
@@ -442,6 +463,7 @@
           <ul>
             <li><a href="manifesto.html">Manifesto</a></li>
             <li><a href="casos.html">Casos</a></li>
+            <li><a href="blog/">Blog</a></li>
             <li><a href="diagnostico.html">Contato</a></li>
           </ul>
         </div>
@@ -457,7 +479,7 @@
 
       </div>
       <p class="footer__legal">
-        VALAR Inteligência Ltda · CNPJ 66.311.795/0001-67 · Porto Alegre · RS · Brasil · © 2026
+        VALAR Inteligência · Brasil · © 2026
       </p>
     </div>
   </footer>

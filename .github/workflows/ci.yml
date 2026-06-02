@@ -1,6 +1,6 @@
 name: CI
 
-# Assume que o repo root = pasta site/ (arquivos HTML na raiz do repo).
+# Assume que o repo root = conteúdo do site (pasta `web_institucional/` no monorepo ou raiz do repositório `valar-site`).
 
 on:
   push:

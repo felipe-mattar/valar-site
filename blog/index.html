@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog — VALAR Inteligência</title>
+  <meta name="description" content="Análises sobre gestão operacional, documentação de processos e infraestrutura de negócios para PMEs brasileiras." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://valar.tec.br/blog/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Blog — VALAR Inteligência" />
+  <meta property="og:description" content="Análises sobre gestão operacional, documentação de processos e infraestrutura de negócios para PMEs brasileiras." />
+  <meta property="og:url" content="https://valar.tec.br/blog/" />
+  <meta property="og:locale" content="pt_BR" />
+  <link rel="alternate" type="application/rss+xml" title="VALAR Blog RSS" href="/blog/feed.xml" />
+
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Blog",
+    "name": "Blog VALAR Inteligência",
+    "url": "https://valar.tec.br/blog/",
+    "description": "Análises sobre gestão operacional e infraestrutura de negócios para PMEs.",
+    "publisher": {
+      "@type": "Organization",
+      "name": "VALAR Inteligência",
+      "url": "https://valar.tec.br"
+    }
+  }
+  </script>
+
+  <script defer data-domain="valar.tec.br" src="https://plausible.io/js/script.js"></script>
+
+  <style>
+    :root {
+      --color-obsidian: #0A0A0B;
+      --color-obsidian-light: #112844;
+      --color-copper: #c9804a;
+      --color-copper-hover: #d4925f;
+      --color-ivory: #f5f0e8;
+      --color-ivory-soft: #ede8de;
+      --color-text-primary: #0A0A0B;
+      --color-text-secondary: #4a4a6a;
+      --color-text-muted: #7a7a9a;
+      --font-display: 'Inter Display', 'Inter', system-ui, sans-serif;
+      --font-body: 'Inter', system-ui, sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 16px; }
+    body {
+      font-family: var(--font-body);
+      background: var(--color-ivory);
+      color: var(--color-text-primary);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    nav {
+      background: var(--color-obsidian);
+      padding: 1rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    nav .logo {
+      color: var(--color-copper);
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 1.25rem;
+      text-decoration: none;
+      letter-spacing: 0.05em;
+    }
+    nav ul { list-style: none; display: flex; gap: 2rem; }
+    nav a { color: var(--color-ivory); text-decoration: none; font-size: 0.9rem; opacity: 0.85; transition: opacity 0.2s; }
+    nav a:hover, nav a.active { opacity: 1; color: var(--color-copper); }
+
+    .blog-hero {
+      background: var(--color-obsidian);
+      color: var(--color-ivory);
+      padding: 4rem 2rem 3rem;
+      text-align: center;
+    }
+    .blog-hero .label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--color-copper);
+      margin-bottom: 1rem;
+    }
+    .blog-hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(1.75rem, 4vw, 2.5rem);
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+    .blog-hero p {
+      max-width: 560px;
+      margin: 0 auto;
+      color: rgba(245, 240, 232, 0.7);
+      font-size: 1.05rem;
+    }
+
+    .blog-container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 3rem 2rem 5rem;
+    }
+
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+      gap: 1.75rem;
+    }
+
+    .post-card {
+      background: white;
+      border-radius: 8px;
+      padding: 2rem;
+      border: 1px solid rgba(26, 26, 46, 0.1);
+      transition: box-shadow 0.2s, transform 0.2s;
+      display: flex;
+      flex-direction: column;
+    }
+    .post-card:hover {
+      box-shadow: 0 8px 24px rgba(26, 26, 46, 0.12);
+      transform: translateY(-2px);
+    }
+
+    .post-card .card-tag {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--color-copper);
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+    }
+
+    .post-card h2 {
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      font-weight: 700;
+      line-height: 1.35;
+      color: var(--color-text-primary);
+      margin-bottom: 0.75rem;
+    }
+
+    .post-card p {
+      font-size: 0.9rem;
+      color: var(--color-text-secondary);
+      line-height: 1.65;
+      flex: 1;
+      margin-bottom: 1.25rem;
+    }
+
+    .post-card .card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.8rem;
+      color: var(--color-text-muted);
+      border-top: 1px solid rgba(26, 26, 46, 0.08);
+      padding-top: 1rem;
+    }
+
+    .post-card .read-link {
+      color: var(--color-copper);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.85rem;
+      transition: color 0.2s;
+    }
+    .post-card .read-link:hover { color: var(--color-copper-hover); }
+
+    .section-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--color-text-muted);
+      margin-bottom: 1.75rem;
+    }
+
+    footer {
+      background: var(--color-obsidian);
+      color: rgba(245, 240, 232, 0.5);
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.8rem;
+    }
+    footer a { color: var(--color-copper); text-decoration: none; }
+
+    @media (max-width: 640px) {
+      .blog-grid { grid-template-columns: 1fr; }
+      .blog-container { padding: 2rem 1.25rem 4rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="/" class="logo" style="display:flex;align-items:center;gap:0.5rem;">
+      <svg width="28" height="28" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><g transform="translate(24,24)"><polygon points="0,-20 17.32,-10 17.32,10 0,20 -17.32,10 -17.32,-10" fill="none" stroke="#F5F5F3" stroke-width="0.36"/><polygon points="0,-13.75 11.9,-6.875 11.9,6.875 0,13.75 -11.9,6.875 -11.9,-6.875" fill="none" stroke="#F5F5F3" stroke-width="0.255"/><line x1="0" y1="-2.5" x2="0" y2="-20" stroke="#F5F5F3" stroke-width="0.12" opacity="0.24"/><line x1="2.17" y1="-1.25" x2="17.32" y2="-10" stroke="#F5F5F3" stroke-width="0.12" opacity="0.24"/><line x1="2.17" y1="1.25" x2="17.32" y2="10" stroke="#F5F5F3" stroke-width="0.12" opacity="0.24"/><line x1="0" y1="2.5" x2="0" y2="20" stroke="#F5F5F3" stroke-width="0.12" opacity="0.24"/><line x1="-2.17" y1="1.25" x2="-17.32" y2="10" stroke="#F5F5F3" stroke-width="0.12" opacity="0.24"/><line x1="-2.17" y1="-1.25" x2="-17.32" y2="-10" stroke="#F5F5F3" stroke-width="0.12" opacity="0.24"/><circle cx="0" cy="0" r="8" fill="none" stroke="#B87333" stroke-width="0.15" opacity="0.22"/><circle cx="0" cy="0" r="5" fill="none" stroke="#B87333" stroke-width="0.18" opacity="0.42"/><circle cx="0" cy="0" r="1.5" fill="#B87333"/></g></svg>
+      VALAR
+    </a>
+    <ul>
+      <li><a href="/">Início</a></li>
+      <li><a href="/blog/" class="active">Blog</a></li>
+      <li><a href="/snapshot.html">Diagnóstico</a></li>
+    </ul>
+  </nav>
+
+  <header class="blog-hero">
+    <p class="label">Blog</p>
+    <h1>Gestão, processos e infraestrutura</h1>
+    <p>Análises para quem opera negócios complexos e quer construir organizações que funcionam sem depender de pessoas-chave.</p>
+  </header>
+
+  <main class="blog-container">
+    <p class="section-label">Publicações recentes</p>
+
+    <div class="blog-grid">
+
+      <article class="post-card">
+        <span class="card-tag">Gestão</span>
+        <h2>Por que a operação não pode depender de pessoas-chave</h2>
+        <p>Toda empresa tem alguém insubstituível. Quando essa pessoa sai, adoece ou simplesmente fica sobrecarregada, a operação trava. Entenda por que esse padrão é um risco estrutural — e como sair dele.</p>
+        <div class="card-footer">
+          <span>24 mai. 2026 · 6 min</span>
+          <a href="/blog/posts/operacao-sem-pessoas-chave.html" class="read-link">Ler artigo →</a>
+        </div>
+      </article>
+
+      <article class="post-card">
+        <span class="card-tag">Infraestrutura</span>
+        <h2>O que é ARDA e por que sua empresa precisa de uma</h2>
+        <p>ARDA não é software. É a arquitetura de referência que descreve como sua empresa pensa, decide e opera — de forma que qualquer pessoa (ou sistema) consiga entender e dar continuidade.</p>
+        <div class="card-footer">
+          <span>24 mai. 2026 · 7 min</span>
+          <a href="/blog/posts/o-que-e-arda.html" class="read-link">Ler artigo →</a>
+        </div>
+      </article>
+
+      <article class="post-card">
+        <span class="card-tag">Análise</span>
+        <h2>O custo invisível de não ter processos documentados</h2>
+        <p>Empresas que não documentam seus processos não apenas perdem eficiência — elas acumulam uma dívida operacional que cresce silenciosamente até se tornar crise. Aqui está como mensurar esse custo.</p>
+        <div class="card-footer">
+          <span>24 mai. 2026 · 8 min</span>
+          <a href="/blog/posts/custo-processos-nao-documentados.html" class="read-link">Ler artigo →</a>
+        </div>
+      </article>
+
+    </div>
+  </main>
+
+  <footer>
+    <p>© 2026 VALAR Inteligência — <a href="/privacidade.html">Privacidade</a> · <a href="/termos.html">Termos</a> · <a href="/blog/feed.xml">RSS</a></p>
+  </footer>
+
+</body>
+</html>

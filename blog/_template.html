@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- SEO primário -->
+  <title>{{POST_TITLE}} — VALAR Inteligência</title>
+  <meta name="description" content="{{POST_DESCRIPTION}}" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://valar.tec.br/blog/posts/{{POST_SLUG}}.html" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="{{POST_TITLE}}" />
+  <meta property="og:description" content="{{POST_DESCRIPTION}}" />
+  <meta property="og:url" content="https://valar.tec.br/blog/posts/{{POST_SLUG}}.html" />
+  <meta property="og:site_name" content="VALAR Inteligência" />
+  <meta property="og:locale" content="pt_BR" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="{{POST_TITLE}}" />
+  <meta name="twitter:description" content="{{POST_DESCRIPTION}}" />
+
+  <!-- JSON-LD Article -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "{{POST_TITLE}}",
+    "description": "{{POST_DESCRIPTION}}",
+    "datePublished": "{{POST_DATE_ISO}}",
+    "dateModified": "{{POST_DATE_ISO}}",
+    "author": {
+      "@type": "Organization",
+      "name": "VALAR Inteligência",
+      "url": "https://valar.tec.br"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "VALAR Inteligência",
+      "url": "https://valar.tec.br"
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://valar.tec.br/blog/posts/{{POST_SLUG}}.html"
+    }
+  }
+  </script>
+
+  <!-- Plausible Analytics -->
+  <script defer data-domain="valar.tec.br" src="https://plausible.io/js/script.js"></script>
+
+  <!-- Design system: mesmos tokens do site institucional -->
+  <style>
+    :root {
+      --color-obsidian: #1a1a2e;
+      --color-obsidian-light: #16213e;
+      --color-copper: #c9804a;
+      --color-copper-hover: #d4925f;
+      --color-ivory: #f5f0e8;
+      --color-ivory-soft: #ede8de;
+      --color-text-primary: #1a1a2e;
+      --color-text-secondary: #4a4a6a;
+      --color-text-muted: #7a7a9a;
+      --font-display: 'Inter Display', 'Inter', system-ui, sans-serif;
+      --font-body: 'Inter', system-ui, sans-serif;
+      --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+      --max-width-content: 720px;
+      --max-width-site: 1200px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { font-size: 16px; scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-body);
+      color: var(--color-text-primary);
+      background: var(--color-ivory);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── Navegação ── */
+    nav {
+      background: var(--color-obsidian);
+      padding: 1rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    nav .logo {
+      color: var(--color-copper);
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 1.25rem;
+      text-decoration: none;
+      letter-spacing: 0.05em;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+    }
+
+    nav a {
+      color: var(--color-ivory);
+      text-decoration: none;
+      font-size: 0.9rem;
+      opacity: 0.85;
+      transition: opacity 0.2s;
+    }
+
+    nav a:hover { opacity: 1; color: var(--color-copper); }
+    nav a.active { opacity: 1; color: var(--color-copper); }
+
+    /* ── Hero do post ── */
+    .post-hero {
+      background: var(--color-obsidian);
+      color: var(--color-ivory);
+      padding: 4rem 2rem 3rem;
+      text-align: center;
+    }
+
+    .post-hero .breadcrumb {
+      font-size: 0.8rem;
+      color: var(--color-copper);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 1.5rem;
+    }
+
+    .post-hero .breadcrumb a {
+      color: var(--color-copper);
+      text-decoration: none;
+    }
+
+    .post-hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(1.75rem, 4vw, 2.75rem);
+      font-weight: 700;
+      line-height: 1.25;
+      max-width: var(--max-width-content);
+      margin: 0 auto 1.5rem;
+    }
+
+    .post-meta {
+      font-size: 0.85rem;
+      color: rgba(245, 240, 232, 0.6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .post-meta .tag {
+      background: rgba(201, 128, 74, 0.2);
+      color: var(--color-copper);
+      border: 1px solid rgba(201, 128, 74, 0.3);
+      border-radius: 4px;
+      padding: 0.2rem 0.6rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    /* ── Conteúdo do post ── */
+    .post-container {
+      max-width: var(--max-width-content);
+      margin: 0 auto;
+      padding: 3rem 2rem 5rem;
+    }
+
+    .post-body h2 {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--color-obsidian);
+      margin: 2.5rem 0 1rem;
+      padding-top: 1rem;
+      border-top: 2px solid var(--color-copper);
+    }
+
+    .post-body h3 {
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--color-obsidian);
+      margin: 2rem 0 0.75rem;
+    }
+
+    .post-body p {
+      margin-bottom: 1.25rem;
+      color: var(--color-text-secondary);
+    }
+
+    .post-body ul, .post-body ol {
+      margin: 0 0 1.25rem 1.5rem;
+      color: var(--color-text-secondary);
+    }
+
+    .post-body li { margin-bottom: 0.4rem; }
+
+    .post-body strong { color: var(--color-text-primary); font-weight: 600; }
+
+    .post-body blockquote {
+      border-left: 3px solid var(--color-copper);
+      margin: 1.5rem 0;
+      padding: 1rem 1.5rem;
+      background: var(--color-ivory-soft);
+      border-radius: 0 6px 6px 0;
+      font-style: italic;
+      color: var(--color-text-secondary);
+    }
+
+    .post-body code {
+      font-family: var(--font-mono);
+      font-size: 0.875em;
+      background: var(--color-obsidian);
+      color: var(--color-copper);
+      padding: 0.1em 0.4em;
+      border-radius: 3px;
+    }
+
+    /* ── CTA ao final ── */
+    .post-cta {
+      margin-top: 3.5rem;
+      padding: 2.5rem;
+      background: var(--color-obsidian);
+      border-radius: 8px;
+      text-align: center;
+    }
+
+    .post-cta p {
+      color: rgba(245, 240, 232, 0.8);
+      margin-bottom: 1.25rem;
+      font-size: 1rem;
+    }
+
+    .post-cta a {
+      display: inline-block;
+      background: var(--color-copper);
+      color: var(--color-ivory);
+      text-decoration: none;
+      padding: 0.85rem 2rem;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: background 0.2s;
+    }
+
+    .post-cta a:hover { background: var(--color-copper-hover); }
+
+    /* ── Footer ── */
+    footer {
+      background: var(--color-obsidian);
+      color: rgba(245, 240, 232, 0.5);
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.8rem;
+    }
+
+    footer a { color: var(--color-copper); text-decoration: none; }
+
+    @media (max-width: 640px) {
+      nav ul { gap: 1rem; }
+      .post-hero { padding: 3rem 1.25rem 2rem; }
+      .post-container { padding: 2rem 1.25rem 4rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="/" class="logo">VALAR</a>
+    <ul>
+      <li><a href="/">Início</a></li>
+      <li><a href="/blog/" class="active">Blog</a></li>
+      <li><a href="/snapshot.html">Diagnóstico</a></li>
+    </ul>
+  </nav>
+
+  <header class="post-hero">
+    <p class="breadcrumb"><a href="/blog/">Blog</a> / Gestão</p>
+    <h1>{{POST_TITLE}}</h1>
+    <div class="post-meta">
+      <span>{{POST_DATE_DISPLAY}}</span>
+      <span class="tag">{{POST_TAG}}</span>
+      <span>{{POST_READ_TIME}} min de leitura</span>
+    </div>
+  </header>
+
+  <main class="post-container">
+    <article class="post-body">
+
+      <!-- ═══════════════════════════════════════════════
+           CONTEÚDO DO POST — substituir este bloco
+      ═══════════════════════════════════════════════ -->
+      {{POST_CONTENT}}
+      <!-- ════════════════════════════════════════════ -->
+
+    </article>
+
+    <aside class="post-cta">
+      <p>Quer entender onde sua operação está vulnerável a pessoas-chave? O diagnóstico é gratuito e leva menos de 20 minutos.</p>
+      <a href="/snapshot.html">Iniciar diagnóstico gratuito →</a>
+    </aside>
+  </main>
+
+  <footer>
+    <p>© 2026 VALAR Inteligência — <a href="/privacidade.html">Privacidade</a> · <a href="/termos.html">Termos</a></p>
+  </footer>
+
+</body>
+</html>

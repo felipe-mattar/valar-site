@@ -51,7 +51,7 @@ Complementa o [DEPLOY.md](DEPLOY.md).
 |--------|-----------|
 | Verificar renovação do domínio | [Registro.br](https://registro.br) — confirmar data e renovação automática |
 | Atualizar Copyright footer | alterar `© AAAA` em todos os HTML |
-| Revisar preços dos módulos | atualizar index.html se necessário |
+| Revisar valores comerciais nas três camadas ARDA | atualizar `11_CANAIS_DIGITAIS/web_institucional/index.html` e `03_COMERCIAL` quando política mudar |
 | Snapshot de configurações | registrar: DNS atual, Formspree endpoint, Plausible domínio, UptimeRobot monitors |
 | Revisar OG image | verificar se a marca evoluiu — versionar nome do arquivo ao atualizar |
 

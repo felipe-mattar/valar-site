@@ -1,12 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
   <rect width="32" height="32" fill="#0A0A0B"/>
-  <g transform="translate(16,16)">
-    <polygon points="0,-13 11.26,-6.5 11.26,6.5 0,13 -11.26,6.5 -11.26,-6.5"
-      fill="none" stroke="#F5F5F3" stroke-width="0.6"/>
-    <polygon points="0,-8.94 7.74,-4.47 7.74,4.47 0,8.94 -7.74,4.47 -7.74,-4.47"
-      fill="none" stroke="#F5F5F3" stroke-width="0.42"/>
-    <circle cx="0" cy="0" r="5.2" fill="none" stroke="#B87333" stroke-width="0.28" opacity="0.22"/>
-    <circle cx="0" cy="0" r="3.25" fill="none" stroke="#B87333" stroke-width="0.34" opacity="0.42"/>
-    <circle cx="0" cy="0" r="0.9" fill="#B87333"/>
-  </g>
+  <polygon points="16.00,2.24 27.92,9.12 27.92,22.88 16.00,29.76 4.08,22.88 4.08,9.12" fill="none" stroke="#F5F5F3" stroke-width="0.2064"/>
+  <circle cx="16.0" cy="16.0" r="0.8600" fill="#B87333"/>
 </svg>
