@@ -148,28 +148,6 @@
       max-width: 320px;
       margin: 0 auto 16px;
     }
-    .snap-grafo__texto {
-      text-align: center;
-      font-size: 14px;
-      color: var(--texto-secundario, #888);
-      line-height: 1.6;
-      margin-bottom: 6px;
-    }
-    .snap-grafo__empresa {
-      text-align: center;
-      font-size: 13px;
-      color: var(--texto, #F5F5F3);
-      font-weight: 500;
-      margin-bottom: 4px;
-      min-height: 18px;
-    }
-    .snap-grafo__progress {
-      text-align: center;
-      font-family: 'JetBrains Mono', 'Courier New', monospace;
-      font-size: 11px;
-      color: var(--cobre, #B87333);
-      margin-bottom: 28px;
-    }
     .grafo-node-circle {
       fill: none;
       stroke: #2a2a2a;
@@ -288,18 +266,25 @@
       line-height: 1.6;
       max-width: 88%;
     }
+    /* ── M5: hierarquia técnica das mensagens ────────────────────── */
     .chat-msg--naur {
       color: var(--texto, #F5F5F3);
       align-self: flex-start;
+      border-left: 2px solid rgba(184,115,51,0.22);
+      padding-left: 10px;
     }
     .chat-msg--naur::before {
-      content: "Naur  ";
+      content: "NAUR";
+      font-family: 'JetBrains Mono', 'Courier New', monospace;
       font-size: 10px;
-      letter-spacing: 2px;
+      letter-spacing: 3px;
       text-transform: uppercase;
       color: var(--cobre, #B87333);
       display: block;
       margin-bottom: 4px;
+    }
+    .chat-msg--naur[data-turno]::before {
+      content: "NAUR · T" attr(data-turno);
     }
     .chat-msg--user {
       color: var(--texto-secundario, #888);
@@ -307,11 +292,12 @@
       text-align: right;
     }
     .chat-msg--user::before {
-      content: "Voce  ";
+      content: "VOCÊ";
+      font-family: 'JetBrains Mono', 'Courier New', monospace;
       font-size: 10px;
-      letter-spacing: 2px;
+      letter-spacing: 3px;
       text-transform: uppercase;
-      color: #555;
+      color: #444;
       display: block;
       margin-bottom: 4px;
     }
@@ -375,14 +361,129 @@
     }
     .chat-concluido.visible { display: block; }
 
-    /* Fora do ICP */
-    .snap-icp-aviso {
-      padding: 20px;
+    /* ── M1-M3: snap-stamp — bloco de estado com barra lateral 3px ─── */
+    .snap-stamp {
+      padding: 24px 24px 28px;
       border: 1px solid var(--borda, #222);
-      font-size: 14px;
-      color: var(--texto-secundario, #888);
-      line-height: 1.6;
+      position: relative;
     }
+    .snap-stamp::before {
+      content: "";
+      position: absolute;
+      inset: 0 auto 0 0;
+      width: 3px;
+      background: var(--cobre, #B87333);
+    }
+    .snap-stamp--falha::before { background: #B85C4F; }
+    .snap-stamp--neutro::before { background: #2a2a2a; }
+    .snap-stamp__eyebrow {
+      font-family: 'JetBrains Mono', 'Courier New', monospace;
+      font-size: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--cobre, #B87333);
+      margin-bottom: 6px;
+    }
+    .snap-stamp--falha .snap-stamp__eyebrow { color: #B85C4F; }
+    .snap-stamp--neutro .snap-stamp__eyebrow { color: #555; }
+    .snap-stamp__id {
+      font-family: 'JetBrains Mono', 'Courier New', monospace;
+      font-size: 18px;
+      letter-spacing: 2px;
+      color: var(--texto, #F5F5F3);
+      margin-bottom: 14px;
+    }
+    .snap-stamp__body {
+      font-size: 14px;
+      line-height: 1.6;
+      color: var(--texto-secundario, #888);
+    }
+    .snap-stamp__footer {
+      margin-top: 18px;
+      padding-top: 14px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      display: flex;
+      gap: 12px;
+      align-items: baseline;
+      flex-wrap: wrap;
+      font-family: 'JetBrains Mono', 'Courier New', monospace;
+      font-size: 12px;
+    }
+    .snap-stamp__footer-key {
+      color: #444;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    /* ── M4: transições suaves entre etapas ─────────────────────────── */
+    .snap-stage {
+      opacity: 0;
+      transform: translateY(8px);
+      transition: opacity 500ms ease, transform 500ms ease;
+    }
+    .snap-stage.snap-stage--visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── M6: numeração técnica nos campos do formulário ─────────────── */
+    .snap-form__label-row {
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+      margin-bottom: 8px;
+    }
+    .snap-form__label-row .snap-form__label {
+      margin-bottom: 0;
+    }
+    .snap-form__num {
+      font-family: 'JetBrains Mono', 'Courier New', monospace;
+      font-size: 10px;
+      letter-spacing: 2.5px;
+      color: #3a3a3a;
+      border-bottom: 1px solid #1e1e1e;
+      padding-bottom: 2px;
+      min-width: 20px;
+    }
+
+    /* ── M7: ledger técnico no grafo OSINT ──────────────────────────── */
+    .snap-grafo__ledger {
+      border-top: 1px solid rgba(255,255,255,0.06);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      padding: 12px 0;
+      font-family: 'JetBrains Mono', 'Courier New', monospace;
+      font-size: 12px;
+      margin: 0 0 28px;
+    }
+    .snap-grafo__row {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      padding: 3px 0;
+    }
+    .snap-grafo__row-key {
+      color: #3a3a3a;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      min-width: 68px;
+    }
+    .snap-grafo__row-sep { color: #2a2a2a; }
+    .snap-grafo__row-val { color: var(--texto, #F5F5F3); }
+
+    /* ── M8: sistema de links em 2 níveis ───────────────────────────── */
+    .snap-link {
+      color: var(--texto, #F5F5F3);
+      border-bottom: 1px solid var(--borda, #222);
+      text-decoration: none;
+      transition: border-color 200ms ease;
+    }
+    .snap-link:hover { border-bottom-color: var(--cobre, #B87333); }
+    .snap-link--accent {
+      color: var(--cobre, #B87333);
+      border-bottom: none;
+      text-decoration: none;
+    }
+    .snap-link--accent:hover { opacity: 0.8; }
 
     /* ── Hero da página ────────────────────────────────────────────────── */
     .snap-hero {
@@ -495,7 +596,10 @@
 
             <!-- CNPJ -->
             <div class="snap-form__field">
-              <label class="snap-form__label" for="snap-cnpj">CNPJ da empresa *</label>
+              <div class="snap-form__label-row">
+                <span class="snap-form__num">01</span>
+                <label class="snap-form__label" for="snap-cnpj">CNPJ da empresa *</label>
+              </div>
               <input
                 class="snap-form__input"
                 type="text"
@@ -515,7 +619,10 @@
 
             <!-- Nome -->
             <div class="snap-form__field">
-              <label class="snap-form__label" for="snap-nome">Seu nome *</label>
+              <div class="snap-form__label-row">
+                <span class="snap-form__num">02</span>
+                <label class="snap-form__label" for="snap-nome">Seu nome *</label>
+              </div>
               <input
                 class="snap-form__input"
                 type="text"
@@ -531,7 +638,10 @@
 
             <!-- E-mail -->
             <div class="snap-form__field">
-              <label class="snap-form__label" for="snap-email">E-mail corporativo *</label>
+              <div class="snap-form__label-row">
+                <span class="snap-form__num">03</span>
+                <label class="snap-form__label" for="snap-email">E-mail corporativo *</label>
+              </div>
               <input
                 class="snap-form__input"
                 type="email"
@@ -548,7 +658,10 @@
 
             <!-- Quantidade de funcionários -->
             <div class="snap-form__field">
-              <label class="snap-form__label" for="snap-funcionarios">Quantidade aproximada de funcionários *</label>
+              <div class="snap-form__label-row">
+                <span class="snap-form__num">04</span>
+                <label class="snap-form__label" for="snap-funcionarios">Funcionários (aproximado) *</label>
+              </div>
               <input
                 class="snap-form__input"
                 type="number"
@@ -588,7 +701,7 @@
           </form>
 
           <!-- ── Grafo OSINT animado (D-04) ──────────────────────────── -->
-          <div class="snap-grafo" id="snap-grafo">
+          <div class="snap-grafo snap-stage" id="snap-grafo">
             <hr class="snap-divider">
             <span class="sr-only" id="snap-grafo-announce" aria-live="polite"></span>
             <svg id="snap-svg" viewBox="0 0 320 320" xmlns="http://www.w3.org/2000/svg"
@@ -606,17 +719,27 @@
               <!-- Nodos OSINT (preenchidos via JS) -->
               <g id="grafo-nodos"></g>
             </svg>
-            <p class="snap-grafo__empresa" id="snap-grafo-empresa"></p>
-            <p class="snap-grafo__texto" id="snap-grafo-texto">
-              Naur está mapeando sua empresa.<br>A entrevista começa em instantes.
-            </p>
-            <p class="snap-grafo__progress">
-              <span id="snap-grafo-count">0</span>&thinsp;/&thinsp;14 fontes consultadas
-            </p>
+            <div class="snap-grafo__ledger">
+              <div class="snap-grafo__row">
+                <span class="snap-grafo__row-key">EMPRESA</span>
+                <span class="snap-grafo__row-sep">·</span>
+                <span class="snap-grafo__row-val" id="snap-grafo-empresa">—</span>
+              </div>
+              <div class="snap-grafo__row">
+                <span class="snap-grafo__row-key">STATUS</span>
+                <span class="snap-grafo__row-sep">·</span>
+                <span class="snap-grafo__row-val" id="snap-grafo-texto">Mapeando fontes públicas</span>
+              </div>
+              <div class="snap-grafo__row">
+                <span class="snap-grafo__row-key">FONTES</span>
+                <span class="snap-grafo__row-sep">·</span>
+                <span class="snap-grafo__row-val"><span id="snap-grafo-count">0</span> / 14</span>
+              </div>
+            </div>
           </div>
 
           <!-- ── Chat Naur (aparece quando OSINT avançado o suficiente) ── -->
-          <div class="snap-chat" id="snap-chat" aria-live="polite">
+          <div class="snap-chat snap-stage" id="snap-chat" aria-live="polite">
             <hr class="snap-divider">
             <p class="snap-secao__eyebrow">entrevista de fundamentação</p>
             <p class="chat-intro">
@@ -639,38 +762,49 @@
               ></textarea>
               <button id="chat-send" class="chat-send-btn" aria-label="Enviar resposta" title="Enviar (Enter)">↵</button>
             </div>
-            <div class="chat-concluido" id="chat-concluido">
-              <p><strong>Entrevista concluída.</strong></p>
-              <p style="margin-top:8px;font-size:13px;color:var(--texto-secundario,#888);line-height:1.6;">
+            <div class="chat-concluido snap-stamp snap-stage" id="chat-concluido">
+              <p class="snap-stamp__eyebrow">Entrevista concluída</p>
+              <p class="snap-stamp__id" id="chat-protocolo">—</p>
+              <p class="snap-stamp__body">
                 O relatório diagnóstico está sendo gerado e chegará ao seu e-mail em instantes.
                 Verifique também a pasta de spam.
               </p>
-              <p style="margin-top:12px;font-size:13px;color:var(--texto-secundario,#888);">
-                Para aprofundar, entre em contato:
-                <a href="mailto:contato@valar.tec.br" style="color:var(--cobre,#B87333);">contato@valar.tec.br</a>
-              </p>
+              <div class="snap-stamp__footer">
+                <span class="snap-stamp__footer-key">contato</span>
+                <a href="mailto:contato@valar.tec.br" class="snap-link--accent">contato@valar.tec.br</a>
+              </div>
             </div>
           </div>
 
           <!-- Fora do ICP -->
           <div id="snap-fora-icp" style="display:none;">
             <hr class="snap-divider">
-            <div class="snap-icp-aviso">
-              A empresa não atende ao critério mínimo do diagnóstico neste momento
-              (situação cadastral ativa e pelo menos 1 ano de operação). Enviamos um
-              e-mail explicando. Dúvidas:
-              <a href="mailto:contato@valar.tec.br" style="color:var(--cobre,#B87333);">contato@valar.tec.br</a>.
+            <div class="snap-stamp snap-stamp--neutro snap-stage">
+              <p class="snap-stamp__eyebrow">Fora do critério</p>
+              <p class="snap-stamp__body">
+                A empresa não atende ao critério mínimo do diagnóstico neste momento:
+                situação cadastral ativa e pelo menos 1 ano de operação.
+                Enviamos um e-mail com mais detalhes.
+              </p>
+              <div class="snap-stamp__footer">
+                <span class="snap-stamp__footer-key">dúvidas</span>
+                <a href="mailto:contato@valar.tec.br" class="snap-link--accent">contato@valar.tec.br</a>
+              </div>
             </div>
           </div>
 
           <!-- Erro genérico -->
           <div id="snap-erro" style="display:none;">
             <hr class="snap-divider">
-            <p style="font-size:14px;color:#f87171;">
-              Ocorreu um erro no processamento. Se o problema persistir,
-              escreva para <a href="mailto:contato@valar.tec.br" style="color:var(--cobre,#B87333);">contato@valar.tec.br</a>
-              com o código: <span id="snap-err-id" style="font-family:monospace;"></span>.
-            </p>
+            <div class="snap-stamp snap-stamp--falha snap-stage">
+              <p class="snap-stamp__eyebrow">Erro no processamento</p>
+              <p class="snap-stamp__id" id="snap-err-id"></p>
+              <p class="snap-stamp__body">
+                Se o problema persistir, escreva para
+                <a href="mailto:contato@valar.tec.br" class="snap-link--accent">contato@valar.tec.br</a>
+                informando o código acima.
+              </p>
+            </div>
           </div>
 
         </div><!-- /.snap-wrap -->
@@ -906,6 +1040,10 @@
   function iniciarGrafo(diagnosticoId) {
     const grafoEl = document.getElementById('snap-grafo');
     grafoEl.classList.add('visible');
+    // M4 — fade-in após next paint para que a transição CSS seja visível.
+    requestAnimationFrame(() => requestAnimationFrame(() =>
+      grafoEl.classList.add('snap-stage--visible')
+    ));
     construirSVG();
     startGrafoPolling(diagnosticoId);
   }
@@ -1066,7 +1204,12 @@
         if (data.status === 'fora_icp') {
           clearInterval(interval);
           document.getElementById('snap-grafo').classList.remove('visible');
-          document.getElementById('snap-fora-icp').style.display = 'block';
+          const icpEl = document.getElementById('snap-fora-icp');
+          icpEl.style.display = 'block';
+          // M4 — fade-in do bloco fora_icp.
+          requestAnimationFrame(() => requestAnimationFrame(() =>
+            icpEl.querySelector('.snap-stage').classList.add('snap-stage--visible')
+          ));
           return;
         }
 
@@ -1074,8 +1217,13 @@
         if (data.status === 'error') {
           clearInterval(interval);
           document.getElementById('snap-err-id').textContent =
-            diagnosticoId.slice(0, 8).toUpperCase();
-          document.getElementById('snap-erro').style.display = 'block';
+            'ERR · ' + diagnosticoId.slice(0, 8).toUpperCase();
+          const erroEl = document.getElementById('snap-erro');
+          erroEl.style.display = 'block';
+          // M4 — fade-in do bloco erro.
+          requestAnimationFrame(() => requestAnimationFrame(() =>
+            erroEl.querySelector('.snap-stage').classList.add('snap-stage--visible')
+          ));
           return;
         }
 
@@ -1101,13 +1249,18 @@
   let _chatDiagnosticoId = null;
   let _chatHistorico = [];
   let _chatAtivo = false;
+  let _chatTurnoNum = 0; // M5 — contador para eyebrow "NAUR · T01"
 
   function iniciarNaurChat(diagnosticoId) {
     _chatDiagnosticoId = diagnosticoId;
     _chatAtivo = true;
     const chatEl = document.getElementById('snap-chat');
     chatEl.classList.add('visible');
-    chatEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    // M4 — fade-in após next paint.
+    requestAnimationFrame(() => requestAnimationFrame(() => {
+      chatEl.classList.add('snap-stage--visible');
+      chatEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }));
     enviarTurno('');
   }
 
@@ -1208,6 +1361,11 @@
     const div = document.createElement('div');
     div.className = 'chat-msg chat-msg--' + papel;
     div.textContent = texto;
+    // M5 — adiciona número do turno ao eyebrow do Naur.
+    if (papel === 'naur') {
+      _chatTurnoNum++;
+      div.dataset.turno = String(_chatTurnoNum).padStart(2, '0');
+    }
     msgs.appendChild(div);
     msgs.scrollTop = msgs.scrollHeight;
   }
@@ -1224,7 +1382,17 @@
   function encerrarChat() {
     setInputDisabled(true);
     document.getElementById('chat-input-wrap').style.display = 'none';
-    document.getElementById('chat-concluido').classList.add('visible');
+    // M1 — preenche ID de protocolo no snap-stamp de conclusão.
+    if (_chatDiagnosticoId) {
+      document.getElementById('chat-protocolo').textContent =
+        'PROTOCOLO · ' + _chatDiagnosticoId.slice(0, 8).toUpperCase();
+    }
+    const concluidoEl = document.getElementById('chat-concluido');
+    concluidoEl.classList.add('visible');
+    // M4 — fade-in da conclusão.
+    requestAnimationFrame(() => requestAnimationFrame(() =>
+      concluidoEl.classList.add('snap-stage--visible')
+    ));
 
     // D-02: dispara concluir → relatório gerado em background → e-mail enviado
     if (_chatDiagnosticoId && _chatHistorico.length > 0) {
