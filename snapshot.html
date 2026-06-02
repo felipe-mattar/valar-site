@@ -190,7 +190,12 @@
     }
     .grafo-line.ativa {
       stroke: #B87333;
-      opacity: 0.35;
+      /* F8 — quando a fonte responde, a linha "acende": cresce de
+         stroke-width fino → grosso → estabiliza, e mantém pulsação
+         suave em vez de virar estática. */
+      animation:
+        grafo-activate 0.6s ease-out forwards,
+        grafo-pulse 2.6s ease-in-out 0.6s infinite;
     }
     .grafo-label {
       font-size: 7.5px;
@@ -205,14 +210,34 @@
       fill: #777;
     }
     @keyframes grafo-pulse {
-      0%, 100% { opacity: 0.12; }
-      50% { opacity: 0.45; }
+      0%, 100% { opacity: 0.18; }
+      50% { opacity: 0.55; }
+    }
+    /* F8 — "activate" simula corrente passando pelo nó: stroke fino
+       intensifica rapidamente e estabiliza. */
+    @keyframes grafo-activate {
+      0%   { stroke-width: 0.6; opacity: 0.18; }
+      60%  { stroke-width: 2.4; opacity: 0.65; }
+      100% { stroke-width: 1.4; opacity: 0.35; }
+    }
+    /* F8 — nó também ganha leve flash quando responde. */
+    @keyframes grafo-node-activate {
+      0%   { transform: scale(1);   filter: brightness(1); }
+      55%  { transform: scale(1.18); filter: brightness(1.6); }
+      100% { transform: scale(1);   filter: brightness(1); }
+    }
+    .grafo-node-circle.respondeu {
+      animation: grafo-node-activate 0.55s ease-out;
+      transform-origin: center;
+      transform-box: fill-box;
     }
     .grafo-line.pendente {
-      animation: grafo-pulse 2.2s ease-in-out infinite;
+      animation: grafo-pulse 2.6s ease-in-out infinite;
     }
     @media (prefers-reduced-motion: reduce) {
-      .grafo-line.pendente { animation: none; opacity: 0.12; }
+      .grafo-line.pendente,
+      .grafo-line.ativa,
+      .grafo-node-circle.respondeu { animation: none; opacity: 0.35; }
       .grafo-node-circle,
       .grafo-line,
       .grafo-label { transition: none; }
@@ -304,22 +329,37 @@
       gap: 8px;
       align-items: flex-end;
     }
+    /* F9 — input vira textarea com auto-grow controlado por JS.
+       min/max fixos garantem que o campo sempre tenha pelo menos 2
+       linhas visíveis (≈44px) e nunca tome a tela inteira (140px). */
     .chat-input-wrap .snap-form__input {
       flex: 1;
       resize: none;
+      min-height: 44px;
+      max-height: 140px;
+      line-height: 1.5;
+      overflow-y: auto;
+      padding: 10px 12px;
     }
+    /* F9 — botão compacto (ícone ↵) pra ganhar largura útil pro texto.
+       Mantém min-width pra área de toque acessível. */
     .chat-send-btn {
-      padding: 12px 18px;
+      padding: 0;
+      width: 44px;
+      height: 44px;
       background: var(--texto, #F5F5F3);
       color: #0A0A0B;
       border: none;
-      font-size: 14px;
+      font-size: 18px;
       font-weight: 500;
       font-family: inherit;
       cursor: pointer;
       white-space: nowrap;
       transition: opacity 0.15s;
       flex-shrink: 0;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
     }
     .chat-send-btn:hover { opacity: 0.9; }
     .chat-send-btn:disabled { opacity: 0.35; cursor: not-allowed; }
@@ -586,15 +626,18 @@
             <div class="chat-msgs" id="chat-msgs" role="log" aria-label="Conversa com Naur"></div>
             <div class="chat-typing" id="chat-typing" aria-live="polite"></div>
             <div class="chat-input-wrap" id="chat-input-wrap">
-              <input
-                type="text"
+              <!-- F9 — textarea com auto-grow controlado por JS.
+                   Enter envia; Shift+Enter quebra linha; placeholder
+                   indica explicitamente o atalho. -->
+              <textarea
                 id="chat-input"
                 class="snap-form__input"
-                placeholder="Responda ao Naur..."
+                rows="1"
+                placeholder="Responda ao Naur — Enter envia · Shift+Enter quebra linha"
                 autocomplete="off"
                 aria-label="Sua resposta para o Naur"
-              >
-              <button id="chat-send" class="chat-send-btn" aria-label="Enviar">Enviar</button>
+              ></textarea>
+              <button id="chat-send" class="chat-send-btn" aria-label="Enviar resposta" title="Enviar (Enter)">↵</button>
             </div>
             <div class="chat-concluido" id="chat-concluido">
               <p><strong>Entrevista concluída.</strong></p>
@@ -924,12 +967,21 @@
     });
   }
 
+  // F8 — controla quais nodos já viraram "respondeu" para que cada
+  // nodo só dispare a animação UMA vez (sem flicker em pollings
+  // subsequentes que reaplicam o mesmo estado).
+  const _nodosAcesos = new Set();
+
   function atualizarNodo(fonte, estado) {
     // estado: 'respondeu' | 'indisponivel' | 'pendente'
     const circle = document.getElementById(`grafo-node-${fonte}`);
     const line = document.getElementById(`grafo-line-${fonte}`);
     const label = document.getElementById(`grafo-label-${fonte}`);
     if (!circle || !line) return;
+
+    // Se já está respondeu e o polling tenta marcar de novo, não
+    // restarta a animação (evita "flicker" a cada 2s).
+    if (estado === 'respondeu' && _nodosAcesos.has(fonte)) return;
 
     // Remove classes de estado anteriores
     ['respondeu', 'indisponivel', 'pendente'].forEach(c => {
@@ -939,9 +991,20 @@
     });
 
     if (estado === 'respondeu') {
+      // F8 — stagger: cada fonte que entra recebe um delay baseado
+      // na posição em FONTES_ORDEM, criando uma cascata visual mesmo
+      // quando várias chegam no mesmo poll de 2s.
+      const idx = FONTES_ORDEM.indexOf(fonte);
+      const acesosAtuais = _nodosAcesos.size;
+      const delay = Math.max(0, (acesosAtuais % 6)) * 90; // ms
+      const idxFallback = idx >= 0 ? idx * 50 : 0;
+      const delayMs = delay + (idxFallback % 360);
+      circle.style.animationDelay = delayMs + 'ms';
+      line.style.animationDelay = delayMs + 'ms';
       circle.classList.add('respondeu');
       line.classList.add('ativa');
       if (label) label.classList.add('respondeu');
+      _nodosAcesos.add(fonte);
     } else if (estado === 'indisponivel') {
       circle.classList.add('indisponivel');
     } else {
@@ -1057,7 +1120,24 @@
       e.preventDefault();
       submitTurno();
     }
+    // Shift+Enter cai por default no comportamento do textarea (quebra linha).
   });
+
+  // F9 — auto-grow do textarea: cresce conforme o usuário digita,
+  // limitado pelo max-height do CSS (140px). Reseta após envio.
+  (function () {
+    const _ta = document.getElementById('chat-input');
+    if (!_ta) return;
+    const _reajustar = function () {
+      _ta.style.height = 'auto';
+      _ta.style.height = Math.min(_ta.scrollHeight, 140) + 'px';
+    };
+    _ta.addEventListener('input', _reajustar);
+    // Reseta altura quando o campo é limpo (após submitTurno).
+    window._chatInputReset = function () {
+      _ta.style.height = '';
+    };
+  })();
 
   function submitTurno() {
     if (!_chatAtivo) return;
@@ -1065,6 +1145,8 @@
     const texto = input.value.trim();
     if (!texto) return;
     input.value = '';
+    // F9 — devolve o textarea à altura inicial após o envio.
+    if (typeof window._chatInputReset === 'function') window._chatInputReset();
     adicionarMensagem('user', texto);
     const turnoAnterior = _chatHistorico.slice();
     _chatHistorico.push({ role: 'user', content: texto });
