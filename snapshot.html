@@ -247,23 +247,24 @@
     }
     .grafo-station .grafo-node-shape { transition: fill .3s ease, stroke .3s ease, filter .3s ease; }
 
-    /* ── Coexistência (C4): grafo vira FAIXA horizontal acima do chat ── */
+    /* ── Coexistência (C4): grafo vira FAIXA acima do chat ──
+       O grafo é o protagonista (centralizado, grande); o ledger vira uma NOTA
+       DE RODAPÉ discreta abaixo — não rouba metade da faixa. */
     .grafo-stage { transition: max-width .8s ease, opacity .6s ease, filter .8s ease; }
     .snap-grafo.docked {
-      display: flex; align-items: center; gap: 24px;
       border: 1px solid rgba(184,115,51,0.16);
-      background: #08080a; padding: 16px 22px; margin: 0 0 22px;
+      background: #08080a; padding: 18px 18px 12px; margin: 0 0 22px;
     }
     .snap-grafo.docked .snap-divider { display: none; }
     .snap-grafo.docked .grafo-stage {
-      flex: 0 0 220px; max-width: 220px; margin: 0;
-      border: none; background: #060608;
+      max-width: 440px; margin: 0 auto; border: none; background: transparent;
     }
-    .snap-grafo.docked .snap-grafo__ledger { flex: 1; opacity: .92; }
-    @media (max-width: 680px) {
-      .snap-grafo.docked { flex-direction: column; gap: 12px; padding: 14px; }
-      .snap-grafo.docked .grafo-stage { flex: 0 0 auto; max-width: 260px; width: 100%; }
+    /* ledger inline, pequeno e discreto, abaixo do grafo */
+    .snap-grafo.docked .snap-grafo__ledger {
+      display: flex; flex-wrap: wrap; justify-content: center; align-items: baseline;
+      gap: 4px 16px; margin-top: 8px; opacity: .55; font-size: 10px;
     }
+    .snap-grafo.docked .snap-grafo__row { display: inline-flex; gap: 5px; margin: 0; }
 
     @media (prefers-reduced-motion: reduce) {
       #grafo-core-ring, #grafo-core-pulse,
