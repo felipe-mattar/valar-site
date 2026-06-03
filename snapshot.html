@@ -1333,12 +1333,13 @@
       }
 
       const data = await res.json();
-      adicionarMensagem('naur', data.turno_naur);
+      const falaLimpa = limparFalaNaur(data.turno_naur);
+      adicionarMensagem('naur', falaLimpa);
 
       if (!turnoTexto && _chatHistorico.length === 0) {
         _chatHistorico.push({ role: 'user', content: '__INICIO__' });
       }
-      _chatHistorico.push({ role: 'assistant', content: data.turno_naur });
+      _chatHistorico.push({ role: 'assistant', content: falaLimpa });
 
       if (data.completa) {
         encerrarChat();
@@ -1354,6 +1355,28 @@
       _chatAtivo = true;
       setInputDisabled(false);
     }
+  }
+
+  // Guarda defensiva (A1): mesmo com o backend corrigido, nunca exibir JSON cru.
+  // Se o backend retornar preâmbulo + bloco JSON, extrai apenas o fala_agente.
+  function limparFalaNaur(texto) {
+    if (!texto) return '';
+    let t = String(texto);
+    // Se houver um objeto JSON com fala_agente, usa o valor dele.
+    if (t.indexOf('"fala_agente"') !== -1) {
+      const ini = t.indexOf('{');
+      const fim = t.lastIndexOf('}');
+      if (ini !== -1 && fim > ini) {
+        try {
+          const obj = JSON.parse(t.slice(ini, fim + 1));
+          if (obj && typeof obj.fala_agente === 'string') t = obj.fala_agente;
+        } catch (_) { /* segue para limpeza por regex */ }
+      }
+    }
+    // Remove blocos cercados ```...``` e marcador de conclusão.
+    t = t.replace(/```(?:json)?[\s\S]*?```/g, '');
+    t = t.replace(/\[ENTREVISTA_COMPLETA\]/g, '');
+    return t.trim();
   }
 
   function adicionarMensagem(papel, texto) {
