@@ -150,7 +150,7 @@
     .grafo-stage {
       position: relative;
       width: 100%;
-      max-width: 560px;
+      max-width: 680px;          /* C2 — geração ocupa mais tela */
       margin: 0 auto 18px;
       border: 1px solid rgba(184,115,51,0.14);
       background:
@@ -239,16 +239,30 @@
     @keyframes grafo-crystallize { 0% { transform:scale(0); opacity:0 } 60% { transform:scale(1.3); opacity:1 } 100% { transform:scale(1); opacity:1 } }
     @keyframes grafo-edge-shimmer { 0%,100% { opacity:.3 } 50% { opacity:.75 } }
 
-    /* ── Coexistência: grafo "acopla" (menor + pulsante) quando o chat abre ── */
+    /* ── Brilho gravitacional por proximidade do mouse (C5) ── */
+    .grafo-station.perto .grafo-node-shape {
+      stroke: #E8A765;
+      fill: rgba(184,115,51,0.28);
+      filter: drop-shadow(0 0 5px rgba(232,167,101,0.7));
+    }
+    .grafo-station .grafo-node-shape { transition: fill .3s ease, stroke .3s ease, filter .3s ease; }
+
+    /* ── Coexistência (C4): grafo vira FAIXA horizontal acima do chat ── */
     .grafo-stage { transition: max-width .8s ease, opacity .6s ease, filter .8s ease; }
-    .snap-grafo.docked { margin-bottom: 8px; }
-    .snap-grafo.docked .grafo-stage { max-width: 340px; opacity: .9; }
+    .snap-grafo.docked {
+      display: flex; align-items: center; gap: 24px;
+      border: 1px solid rgba(184,115,51,0.16);
+      background: #08080a; padding: 16px 22px; margin: 0 0 22px;
+    }
     .snap-grafo.docked .snap-divider { display: none; }
-    .snap-grafo.docked .snap-grafo__ledger { font-size: 11px; opacity: .82; }
-    @media (min-width: 860px) {
-      /* Desktop: grafo acoplado fica fixo no topo enquanto o chat rola (coexistem) */
-      .snap-grafo.docked { position: sticky; top: 88px; z-index: 2; float: right; width: 300px; margin: 0 0 16px 28px; }
-      .snap-grafo.docked .grafo-stage { max-width: 300px; }
+    .snap-grafo.docked .grafo-stage {
+      flex: 0 0 220px; max-width: 220px; margin: 0;
+      border: none; background: #060608;
+    }
+    .snap-grafo.docked .snap-grafo__ledger { flex: 1; opacity: .92; }
+    @media (max-width: 680px) {
+      .snap-grafo.docked { flex-direction: column; gap: 12px; padding: 14px; }
+      .snap-grafo.docked .grafo-stage { flex: 0 0 auto; max-width: 260px; width: 100%; }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -386,6 +400,22 @@
     }
     .chat-send-btn:hover { opacity: 0.9; }
     .chat-send-btn:disabled { opacity: 0.35; cursor: not-allowed; }
+
+    /* Onda B.1 — botão de reenvio após falha do AUTOLLM */
+    .chat-retry-btn {
+      align-self: flex-start;
+      margin-top: 4px;
+      padding: 8px 16px;
+      background: transparent;
+      color: var(--cobre, #B87333);
+      border: 1px solid var(--cobre, #B87333);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      letter-spacing: 1px;
+      cursor: pointer;
+      transition: background 0.15s, color 0.15s;
+    }
+    .chat-retry-btn:hover { background: var(--cobre, #B87333); color: #0A0A0B; }
 
     .chat-concluido {
       display: none;
@@ -942,6 +972,8 @@
   const GRAFO_POLL_MS = 2000;
   const GRAFO_MAX_POLLS = 60; // 120s máx
   const CHAT_START_MIN_FONTES = 5; // inicia chat após N fontes responderem
+  const MIN_GENERATION_MS = 5200;  // C2 — geração tem um momento mínimo de apresentação
+  let _genStart = 0;               // quando a geração começou (p/ pacing)
 
   // ── Mapa de fontes OSINT → labels para exibição ───────────────────────
   // Labels neutros — sem expor resultado de compliance (ADR-SCAN-0007)
@@ -1122,12 +1154,29 @@
   function iniciarGrafo(diagnosticoId) {
     const grafoEl = document.getElementById('snap-grafo');
     grafoEl.classList.add('visible');
+    _genStart = performance.now();
     // M4 — fade-in após next paint para que a transição CSS seja visível.
     requestAnimationFrame(() => requestAnimationFrame(() =>
       grafoEl.classList.add('snap-stage--visible')
     ));
     construirSVG();
     startGrafoPolling(diagnosticoId);
+  }
+
+  // C3 — transição da geração (grande) para a faixa + abertura do chat.
+  // Antes de acoplar, "convergência": pulsos de todas as estações acesas → núcleo.
+  function transicionarParaChat(diagnosticoId) {
+    document.getElementById('snap-grafo-texto').textContent =
+      'Operação em mapeamento. A entrevista enriquece o grafo em tempo real.';
+    let k = 0;
+    _nodosAcesos.forEach((fonte) => { dispararPulso(fonte, (k++ % 8) * 60); });
+    // realce do núcleo na convergência
+    const core = document.querySelector('.grafo-core-hex');
+    if (core) { core.style.strokeOpacity = '1'; }
+    setTimeout(() => {
+      document.getElementById('snap-grafo').classList.add('docked');
+      setTimeout(() => iniciarNaurChat(diagnosticoId), 650);
+    }, 950);
   }
 
   // posição polar de cada estação (cacheada para pulsos/constelação)
@@ -1155,10 +1204,16 @@
       line.style.animationDelay = (i * 70) + 'ms';
       linesG.appendChild(line);
 
+      // Grupo da estação (hexágono + rótulo) — translatado pela "vida" (deriva + mouse)
+      const stg = mkEl('g', { id: `grafo-stationg-${fonte}` });
+      stg.setAttribute('class', 'grafo-station');
+      // fase aleatória estável p/ a deriva orgânica (sem Math.random no loop)
+      _drift[fonte] = { fase: (i * 1.7) % (Math.PI * 2), amp: 1.6, x: nx, y: ny };
+
       // Estação = hexágono geométrico (marca VALAR)
       const shape = mkEl('polygon', { points: hexPoints(nx, ny, 9), id: `grafo-node-${fonte}` });
       shape.setAttribute('class', 'grafo-node-shape');
-      nodosG.appendChild(shape);
+      stg.appendChild(shape);
 
       // Rótulo FORA do nó, ancorado conforme hemisfério (nunca estoura)
       const c = Math.cos(ang), s = Math.sin(ang);
@@ -1174,7 +1229,69 @@
         tsp.textContent = w;
         labelEl.appendChild(tsp);
       });
-      labelsG.appendChild(labelEl);
+      stg.appendChild(labelEl);
+      nodosG.appendChild(stg);
+    });
+    iniciarVida();
+  }
+
+  // ── "Vida" do grafo (C5): deriva orgânica contínua + reação ao mouse ────────
+  const _drift = {};          // por fonte: { fase, amp, x, y }
+  let _mouseSvg = null;        // posição do cursor em coords do viewBox (ou null)
+  let _vidaRAF = null;
+  const _reduzMov = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function _svgPonto(e) {
+    const svg = document.getElementById('snap-svg');
+    if (!svg || !svg.getScreenCTM) return null;
+    const pt = svg.createSVGPoint(); pt.x = e.clientX; pt.y = e.clientY;
+    const ctm = svg.getScreenCTM(); if (!ctm) return null;
+    const p = pt.matrixTransform(ctm.inverse());
+    return { x: p.x, y: p.y };
+  }
+
+  function iniciarVida() {
+    if (_vidaRAF || _reduzMov) return;
+    const svg = document.getElementById('snap-svg');
+    if (!svg) return;
+    svg.addEventListener('mousemove', (e) => { _mouseSvg = _svgPonto(e); });
+    svg.addEventListener('mouseleave', () => { _mouseSvg = null; });
+    const t0 = performance.now();
+    const frame = (now) => {
+      _aplicarVida((now - t0) / 1000);
+      _vidaRAF = requestAnimationFrame(frame);
+    };
+    _vidaRAF = requestAnimationFrame(frame);
+  }
+
+  // Aplica deriva (sin/cos por fase) + atração gravitacional do cursor a cada nó.
+  function _aplicarVida(t) {
+    const ATRA_R = 78;   // raio de influência do mouse (viewBox)
+    FONTES_ORDEM.forEach((fonte) => {
+      const g = document.getElementById(`grafo-stationg-${fonte}`);
+      const d = _drift[fonte];
+      if (!g || !d) return;
+      let dx = Math.sin(t * 0.6 + d.fase) * d.amp;
+      let dy = Math.cos(t * 0.5 + d.fase * 1.3) * d.amp;
+      let perto = false;
+      if (_mouseSvg) {
+        const vx = _mouseSvg.x - d.x, vy = _mouseSvg.y - d.y;
+        const dist = Math.hypot(vx, vy);
+        if (dist < ATRA_R) {
+          const f = (1 - dist / ATRA_R);          // 0..1, mais forte perto
+          dx += vx * f * 0.18;                     // atração sutil
+          dy += vy * f * 0.18;
+          perto = true;
+        }
+      }
+      g.setAttribute('transform', `translate(${dx.toFixed(2)} ${dy.toFixed(2)})`);
+      g.classList.toggle('perto', perto);
+    });
+    // Constelação interna também respira/deriva
+    document.querySelectorAll('#grafo-op-nodes .grafo-op-node').forEach((g, i) => {
+      const dx = Math.sin(t * 0.7 + i) * 1.3;
+      const dy = Math.cos(t * 0.6 + i * 1.1) * 1.3;
+      g.setAttribute('transform', `translate(${dx.toFixed(2)} ${dy.toFixed(2)})`);
     });
   }
 
@@ -1200,6 +1317,17 @@
       const core = document.querySelector('.grafo-core-hex');
       if (core) { core.style.strokeOpacity = '1'; setTimeout(() => core.style.strokeOpacity = '', 400); }
     }, delayMs);
+  }
+
+  // C6 — a cada turno enviado, "dados entram" no grafo: pulsos de algumas
+  // estações ativas viajam para o núcleo enquanto o Naur processa.
+  function pulsoIngest() {
+    const acesos = Array.from(_nodosAcesos);
+    if (!acesos.length) return;
+    const n = Math.min(5, acesos.length);
+    for (let i = 0; i < n; i++) {
+      dispararPulso(acesos[(i * 3) % acesos.length], i * 140);
+    }
   }
 
   function atualizarNodo(fonte, estado) {
@@ -1301,7 +1429,7 @@
         clearInterval(interval);
         if (!chatStartado) {
           chatStartado = true;
-          iniciarNaurChat(diagnosticoId);
+          transicionarParaChat(diagnosticoId);
         }
         return;
       }
@@ -1373,13 +1501,13 @@
         )) {
           chatStartado = true;
           clearInterval(interval);
-          // Atualizar texto do grafo
+          // C2 — respeita um tempo mínimo de "apresentação" da geração antes de
+          // transicionar, mesmo que o OSINT volte rápido (não pula a animação).
+          const decorrido = performance.now() - _genStart;
+          const restante = Math.max(0, MIN_GENERATION_MS - decorrido);
           document.getElementById('snap-grafo-texto').textContent =
-            'Operação em mapeamento. A entrevista enriquece o grafo em tempo real.';
-          // Coexistência: o grafo ACOPLA (menor, pulsando) em vez de sumir,
-          // e o chat surge ao lado/abaixo. Um beat para a transição respirar.
-          document.getElementById('snap-grafo').classList.add('docked');
-          setTimeout(() => iniciarNaurChat(diagnosticoId), 700);
+            'Consolidando o mapa da operação…';
+          setTimeout(() => transicionarParaChat(diagnosticoId), restante);
         }
 
       } catch (_) { /* ignora erros de rede no poll */ }
@@ -1442,6 +1570,7 @@
     // F9 — devolve o textarea à altura inicial após o envio.
     if (typeof window._chatInputReset === 'function') window._chatInputReset();
     adicionarMensagem('user', texto);
+    pulsoIngest();   // C6 — dados "entrando" no grafo enquanto o Naur processa
     const turnoAnterior = _chatHistorico.slice();
     _chatHistorico.push({ role: 'user', content: texto });
     enviarTurno(texto, turnoAnterior);
@@ -1474,6 +1603,17 @@
       }
 
       const data = await res.json();
+
+      // Onda B.1 — AUTOLLM indisponível (cota/erro): NÃO perde contexto.
+      // Mostra a fala graciosa + botão de reenvio do mesmo turno.
+      if (data.retry) {
+        adicionarMensagem('naur', limparFalaNaur(data.turno_naur));
+        mostrarRetry(turnoTexto, historico);
+        _chatAtivo = true;
+        setInputDisabled(false);
+        return;
+      }
+
       // Onda B — o grafo ganha forma com os sinais capturados no turno
       if (data.sinais) crescerGrafo(data.sinais);
       const falaLimpa = limparFalaNaur(data.turno_naur);
@@ -1520,6 +1660,18 @@
     t = t.replace(/```(?:json)?[\s\S]*?```/g, '');
     t = t.replace(/\[ENTREVISTA_COMPLETA\]/g, '');
     return t.trim();
+  }
+
+  // Onda B.1 — botão de reenvio do mesmo turno após falha do AUTOLLM.
+  function mostrarRetry(turnoTexto, historico) {
+    const msgs = document.getElementById('chat-msgs');
+    const b = document.createElement('button');
+    b.type = 'button';
+    b.className = 'chat-retry-btn';
+    b.textContent = '↻ Tentar novamente';
+    b.addEventListener('click', () => { b.remove(); enviarTurno(turnoTexto, historico); });
+    msgs.appendChild(b);
+    msgs.scrollTop = msgs.scrollHeight;
   }
 
   function adicionarMensagem(papel, texto) {
